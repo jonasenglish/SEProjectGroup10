@@ -45,7 +45,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.LoginPageController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -95,7 +95,7 @@
         </Label>
             <PasswordField fx:id="TextField_Password" layoutX="230.0" layoutY="204.0" promptText="Password..." />
             <TextField fx:id="TextField_Username" layoutX="230.0" layoutY="152.0" promptText="Username..." />
-            <Button fx:id="Button_Login" layoutX="279.0" layoutY="257.0" mnemonicParsing="false" text="Login" />
+            <Button fx:id="Button_Login" layoutX="279.0" layoutY="257.0" mnemonicParsing="false" onAction="#OnClickButton_Login" text="Login" />
             <ProgressIndicator fx:id="ProgressIndicator_Login" layoutX="289.0" layoutY="298.0" progress="0.0" />
       </children>
     </AnchorPane>
