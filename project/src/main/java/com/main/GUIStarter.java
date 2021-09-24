@@ -1,4 +1,4 @@
-package com.project;
+package com.main;
 
 // This class is the one to run, otherwise you get an error.
 public class GUIStarter {
