@@ -1,15 +1,14 @@
 package com.main;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Hashtable;
 
-import com.main.database.*;
+import com.main.database.DatabaseManager;
+import com.main.pages.PageManager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application
@@ -17,13 +16,9 @@ public class App extends Application
     // This is a static reference to the Primary Stage, and should be used to change Stages.
     public static Stage pStage;
 
-    // Contains a list of Parents(Pages)
-    // 0. Login Page
-    // 1. Create Account Page
-    //
-    // Add new pages above and see the InitializePages function below.
-    public static List<Parent> pages = new ArrayList<Parent>();
-
+    // The Dictionary of Pages, Add more Pages below in InitializePages()
+    // Pages should be retrieved by name. E.G. pages.get("Login") retrieved the Login Page
+    public static Hashtable<String, Parent> pages = new Hashtable<String, Parent>();
     public static void main( String[] args )
     {
         launch(args);
@@ -31,30 +26,21 @@ public class App extends Application
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        pStage = primaryStage;
         InitializePages();
 
-        Parent root = pages.get(0);
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("Welcome! - Login");
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-
-        primaryStage.show();
-
-        pStage = primaryStage;
+        PageManager.SetPage("Login", "Welcome! - Login");
 
         DatabaseManager dManager = new DatabaseManager();
         DatabaseManager.SetInstance(dManager);
         DatabaseManager.instance.Connect();
     }
 
-    // Initializes the pages list with the FXML files of the pages
+    // Initializes the pages dictionary with the FXML files of the pages
     private void InitializePages(){
         try{
-            pages.add((Parent)FXMLLoader.load(getClass().getResource("pages/LoginPage.fxml")));
-            pages.add((Parent)FXMLLoader.load(getClass().getResource("pages/CreateAccountPage.fxml")));
+            pages.put("Login", (Parent)FXMLLoader.load(getClass().getResource("pages/LoginPage.fxml")));
+            pages.put("CreateAccount", (Parent)FXMLLoader.load(getClass().getResource("pages/CreateAccountPage.fxml")));
 
             // Add new pages above.
         }catch(IOException e){

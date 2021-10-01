@@ -20,6 +20,7 @@ public class Account {
     private String password = "";
     private String salt = ""; // Used to encrypt and decrypt the user's password
     private String email = "";
+    private boolean dev = false; // Whether or not this is a Developer account.
 
     public String GetUsername(){
         return username;
@@ -35,6 +36,10 @@ public class Account {
 
     public String GetEmail(){
         return email;
+    }
+
+    public Boolean GetDev(){
+        return dev;
     }
 
     public void SetUsername(String username){

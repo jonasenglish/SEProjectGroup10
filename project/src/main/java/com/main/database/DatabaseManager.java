@@ -1,6 +1,8 @@
 package com.main.database;
 
 import static com.mongodb.client.model.Filters.*;
+
+import com.main.objects.Account;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
@@ -15,13 +17,20 @@ public class DatabaseManager {
 
     private MongoClient mongoClient = null;
 
+    private MongoCollection<Document> accountCollection = null;
+
     public void Connect(){
         try {
             mongoClient = new MongoClient(uri);
             System.out.println("Connected to MongoDB.");
+            SetAccountCollection();
         } catch (Exception e) {
             System.err.println("ERROR! Failed to connect to database! Perhaps Username or Password was incorrect?");
         }
+    }
+
+    public void SetAccountCollection(){
+        accountCollection = GetDatabase().getCollection("Accounts");
     }
 
     public MongoClient GetMongoClient(){
@@ -32,22 +41,36 @@ public class DatabaseManager {
         return mongoClient.getDatabase("ProjectDatabase");
     }
 
-    public MongoCollection<Document> GetAccountCollection(){
-        return GetDatabase().getCollection("Accounts");
-    }
-
     public static void SetInstance(DatabaseManager newInstance){
         instance = newInstance;
     }
 
-    public Document FindDocumentByUsername(String username, MongoCollection<Document> accountCollection){
+    public Document FindDocumentByUsername(String username){
         Document document = accountCollection.find(eq("username", username)).first();
         return document;
     }
 
-    public Document FindDocumentByEmail(String email, MongoCollection<Document> accountCollection){
+    public Document FindDocumentByEmail(String email){
         Document document = accountCollection.find(eq("email", email)).first();
         return document;
+    }
+
+    public Account FindAccountByUsername(String username){
+        Document doc = FindDocumentByUsername(username);
+        if(doc != null)
+            return Account.ToAccount(doc);
+        return null;
+    }
+
+    public Account FindAccountByEmail(String email){
+        Document doc = FindDocumentByUsername(email);
+        if(doc != null)
+            return Account.ToAccount(doc);
+        return null;
+    }
+
+    public void InsertAccount(Account account){
+        accountCollection.insertOne(account.ToDocument());
     }
 
 }
