@@ -2,10 +2,8 @@ package com.main.controller;
 
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
+import com.main.pages.PageManager;
 import com.main.tools.PasswordUtils;
-import com.mongodb.client.MongoCollection;
-
-import org.bson.Document;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,6 +45,8 @@ public class CreateAccountPageController {
 
     @FXML
     private void OnClickButton_CreateAccount(ActionEvent event) {
+        DatabaseManager dm = DatabaseManager.instance;
+
         err = false;
         ResetErrorText();
 
@@ -68,32 +68,35 @@ public class CreateAccountPageController {
         if(password.length() < 5 || password.length() > 20)
             Error_PasswordLength();
 
-        MongoCollection<Document> accountCollection = DatabaseManager.instance.GetAccountCollection();
-
-        if(DatabaseManager.instance.FindDocumentByUsername(username, accountCollection) != null){
+        if(dm.FindDocumentByUsername(username) != null){
             Error_AccountExists_Username();
         }
 
-        if(DatabaseManager.instance.FindDocumentByEmail(email, accountCollection) != null){
+        if(dm.FindDocumentByEmail(email) != null){
             Error_AccountExists_Email();
         }
 
         if(err) return; // Do Not Execute further if there was an error.
 
+        // Making Secure Password
         String salt = PasswordUtils.getSalt(30);
-
         String securePassword = PasswordUtils.generateSecurePassword(password, salt);
 
+        // Verifying that the secure password was generated correctly
         if(!PasswordUtils.verifyUserPassword(password, securePassword, salt)){
             System.err.println("CRITICAL ERROR: Could not verify password with salt.");
             return;
         }
 
+        // Creating account object
         Account newAccount = new Account(username, securePassword, salt, email);
 
-        accountCollection.insertOne(newAccount.ToDocument());
+        // Adding Account to database
+        dm.InsertAccount(newAccount);
 
         System.out.println("Account Created!");
+
+        PageManager.SetPage("Login", "Welcome! - Login");
     }
 
     private void ResetErrorText(){
