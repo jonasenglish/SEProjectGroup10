@@ -37,6 +37,11 @@
             <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Reserve" />
             <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Edit" />
             <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Availability" />
+            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="102.0" text="AddProperty" textOverrun="CLIP">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets bottom="5.0" left="8.0" top="10.0" />
