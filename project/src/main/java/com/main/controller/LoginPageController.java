@@ -61,6 +61,11 @@ public class LoginPageController {
         if(err) return;
 
         System.out.println("Welcome " + username + "!");
+        
+        //I added this page just to see how it would look, but checking to see if the user is a manager
+        //is still required
+        PageManager.SetPage("ManagerView", "Welcome! - " + username + "!"); 
+
     }
 
     private void Error_AccountWithUsernameNotFound(){
