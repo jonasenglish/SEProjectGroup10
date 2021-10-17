@@ -3,6 +3,8 @@ package com.main.database;
 import static com.mongodb.client.model.Filters.*;
 
 import com.main.objects.Account;
+import com.main.objects.Hotel;
+import com.main.objects.Reservation;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
@@ -18,12 +20,16 @@ public class DatabaseManager {
     private MongoClient mongoClient = null;
 
     private MongoCollection<Document> accountCollection = null;
+    private MongoCollection<Document> hotelCollection = null;
+    private MongoCollection<Document> reservationCollection = null;
 
     public void Connect(){
         try {
             mongoClient = new MongoClient(uri);
             System.out.println("Connected to MongoDB.");
             SetAccountCollection();
+            SetHotelCollection();
+            SetReservationCollection();
         } catch (Exception e) {
             System.err.println("ERROR! Failed to connect to database! Perhaps Username or Password was incorrect?");
         }
@@ -31,6 +37,14 @@ public class DatabaseManager {
 
     public void SetAccountCollection(){
         accountCollection = GetDatabase().getCollection("Accounts");
+    }
+
+    public void SetHotelCollection(){
+        hotelCollection = GetDatabase().getCollection("Hotels");
+    }
+
+    public void SetReservationCollection(){
+        reservationCollection = GetDatabase().getCollection("Reservations");
     }
 
     public MongoClient GetMongoClient(){
@@ -71,6 +85,14 @@ public class DatabaseManager {
 
     public void InsertAccount(Account account){
         accountCollection.insertOne(account.ToDocument());
+    }
+
+    public void InsertHotel(Hotel hotel){
+        hotelCollection.insertOne(hotel.ToDocument());
+    }
+
+    public void InsertReservation(Reservation reservation){
+        reservationCollection.insertOne(reservation.ToDocument());
     }
 
 }

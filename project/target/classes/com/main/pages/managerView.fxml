@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerViewController">
    <top>
       <SplitPane dividerPositions="0.893652561247216" prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <items>
@@ -37,11 +37,8 @@
             <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Reserve" />
             <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Edit" />
             <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Availability" />
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="102.0" text="AddProperty" textOverrun="CLIP">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Button>
+            <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="AddProperty" />
+            <Button fx:id="Button_CreateHotel" layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_CreateHotel" prefHeight="60.0" prefWidth="80.0" text="Create Hotel" textAlignment="CENTER" wrapText="true" />
          </children>
          <padding>
             <Insets bottom="5.0" left="8.0" top="10.0" />

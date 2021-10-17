@@ -43,6 +43,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateAccountPageController">
   <children>
@@ -121,6 +122,7 @@
             <Label fx:id="Label_UsernameError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="125.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
             <Label fx:id="Label_RetypePasswordError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="225.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
             <Label fx:id="Label_EmailError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="275.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
+            <Text layoutX="507.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hello" />
       </children>
     </AnchorPane>
   </children>

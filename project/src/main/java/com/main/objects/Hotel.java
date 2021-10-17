@@ -19,9 +19,9 @@ public class Hotel {
 
     private List<Room> rooms = null;
 
-    private float roomPriceStandard = 100.0f;
-    private float roomPriceQueen = 150.0f;
-    private float roomPriceKing = 250.0f;
+    private float roomPriceStandard = 100.00f;
+    private float roomPriceQueen = 150.00f;
+    private float roomPriceKing = 250.00f;
 
     private float weekendDifferential = .25f;
 

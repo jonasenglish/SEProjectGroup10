@@ -12,9 +12,18 @@ public class Room {
     private String roomID = "";
     private int floor = 0;
 
-    // Some form of availability tracking should go here.
-
     private List<Amenity> amenities = null;
+
+    private List<Reservation> reservations = null;
+
+/// ------------- Gets and Sets -----------------
+    public List<Reservation> getReservations(){
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations){
+        this.reservations = reservations;
+    }
 
     public String getRoomID() {
         return roomID;
@@ -47,28 +56,29 @@ public class Room {
     public void setRoomID(String roomId) {
         this.roomID = roomId;
     }
+/// ---------------------------------------
 
     public Document ToDocument(){
         Document document = new Document();
-        document.append("RoomID", this.roomID);
+
         document.append("Floor", this.floor);
-
-        // Availability here.
-
+        document.append("RoomID", this.roomID);
         document.append("RoomType", this.roomType);
         document.append("Amenities", this.amenities);
+        document.append("Reservations", this.amenities);
+
         return document;
     }
 
     public static Room FromDocument(Document document){
         Room room = new Room();
-        room.roomID = (String)document.get("RoomID");
+
         room.floor = (int)document.get("Floor");
-
-        // Availability here.
-
+        room.roomID = (String)document.get("RoomID");
         room.roomType = (RoomType)document.get("RoomType");
         room.amenities = (List<Amenity>)document.get("Amenities");
+        room.reservations = (List<Reservation>)document.get("Reservations");
+
         return room;
     }
 }
