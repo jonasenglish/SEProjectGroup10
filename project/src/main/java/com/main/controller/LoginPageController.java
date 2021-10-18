@@ -1,5 +1,6 @@
 package com.main.controller;
 
+import com.main.App;
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
 import com.main.pages.PageManager;
@@ -62,6 +63,8 @@ public class LoginPageController {
 
         System.out.println("Welcome " + username + "!");
         
+        App.currentUser = account;
+
         //I added this page just to see how it would look, but checking to see if the user is a manager
         //is still required
         PageManager.SetPage("ManagerView", "Welcome! - " + username + "!"); 

@@ -2,14 +2,20 @@ package com.main.database;
 
 import static com.mongodb.client.model.Filters.*;
 
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+
 import com.main.objects.Account;
 import com.main.objects.Hotel;
 import com.main.objects.Reservation;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 public class DatabaseManager {
 
@@ -55,34 +61,87 @@ public class DatabaseManager {
         return mongoClient.getDatabase("ProjectDatabase");
     }
 
+    // Sets the Database Manager instance so that Database manager can be called from other classes using DatabaseManager.instance
     public static void SetInstance(DatabaseManager newInstance){
         instance = newInstance;
     }
 
-    public Document FindDocumentByUsername(String username){
-        Document document = accountCollection.find(eq("username", username)).first();
-        return document;
-    }
-
-    public Document FindDocumentByEmail(String email){
-        Document document = accountCollection.find(eq("email", email)).first();
-        return document;
-    }
-
+    // Finds
     public Account FindAccountByUsername(String username){
-        Document doc = FindDocumentByUsername(username);
+        Document doc = accountCollection.find(eq("username", username)).first();
         if(doc != null)
             return Account.ToAccount(doc);
         return null;
     }
 
     public Account FindAccountByEmail(String email){
-        Document doc = FindDocumentByUsername(email);
+        Document doc = accountCollection.find(eq("email", email)).first();
         if(doc != null)
             return Account.ToAccount(doc);
         return null;
     }
 
+    public Hotel FindHotelByName(String hotelName){
+        Document doc = hotelCollection.find(eq("Name", hotelName)).first();
+        if(doc != null)
+            return Hotel.ToHotel(doc);
+        return null;
+    }
+
+    public List<Hotel> FindHotelsWithAvailableRooms(){
+        List<Hotel> matchingHotels = new LinkedList<>();
+
+        for(Hotel h : FindAllHotels()){
+            if(h.getTotalRooms() > 0)
+                matchingHotels.add(h);
+        }
+
+        return matchingHotels;
+    }
+
+    public List<Reservation> FindReservationsByAccount(Account account){
+        List<Reservation> reservations = new LinkedList<>();
+
+        Bson filter = eq("_id", account.getID());
+        FindIterable<Document> documentResults = reservationCollection.find(filter);
+        while(documentResults.iterator().hasNext()){
+            reservations.add(Reservation.ToReservation(documentResults.iterator().next()));
+        }
+        return reservations;
+    }
+
+    public List<Reservation> FindReservationsInDateRange(Date startDate, Date endDate){
+        List<Reservation> matchingReservations = new LinkedList<>();
+
+        for(Reservation reservation : FindAllReservations()){
+            if(reservation.isWithinRange(startDate) || reservation.isWithinRange(endDate))
+                matchingReservations.add(reservation);
+        }
+        
+        return matchingReservations;
+    }
+
+    // Returns all the Reservations in the Collection
+    public List<Reservation> FindAllReservations(){
+        FindIterable<Document> documentResults = reservationCollection.find();
+        List<Reservation> reservations = new LinkedList<>();
+        while(documentResults.iterator().hasNext()){
+            reservations.add(Reservation.ToReservation(documentResults.iterator().next()));
+        }
+        return reservations;
+    }
+
+    // Returns all the Hotels in the Collection
+    public List<Hotel> FindAllHotels(){
+        FindIterable<Document> documentResults = hotelCollection.find();
+        List<Hotel> hotels = new LinkedList<>();
+        while(documentResults.iterator().hasNext()){
+            hotels.add(Hotel.ToHotel(documentResults.iterator().next()));
+        }
+        return hotels;
+    }
+
+    // Inserts
     public void InsertAccount(Account account){
         accountCollection.insertOne(account.ToDocument());
     }
@@ -93,6 +152,38 @@ public class DatabaseManager {
 
     public void InsertReservation(Reservation reservation){
         reservationCollection.insertOne(reservation.ToDocument());
+    }
+
+    // Delete
+    public void DeleteAccount(Account account){
+        Bson filter = and(eq("_id", account.getID()));
+        accountCollection.deleteOne(filter);
+    }
+
+    public void DeleteHotel(Hotel hotel){
+        Bson filter = and(eq("_id", hotel.getID()));
+        accountCollection.deleteOne(filter);
+    }
+
+    public void DeleteReservation(Reservation reservation){
+        Bson filter = and(eq("_id", reservation.getID()));
+        accountCollection.deleteOne(filter);
+    }
+
+    // Update
+    public void UpdateAccount(Account account){
+        Bson filter = and(eq("_id", account.getID()));
+        accountCollection.updateOne(filter, account.ToDocument());
+    }
+
+    public void UpdateHotel(Hotel hotel){
+        Bson filter = and(eq("_id", hotel.getID()));
+        hotelCollection.updateOne(filter, hotel.ToDocument());
+    }
+
+    public void UpdateReservation(Reservation reservation){
+        Bson filter = and(eq("_id", reservation.getID()));
+        reservationCollection.updateOne(filter, reservation.ToDocument());
     }
 
 }

@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerHotelCreationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerHotelCreationController">
    <children>
-      <Text layoutX="87.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenities" />
-      <TextField fx:id="TextField_Amenities" layoutX="87.0" layoutY="182.0" />
-      <Text layoutX="312.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Rooms " />
-      <TextField fx:id="TextField_NumberOfRooms" layoutX="312.0" layoutY="183.0" />
-      <Text layoutX="57.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price per night" />
-      <TextField fx:id="TextField_PricePerNight" layoutX="57.0" layoutY="270.0" prefHeight="26.0" prefWidth="114.0" promptText="\$" />
-      <TextField fx:id="TextField_PriceStandard" layoutX="198.0" layoutY="270.0" prefHeight="26.0" prefWidth="114.0" promptText="\$" />
-      <TextField fx:id="TextField_PriceQueen" layoutX="341.0" layoutY="270.0" prefHeight="26.0" prefWidth="114.0" promptText="\$" />
-      <TextField fx:id="TextField_PriceKing" layoutX="472.0" layoutY="270.0" prefHeight="26.0" prefWidth="114.0" promptText="\$" />
-      <Text layoutX="198.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standard" />
-      <Text layoutX="341.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Queen" />
-      <Text layoutX="472.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="King" />
-      <Text layoutX="84.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekend Differnetial " />
-      <TextField fx:id="TextField_WeekendDifferential" layoutX="198.0" layoutY="351.0" />
-      <Text layoutX="365.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nightly rate surcharge" />
-      <Text layoutX="197.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Creation" wrappingWidth="300.33642578125">
+      <Text layoutX="53.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Rooms " AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="115.0" />
+      <TextField fx:id="TextField_NumberOfRooms" layoutX="53.0" layoutY="152.0" promptText="#" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="130.0" />
+      <TextField fx:id="TextField_PriceStandard" layoutX="53.0" layoutY="228.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00$" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="200.0" />
+      <TextField fx:id="TextField_PriceQueen" layoutX="136.0" layoutY="228.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00$" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="200.0" />
+      <TextField fx:id="TextField_PriceKing" layoutX="211.0" layoutY="228.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00$" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="200.0" />
+      <Text layoutX="53.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standard" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="185.0" />
+      <Text layoutX="136.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Queen" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="185.0" />
+      <Text layoutX="211.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="King" AnchorPane.leftAnchor="175.0" AnchorPane.topAnchor="185.0" />
+      <Text layoutX="53.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekend Differnetial " AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="235.0" />
+      <TextField fx:id="TextField_WeekendDifferential" layoutX="53.0" layoutY="298.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="250.0" />
+      <Text layoutX="184.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Creation" textAlignment="CENTER" wrappingWidth="232.33642578125" AnchorPane.topAnchor="5.0">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="223.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel name" />
-      <TextField fx:id="TextField_HotelName" layoutX="220.0" layoutY="86.0" />
-      <Button fx:id="Button_Submit" layoutX="503.0" layoutY="352.0" mnemonicParsing="false" onAction="#OnClick_Submit" text="Submit" />
+      <Text layoutX="53.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Name" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="65.0" />
+      <TextField fx:id="TextField_HotelName" layoutX="53.0" layoutY="93.0" promptText="Name..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="80.0" />
+      <Button layoutX="334.0" layoutY="557.0" mnemonicParsing="false" onAction="#OnClick_Cancel" text="Cancel" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="210.0" />
+      <Text layoutX="137.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Prices" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="165.0" />
+      <ScrollPane layoutX="316.0" layoutY="65.0" prefHeight="377.0" prefWidth="390.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="85.0">
+         <content>
+            <TableView fx:id="TableView_Amenities" editable="true" prefHeight="375.0" prefWidth="388.0">
+              <columns>
+                <TableColumn fx:id="name" prefWidth="100.0" text="Name" />
+                  <TableColumn fx:id="description" prefWidth="287.0" text="Description" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Button layoutX="217.0" layoutY="557.0" mnemonicParsing="false" onAction="#OnClick_Submit" text="Submit" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="210.0" />
+      <Button layoutX="315.0" layoutY="457.0" mnemonicParsing="false" onAction="#OnClick_AddAmenity" prefWidth="110.0" text="Add Amenity" AnchorPane.leftAnchor="315.0" AnchorPane.topAnchor="475.0" />
+      <Button layoutX="475.0" layoutY="457.0" mnemonicParsing="false" onAction="#OnClick_RemoveAmenity" prefWidth="110.0" text="Remove Amenity" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="475.0" />
+      <Text layoutX="480.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenities" textAlignment="CENTER" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="65.0" />
+      <Text layoutX="15.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenity Name" />
+      <Text layoutX="15.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenity Description" />
+      <TextField fx:id="TextField_AmenityName" layoutX="15.0" layoutY="299.0" />
+      <TextArea fx:id="TextArea_AmenityDescription" layoutX="16.0" layoutY="340.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

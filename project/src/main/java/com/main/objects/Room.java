@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.bson.Document;
 
+
+// We might not even need this. It may be easier to just list the amount of available rooms of each type in the hotels, and the amenities that come with those rooms. - Jonas
 public class Room {
     
-    public static enum RoomType {STANDARD, QUEEN, KING};
-    private RoomType roomType;
+    private Hotel.RoomType roomType;
 
     private String roomID = "";
     private int floor = 0;
@@ -29,11 +30,11 @@ public class Room {
         return roomID;
     }
 
-    public RoomType getRoomType() {
+    public Hotel.RoomType getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(RoomType roomType) {
+    public void setRoomType(Hotel.RoomType roomType) {
         this.roomType = roomType;
     }
 
@@ -75,7 +76,7 @@ public class Room {
 
         room.floor = (int)document.get("Floor");
         room.roomID = (String)document.get("RoomID");
-        room.roomType = (RoomType)document.get("RoomType");
+        room.roomType = (Hotel.RoomType)document.get("RoomType");
         room.amenities = (List<Amenity>)document.get("Amenities");
         room.reservations = (List<Reservation>)document.get("Reservations");
 

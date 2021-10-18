@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Hashtable;
 
 import com.main.database.DatabaseManager;
+import com.main.objects.Account;
 import com.main.pages.PageManager;
 
 import javafx.application.Application;
@@ -19,6 +20,10 @@ public class App extends Application
     // The Dictionary of Pages, Add more Pages below in InitializePages()
     // Pages should be retrieved by name. E.G. pages.get("Login") retrieved the Login Page
     public static Hashtable<String, Parent> pages = new Hashtable<String, Parent>();
+
+    // The account that is currently Logged in
+    public static Account currentUser = null;
+
     public static void main( String[] args )
     {
         launch(args);
@@ -45,9 +50,10 @@ public class App extends Application
             pages.put("ManagerHotelCreation", (Parent)FXMLLoader.load(getClass().getResource("pages/managerHotelCreation.fxml")));
             pages.put("ManagerView", (Parent)FXMLLoader.load(getClass().getResource("pages/managerView.fxml")));
             // Add new pages above.
-        }catch(IOException e){
+        }catch(Exception e){
             System.err.println("Error Loading FXML classes!");
             System.err.println(e);
+
             return;
         }
     }

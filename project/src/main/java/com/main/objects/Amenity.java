@@ -9,6 +9,9 @@ public class Amenity {
         this.description = description;
     }
 
+    public Amenity(){
+    }
+
     private String name;
     private String description;
 

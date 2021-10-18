@@ -68,11 +68,11 @@ public class CreateAccountPageController {
         if(password.length() < 5 || password.length() > 20)
             Error_PasswordLength();
 
-        if(dm.FindDocumentByUsername(username) != null){
+        if(dm.FindAccountByUsername(username) != null){
             Error_AccountExists_Username();
         }
 
-        if(dm.FindDocumentByEmail(email) != null){
+        if(dm.FindAccountByEmail(email) != null){
             Error_AccountExists_Email();
         }
 

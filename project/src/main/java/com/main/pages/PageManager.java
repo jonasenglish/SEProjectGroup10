@@ -17,10 +17,15 @@ public class PageManager {
         Parent root = null;
 
         try {
-            root = App.pages.get(pageName); // Retrieving Create Account Page
+            root = App.pages.get(pageName); // Retrieving Page
         } catch (Exception e) {
             System.err.println("CRITICAL ERROR: CreateAccountPage.fxml Could not be loaded! Dumping Error:");
             System.err.println(e);
+            return;
+        }
+
+        if(root == null){
+            System.err.println("CRITICAL ERROR: root == null, Page not found! \nThe pageName " + pageName + " did not return a root!");
             return;
         }
 

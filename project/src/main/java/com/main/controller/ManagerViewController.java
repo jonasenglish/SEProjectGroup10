@@ -10,11 +10,11 @@ import javafx.scene.control.Button;
 public class ManagerViewController {
 
 	@FXML
-    private Button Button_CreateHotel;
+  private Button Button_CreateHotel;
 
 	@FXML
-    void OnClick_CreateHotel(ActionEvent event) {
+  void OnClick_CreateHotel(ActionEvent event) {
 		PageManager.SetPage("ManagerHotelCreation", "Create Hotel");
-    }
+  }
 
 }

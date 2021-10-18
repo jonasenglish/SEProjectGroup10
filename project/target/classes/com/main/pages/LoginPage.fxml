@@ -88,21 +88,21 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="213.0" layoutY="81.0" style="&#10;" text="Company Name Here..." textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+        <Label alignment="CENTER" layoutX="261.0" layoutY="70.0" style="&#10;" text="Hotel Hero" wrapText="false" AnchorPane.topAnchor="75.0">
           <font>
             <Font size="18.0" />
           </font>
         </Label>
-            <PasswordField fx:id="TextField_Password" layoutX="230.0" layoutY="204.0" promptText="Password..." />
-            <TextField fx:id="TextField_Username" layoutX="230.0" layoutY="152.0" promptText="Username..." />
-            <Button fx:id="Button_Login" layoutX="276.0" layoutY="255.0" mnemonicParsing="false" onAction="#OnClickButton_Login" text="Login">
+            <PasswordField fx:id="TextField_Password" layoutX="230.0" layoutY="204.0" promptText="Password..." AnchorPane.topAnchor="200.0" />
+            <TextField fx:id="TextField_Username" layoutX="230.0" layoutY="152.0" promptText="Username..." AnchorPane.topAnchor="150.0" />
+            <Button fx:id="Button_Login" layoutX="276.0" layoutY="255.0" mnemonicParsing="false" onAction="#OnClickButton_Login" text="Login" AnchorPane.topAnchor="250.0">
                <padding>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </padding>
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="Button_CreateAccount" layoutX="256.0" layoutY="314.0" mnemonicParsing="false" onAction="#OnClickButton_CreateAccount" text="Create Account" />
+            <Button fx:id="Button_CreateAccount" layoutX="256.0" layoutY="314.0" mnemonicParsing="false" onAction="#OnClickButton_CreateAccount" text="Create Account" AnchorPane.topAnchor="300.0" />
       </children>
     </AnchorPane>
   </children>
