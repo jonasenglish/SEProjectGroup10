@@ -5,6 +5,7 @@ import java.util.Date;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+// The Reservations object
 public class Reservation {
     
     // The account that made the Reservation
