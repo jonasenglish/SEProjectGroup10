@@ -56,7 +56,7 @@ public class LoginPageController {
         }
         if(err) return;
 
-        if(!PasswordUtils.verifyUserPassword(password, account.GetPassword(), account.GetSalt())){
+        if(!PasswordUtils.verifyUserPassword(password, account.getPassword(), account.getSalt())){
             Error_PasswordIncorrect();
         }
         if(err) return;

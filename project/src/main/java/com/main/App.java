@@ -2,9 +2,12 @@ package com.main;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.List;
 
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
+import com.main.objects.Hotel;
+import com.main.objects.Reservation;
 import com.main.pages.PageManager;
 
 import javafx.application.Application;
@@ -39,6 +42,7 @@ public class App extends Application
         DatabaseManager dManager = new DatabaseManager();
         DatabaseManager.SetInstance(dManager);
         DatabaseManager.instance.Connect();
+        TestDatabase();
     }
 
     // Initializes the pages dictionary with the FXML files of the pages
@@ -56,5 +60,24 @@ public class App extends Application
 
             return;
         }
+    }
+
+    private void TestDatabase(){
+        DatabaseManager dm = DatabaseManager.instance;
+
+        List<Account> accounts = dm.FindAllAccounts();
+        System.out.println("Printing All Accounts in Database:\n");
+        for(Account account : accounts)
+            System.out.println(account.toString() + "\n");
+
+        List<Hotel> hotels = dm.FindAllHotels();
+        System.out.println("Printing All Hotels in Database:\n");
+        for(Hotel hotel : hotels)
+            System.out.println(hotel.toString() + "\n");
+
+        List<Reservation> reservations = dm.FindAllReservations();
+        System.out.println("Printing All Reservations in Database:\n");
+        for(Reservation reservation : reservations)
+            System.out.println(reservation.toString() + "\n");
     }
 }

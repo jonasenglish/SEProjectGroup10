@@ -92,4 +92,16 @@ public class Reservation {
 
         return reservation;
     }
+
+    public String toString(){
+        String returnString = "Reservation ID: " + ID.toString() +
+        "\nReservee Username: " + reservee.getUsername() + 
+        "\nReservee ID: " + reservee.getID().toString() + 
+        "\nHotel Name: " + hotel.getName() +
+        "\nHotel ID: " + hotel.getID().toString() +
+        "\nStart Date: " + startDate.toString() +
+        "\nEnd Date: " + endDate.toString();
+
+        return returnString;
+    }
 }

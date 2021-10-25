@@ -104,8 +104,8 @@ public class DatabaseManager {
 
         Bson filter = eq("_id", account.getID());
         FindIterable<Document> documentResults = reservationCollection.find(filter);
-        while(documentResults.iterator().hasNext()){
-            reservations.add(Reservation.ToReservation(documentResults.iterator().next()));
+        for(Document doc : documentResults){
+            reservations.add(Reservation.ToReservation(doc));
         }
         return reservations;
     }
@@ -125,8 +125,8 @@ public class DatabaseManager {
     public List<Reservation> FindAllReservations(){
         FindIterable<Document> documentResults = reservationCollection.find();
         List<Reservation> reservations = new LinkedList<>();
-        while(documentResults.iterator().hasNext()){
-            reservations.add(Reservation.ToReservation(documentResults.iterator().next()));
+        for(Document doc : documentResults){
+            reservations.add(Reservation.ToReservation(doc));
         }
         return reservations;
     }
@@ -135,10 +135,26 @@ public class DatabaseManager {
     public List<Hotel> FindAllHotels(){
         FindIterable<Document> documentResults = hotelCollection.find();
         List<Hotel> hotels = new LinkedList<>();
-        while(documentResults.iterator().hasNext()){
-            hotels.add(Hotel.ToHotel(documentResults.iterator().next()));
-        }
+        if(documentResults == null)
+            return hotels;
+
+        for(Document doc : documentResults)
+            hotels.add(Hotel.ToHotel(doc));
+
         return hotels;
+    }
+
+    // Returns all the Accounts in the Collection
+    public List<Account> FindAllAccounts(){
+        FindIterable<Document> documentResults = accountCollection.find();
+        List<Account> accounts = new LinkedList<>();
+        if(documentResults == null)
+            return accounts;
+
+        for(Document doc : documentResults)
+            accounts.add(Account.ToAccount(doc));
+
+        return accounts;
     }
 
     // Inserts

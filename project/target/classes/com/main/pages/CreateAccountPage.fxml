@@ -38,12 +38,12 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateAccountPageController">
   <children>
@@ -122,7 +122,8 @@
             <Label fx:id="Label_UsernameError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="125.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
             <Label fx:id="Label_RetypePasswordError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="225.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
             <Label fx:id="Label_EmailError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="275.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
-            <Text layoutX="507.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hello" />
+            <RadioButton fx:id="RadioButton_Manager" layoutX="185.0" layoutY="284.0" mnemonicParsing="false" text="Manager" AnchorPane.leftAnchor="195.0" />
+            <RadioButton fx:id="RadioButton_Developer" layoutX="360.0" layoutY="284.0" mnemonicParsing="false" text="Developer" AnchorPane.rightAnchor="195.0" />
       </children>
     </AnchorPane>
   </children>

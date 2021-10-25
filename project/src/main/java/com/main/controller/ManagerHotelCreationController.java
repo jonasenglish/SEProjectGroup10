@@ -1,8 +1,6 @@
 package com.main.controller;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -63,10 +61,10 @@ public class ManagerHotelCreationController implements Initializable {
 
         Hotel hotel = new Hotel();
         hotel.setName(TextField_HotelName.getText());
-        hotel.setRoomPriceStandard(Float.parseFloat(TextField_PriceStandard.getText()));
-        hotel.setRoomPriceKing(Float.parseFloat(TextField_PriceKing.getText()));
-        hotel.setRoomPriceQueen(Float.parseFloat(TextField_PriceQueen.getText()));
-        hotel.setWeekendDifferential(Float.parseFloat(TextField_WeekendDifferential.getText()));
+        hotel.setRoomPriceStandard(Double.parseDouble(TextField_PriceStandard.getText()));
+        hotel.setRoomPriceKing(Double.parseDouble(TextField_PriceKing.getText()));
+        hotel.setRoomPriceQueen(Double.parseDouble(TextField_PriceQueen.getText()));
+        hotel.setWeekendDifferential(Double.parseDouble(TextField_WeekendDifferential.getText()));
         
         List<Amenity> amenities = TableView_Amenities.getItems();
 
@@ -76,14 +74,14 @@ public class ManagerHotelCreationController implements Initializable {
 
         dm.InsertHotel(hotel);
 
-        PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.GetUsername());
+        PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
 
     }
 
     @FXML
     void OnClick_Cancel(ActionEvent event){
 
-        PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.GetUsername());
+        PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
 
     }
 

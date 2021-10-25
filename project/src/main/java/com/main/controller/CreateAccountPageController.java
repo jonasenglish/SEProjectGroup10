@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 public class CreateAccountPageController {
@@ -44,6 +45,12 @@ public class CreateAccountPageController {
     private Label Label_EmailError;
 
     @FXML
+    private RadioButton RadioButton_Manager;
+
+    @FXML
+    private RadioButton RadioButton_Developer;
+
+    @FXML
     private void OnClickButton_CreateAccount(ActionEvent event) {
         DatabaseManager dm = DatabaseManager.instance;
 
@@ -54,6 +61,12 @@ public class CreateAccountPageController {
         String password = TextField_Password.getText();
         String retypePassword = TextField_RetypePassword.getText();
         String email = TextField_Email.getText();
+        boolean isDeveloper = RadioButton_Developer.isSelected();
+        boolean isManager = RadioButton_Manager.isSelected();
+
+        if(isDeveloper && !isManager){
+            isManager = true;
+        }
         
         // Checking user input against our policies.
         if(!password.equals(retypePassword))
@@ -89,7 +102,7 @@ public class CreateAccountPageController {
         }
 
         // Creating account object
-        Account newAccount = new Account(username, securePassword, salt, email);
+        Account newAccount = new Account(username, securePassword, salt, email, isManager, isDeveloper);
 
         // Adding Account to database
         dm.InsertAccount(newAccount);
