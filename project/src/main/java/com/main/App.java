@@ -54,6 +54,7 @@ public class App extends Application
             pages.put("ManagerHotelCreation", (Parent)FXMLLoader.load(getClass().getResource("pages/managerHotelCreation.fxml")));
             pages.put("ManagerView", (Parent)FXMLLoader.load(getClass().getResource("pages/managerView.fxml")));
             pages.put("ProfileView", (Parent)FXMLLoader.load(getClass().getResource("pages/profileView.fxml"))); // added a page for the profile
+            pages.put("CreateReservation", (Parent)FXMLLoader.load(getClass().getResource("pages/CreateReservation.fxml"))); //added the reservation page
             // Add new pages above.
         }catch(Exception e){
             System.err.println("Error Loading FXML classes!");

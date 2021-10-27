@@ -25,5 +25,10 @@ public class ManagerViewController {
   void OnClick_Profile(ActionEvent event) {
     PageManager.SetPage("ProfileView", "Profile");
   }
+  
+  @FXML
+  void OnClick_Reserve(ActionEvent event) {
+	  PageManager.SetPage("CreateReservation", "Create a Reservation!");
+  }
 
 }
