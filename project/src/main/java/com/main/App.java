@@ -1,6 +1,6 @@
 package com.main;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -53,6 +53,7 @@ public class App extends Application
             pages.put("CreateAmenity", (Parent)FXMLLoader.load(getClass().getResource("pages/createAmenityPage.fxml")));
             pages.put("ManagerHotelCreation", (Parent)FXMLLoader.load(getClass().getResource("pages/managerHotelCreation.fxml")));
             pages.put("ManagerView", (Parent)FXMLLoader.load(getClass().getResource("pages/managerView.fxml")));
+            pages.put("ProfileView", (Parent)FXMLLoader.load(getClass().getResource("pages/profileView.fxml"))); // added a page for the profile
             // Add new pages above.
         }catch(Exception e){
             System.err.println("Error Loading FXML classes!");

@@ -12,9 +12,18 @@ public class ManagerViewController {
 	@FXML
   private Button Button_CreateHotel;
 
+  @FXML
+  private Button Button_Profile;
+
 	@FXML
   void OnClick_CreateHotel(ActionEvent event) {
 		PageManager.SetPage("ManagerHotelCreation", "Create Hotel");
+  }
+
+  // Added a profile action button to open the profile
+  @FXML
+  void OnClick_Profile(ActionEvent event) {
+    PageManager.SetPage("ProfileView", "Profile");
   }
 
 }
