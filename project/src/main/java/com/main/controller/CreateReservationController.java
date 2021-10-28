@@ -30,8 +30,8 @@ public class CreateReservationController {
 	@FXML
 	private DatePicker arrivalDate;
 	
-	@FXML
-	private DatePicker departureDate;
+	//@FXML
+	//private DatePicker departureDate;
 	
 	@FXML
 	private ChoiceBox roomType;
