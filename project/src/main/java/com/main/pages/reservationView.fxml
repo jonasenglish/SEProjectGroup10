@@ -11,14 +11,14 @@
    <children>
       <TableView layoutY="95.0" prefHeight="336.0" prefWidth="662.0">
         <columns>
-          <TableColumn text="Reservation #" />
-          <TableColumn prefWidth="70.0" text="CustName" />
-            <TableColumn prefWidth="71.0" text="CheckIn" />
-            <TableColumn prefWidth="47.0" text="Nights" />
-            <TableColumn prefWidth="75.0" text="RoomType" />
-            <TableColumn prefWidth="60.0" text="Rooms" />
-            <TableColumn prefWidth="60.0" text="Adults" />
-            <TableColumn prefWidth="60.0" text="Children" />
+          <TableColumn prefWidth="84.88885581493378" text="Reservation #" />
+          <TableColumn prefWidth="106.66661834716797" text="Customer Name" />
+            <TableColumn minWidth="0.0" prefWidth="64.00006103515625" text="Check In" />
+            <TableColumn minWidth="4.44439697265625" prefWidth="54.22222900390625" text="Nights" />
+            <TableColumn prefWidth="76.0" text="RoomType" />
+            <TableColumn prefWidth="56.4444580078125" text="Rooms" />
+            <TableColumn prefWidth="58.2222900390625" text="Adults" />
+            <TableColumn prefWidth="58.22216796875" text="Children" />
         </columns>
       </TableView>
       <TextField fx:id="TextField_input" layoutX="140.0" layoutY="40.0" onAction="#OnInput_ReservationField" />
