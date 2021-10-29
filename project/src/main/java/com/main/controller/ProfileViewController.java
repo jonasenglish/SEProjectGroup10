@@ -2,6 +2,7 @@ package com.main.controller;
 
 import com.main.App;
 import com.main.pages.PageManager;
+import com.main.objects.Account;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +26,11 @@ public class ProfileViewController {
 
     @FXML
     void OnClick_Cancel(ActionEvent event) {
-        PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
+        if(App.currentUser.isManager() == false) {
+            PageManager.SetPage("CustomerView", "Welcome - " + App.currentUser.getUsername());
+        } else {
+            PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
+        }
     }
 
     //@FXML
