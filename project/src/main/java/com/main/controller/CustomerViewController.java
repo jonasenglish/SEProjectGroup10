@@ -31,5 +31,7 @@ public class CustomerViewController {
 	void OnClick_Reserve(ActionEvent event) {
 		PageManager.SetPage("ReservationView", "View reservations");
 	}
+
+	//display more stuff here probably 
 	
 }
