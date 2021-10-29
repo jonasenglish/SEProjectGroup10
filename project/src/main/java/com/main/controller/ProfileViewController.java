@@ -1,6 +1,7 @@
 package com.main.controller;
 
 import com.main.App;
+import com.main.database.DatabaseManager;
 import com.main.pages.PageManager;
 import com.main.objects.Account;
 
@@ -31,11 +32,26 @@ public class ProfileViewController {
         } else {
             PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
         }
+
+        
     }
 
-    //@FXML
-    //public void initialize(){
-    //    Label_ProfileName.setText(App.currentUser.getUsername());
-    //}
-    
-}
+    @FXML
+    void OnClick_Submit(ActionEvent event) {
+        DatabaseManager dm = DatabaseManager.instance;
+        Account account = new Account();
+
+        TextField_Username.clear();
+        TextField_Email.clear();
+        TextField_Password.clear();
+
+        //System.out.println(App.currentUser.getUsername());
+        //System.out.println(App.currentUser.getPassword());
+        //System.out.println(App.currentUser.getSalt());
+        //System.out.println(App.currentUser.getEmail());
+    }
+
+    }
+
+
+
