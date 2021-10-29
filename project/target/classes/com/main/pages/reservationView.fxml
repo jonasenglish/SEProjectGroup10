@@ -23,8 +23,8 @@
       </TableView>
       <TextField fx:id="TextField_input" layoutX="140.0" layoutY="40.0" onAction="#OnInput_ReservationField" />
       <Label layoutX="14.0" layoutY="44.0" text="Enter Reservation #" />
-      <Button fx:id="Button_Modify" layoutX="322.0" layoutY="40.0" mnemonicParsing="false" onAction="#OnClick_Modify" text="Modify" />
-      <Button fx:id="Button_Delete" layoutX="394.0" layoutY="40.0" mnemonicParsing="false" onAction="#OnClick_Delete" text="Delete" />
+      <Button fx:id="Button_Modify" layoutX="331.0" layoutY="40.0" mnemonicParsing="false" onAction="#OnClick_Modify" text="Modify" />
+      <Button fx:id="Button_Delete" layoutX="403.0" layoutY="40.0" mnemonicParsing="false" onAction="#OnClick_Delete" text="Delete" />
       <Button fx:id="Button_Home" layoutX="591.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnClick_Home" text="Home" />
       <Button fx:id="Button_Checkout" layoutX="470.0" layoutY="40.0" mnemonicParsing="false" onAction="#OnClick_CheckOut" text="CheckOut" />
    </children>
