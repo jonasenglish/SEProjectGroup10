@@ -33,6 +33,9 @@ public class CreateAccountPageController {
     private Button Button_CreateAccount;
 
     @FXML
+    private Button Button_Cancel;
+
+    @FXML
     private Label Label_PasswordError;
 
     @FXML
@@ -109,6 +112,11 @@ public class CreateAccountPageController {
 
         System.out.println("Account Created!");
 
+        PageManager.SetPage("Login", "Welcome! - Login");
+    }
+
+    @FXML
+    void OnClick_Cancel(ActionEvent event) {
         PageManager.SetPage("Login", "Welcome! - Login");
     }
 

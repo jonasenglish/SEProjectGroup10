@@ -32,8 +32,6 @@ public class ProfileViewController {
         } else {
             PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
         }
-
-        
     }
 
     @FXML

@@ -45,7 +45,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateAccountPageController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateAccountPageController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -124,6 +124,7 @@
             <Label fx:id="Label_EmailError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="275.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
             <RadioButton fx:id="RadioButton_Manager" layoutX="185.0" layoutY="284.0" mnemonicParsing="false" text="Manager" AnchorPane.leftAnchor="195.0" />
             <RadioButton fx:id="RadioButton_Developer" layoutX="360.0" layoutY="284.0" mnemonicParsing="false" text="Developer" AnchorPane.rightAnchor="195.0" />
+            <Button fx:id="Button_Cancel" layoutX="38.0" layoutY="315.0" mnemonicParsing="false" onAction="#OnClick_Cancel" text="Cancel" />
       </children>
     </AnchorPane>
   </children>
