@@ -66,7 +66,14 @@ public class LoginPageController {
         App.currentUser = account;
 
         //I added this page just to see how it would look, but checking to see if the user is a manager
-        //is still required
+        //is still required 
+        
+        //Don't know if this is sufficient, but this is just a simple check to see if it was a customer or not - Juan 
+        if(account.isManager() == false)
+        {
+        	PageManager.SetPage("CustomerView", "Welcome - " + username + "!");
+        }
+        else
         PageManager.SetPage("ManagerView", "Welcome! - " + username + "!"); 
 
     }
