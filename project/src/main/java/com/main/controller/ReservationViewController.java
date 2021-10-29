@@ -1,6 +1,6 @@
 package com.main.controller;
 import com.main.pages.PageManager;
-
+import com.main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,7 +35,11 @@ public class ReservationViewController {
 
     @FXML
     void OnClick_Home(ActionEvent event) {
-		PageManager.SetPage("ManagerView", "Welcome");
+      if(App.currentUser.isManager() == false) {
+        PageManager.SetPage("CustomerView", "Welcome - " + App.currentUser.getUsername());
+    } else {
+        PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
+    }
     }
 
     @FXML
