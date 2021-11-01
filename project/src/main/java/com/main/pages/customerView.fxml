@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -12,29 +17,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CustomerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CustomerViewController">
    <top>
       <SplitPane dividerPositions="0.8419732441471572" prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="526.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="526.0" style="-fx-background-color: #227c9d;">
                <children>
                   <Text fx:id="welcomeHeader" layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="488.43603515625">
                      <font>
-                        <Font size="49.0" />
+                        <Font name="Serif Regular" size="49.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="82.0">
                <children>
-                  <Button fx:id="Button_Profile" layoutX="-21.0" layoutY="-12.0" minHeight="81.0" minWidth="90.0" mnemonicParsing="false" onAction="#OnClick_Profile" prefHeight="111.0" prefWidth="133.0" text="Profile" textFill="#fa6666" />
+                  <Button fx:id="Button_Profile" layoutX="-21.0" layoutY="-12.0" minHeight="81.0" minWidth="90.0" mnemonicParsing="false" onAction="#OnClick_Profile" prefHeight="111.0" prefWidth="133.0" style="-fx-background-color: #fe6d73; -fx-background-radius: 10; -fx-border-color: #fef9ef; -fx-border-width: 5;" text="Profile" textFill="#fef9ef">
+                     <font>
+                        <Font name="NanumGothic" size="17.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </items>
       </SplitPane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: blue; -fx-border-width: 10;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #ffcb77; -fx-border-width: 5; -fx-background-color: #fef9ef;" BorderPane.alignment="CENTER">
          <children>
             <DatePicker fx:id="dp_CheckInDate" layoutX="30.0" layoutY="79.0" />
             <Label layoutX="84.0" layoutY="49.0" text="Check In Date" />
@@ -57,22 +65,22 @@
             <Label layoutX="325.0" layoutY="199.0" text="(Optional)" />
             <TextField fx:id="Location" layoutX="25.0" layoutY="225.0" />
             <Label layoutX="51.0" layoutY="199.0" text="Location" />
-            <Button fx:id="Button_Search" layoutX="413.0" layoutY="238.0" mnemonicParsing="false" onAction="#OnClick_Search" prefHeight="56.0" prefWidth="65.0" text="Search!" />
+            <Button fx:id="Button_Search" layoutX="413.0" layoutY="238.0" mnemonicParsing="false" onAction="#OnClick_Search" prefHeight="56.0" prefWidth="65.0" text="Search" />
          </children></AnchorPane>
    </center>
    <right>
-      <VBox prefHeight="309.0" prefWidth="95.0" spacing="20.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="309.0" prefWidth="95.0" spacing="20.0" style="-fx-background-color: #227c9d;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="Button_Reservation" mnemonicParsing="false" onAction="#OnClick_Reserve" prefHeight="60.0" prefWidth="80.0" text="Reservations">
+            <Button fx:id="Button_Reservation" mnemonicParsing="false" onAction="#OnClick_Reserve" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Reservations">
                <font>
                   <Font size="11.0" />
                </font></Button>
-            <Button fx:id="Button_Favorites" layoutX="18.0" layoutY="20.0" mnemonicParsing="false" onAction="#OnClick_Favorites" prefHeight="60.0" prefWidth="80.0" text="Favorites">
+            <Button fx:id="Button_Favorites" layoutX="18.0" layoutY="20.0" mnemonicParsing="false" onAction="#OnClick_Favorites" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="Favorites">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="Button_idkwhat" layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_idkwhat" prefHeight="60.0" prefWidth="80.0" text="idk what">
+            <Button fx:id="Button_idkwhat" layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_idkwhat" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="idk what">
                <font>
                   <Font size="11.0" />
                </font>

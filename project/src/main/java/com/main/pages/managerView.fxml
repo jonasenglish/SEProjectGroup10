@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,37 +14,40 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerViewController">
    <top>
-      <SplitPane dividerPositions="0.8419732441471572" prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.842809364548495" prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="502.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="502.0" style="-fx-background-color: #227c9d;">
                <children>
-                  <Label fx:id="WelcomeLabel" layoutX="53.0" layoutY="19.0" onContextMenuRequested="#Initialize" prefHeight="57.0" prefWidth="426.0" text="Welcome!">
+                  <Label fx:id="WelcomeLabel" layoutX="51.0" layoutY="19.0" onContextMenuRequested="#Initialize" prefHeight="57.0" prefWidth="426.0" text="Welcome!">
                      <font>
-                        <Font name="Verdana" size="45.0" />
+                        <Font name="Serif Regular" size="48.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="82.0">
                <children>
-                  <Button fx:id="Button_Profile" layoutX="1.0" minHeight="89.0" minWidth="90.0" mnemonicParsing="false" onAction="#OnClick_Profile" text="Profile" textFill="#fa6666" />
+                  <Button fx:id="Button_Profile" layoutX="1.0" minHeight="89.0" minWidth="90.0" mnemonicParsing="false" onAction="#OnClick_Profile" style="-fx-background-color: #fe6d73;" text="Profile" textFill="#fef9ef">
+                     <font>
+                        <Font name="NanumGothic" size="17.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: blue; -fx-border-width: 10;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #ffcb77; -fx-background-color: fef9ef; -fx-border-width: 5;" BorderPane.alignment="CENTER" />
    </center>
    <right>
-      <VBox prefHeight="309.0" prefWidth="95.0" spacing="20.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="309.0" prefWidth="95.0" spacing="20.0" style="-fx-background-color: #227c9d;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#OnClick_Reserve" prefHeight="60.0" prefWidth="80.0" text="Reserve" />
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Edit" />
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="Availability" />
-            <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" text="AddProperty" />
-            <Button fx:id="Button_CreateHotel" layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_CreateHotel" prefHeight="60.0" prefWidth="80.0" text="Create Hotel" textAlignment="CENTER" wrapText="true" />
+            <Button mnemonicParsing="false" onAction="#OnClick_Reserve" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Reserve" />
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Edit" />
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Availability" />
+            <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="AddProperty" />
+            <Button fx:id="Button_CreateHotel" layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_CreateHotel" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Create Hotel" textAlignment="CENTER" wrapText="true" />
          </children>
          <padding>
             <Insets bottom="5.0" left="8.0" top="10.0" />
