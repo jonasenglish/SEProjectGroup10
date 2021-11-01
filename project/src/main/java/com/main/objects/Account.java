@@ -23,7 +23,6 @@ public class Account {
         return isManager;
     }
 
-
     public void setManager(boolean isManager) {
         this.isManager = isManager;
     }

@@ -1,9 +1,12 @@
 package com.main.controller;
+
 import com.main.pages.PageManager;
 import com.main.App;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class ReservationViewController {
@@ -22,6 +25,9 @@ public class ReservationViewController {
 
     @FXML
     private TextField TextField_input;
+
+    @FXML
+    private TableView<?> ReservationTable;
 
     @FXML
     void OnClick_CheckOut(ActionEvent event) {

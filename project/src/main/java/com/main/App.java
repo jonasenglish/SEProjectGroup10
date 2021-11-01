@@ -81,9 +81,14 @@ public class App extends Application
         for(Hotel hotel : hotels)
             System.out.println(hotel.toString() + "\n");
 
-        List<Reservation> reservations = dm.FindAllReservations();
+        /*List<Reservation> reservations = dm.FindAllReservations();
         System.out.println("Printing All Reservations in Database:\n");
         for(Reservation reservation : reservations)
             System.out.println(reservation.toString() + "\n");
+
+            Had to comment this out. This will work once I fix the Reservee bug.
+        */
+
+        
     }
 }

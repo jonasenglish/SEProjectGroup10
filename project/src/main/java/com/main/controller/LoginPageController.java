@@ -75,7 +75,6 @@ public class LoginPageController {
         }
         else
         PageManager.SetPage("ManagerView", "Welcome! - " + username + "!"); 
-
     }
 
     private void Error_AccountWithUsernameNotFound(){

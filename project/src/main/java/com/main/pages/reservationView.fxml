@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ReservationViewController">
    <children>
-      <TableView layoutY="95.0" prefHeight="336.0" prefWidth="662.0">
+      <TableView fx:id="ReservationTable" layoutY="95.0" prefHeight="336.0" prefWidth="662.0">
         <columns>
           <TableColumn prefWidth="84.88885581493378" text="Reservation #" />
           <TableColumn prefWidth="106.66661834716797" text="Customer Name" />

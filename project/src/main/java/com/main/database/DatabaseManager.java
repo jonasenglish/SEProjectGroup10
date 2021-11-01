@@ -81,14 +81,14 @@ public class DatabaseManager {
         return null;
     }
 
-    public Hotel FindHotelByName(String hotelName){
+    public Hotel FindHotelByName(String hotelName) {
         Document doc = hotelCollection.find(eq("Name", hotelName)).first();
         if(doc != null)
             return Hotel.ToHotel(doc);
         return null;
     }
 
-    public List<Hotel> FindHotelsWithAvailableRooms(){
+    public List<Hotel> FindHotelsWithAvailableRooms() {
         List<Hotel> matchingHotels = new LinkedList<>();
 
         for(Hotel h : FindAllHotels()){
