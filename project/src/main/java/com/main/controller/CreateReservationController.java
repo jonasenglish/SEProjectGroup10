@@ -16,6 +16,7 @@ import com.main.objects.Hotel;
 import com.main.objects.Reservation;
 import com.main.pages.PageManager;
 
+
 import org.bson.types.ObjectId;
 
 import javafx.collections.FXCollections;
@@ -34,7 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 
-public class CreateReservationController {
+public class CreateReservationController implements Initializable {
 
     @FXML
     private Button Button_Cancel;
@@ -73,7 +74,9 @@ public class CreateReservationController {
     private TextField numRooms;
 
     @FXML
-    private ChoiceBox<?> roomType;
+    private ChoiceBox<String> roomType;
+
+    private String[] roomTypeStrings = {"Standard", "King", "Queen"};
 
 
 	@FXML
@@ -133,5 +136,12 @@ public class CreateReservationController {
         } else {
             PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // TODO Auto-generated method stub
+        roomType.getItems().addAll(roomTypeStrings);
+        
     }   
 }

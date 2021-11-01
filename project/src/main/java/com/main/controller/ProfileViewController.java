@@ -49,7 +49,7 @@ public class ProfileViewController {
         //System.out.println(App.currentUser.getEmail());
     }
 
-    }
+}
 
 
 
