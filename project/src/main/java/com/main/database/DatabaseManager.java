@@ -2,10 +2,12 @@ package com.main.database;
 
 import static com.mongodb.client.model.Filters.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.main.App;
 import com.main.objects.Account;
 import com.main.objects.Hotel;
 import com.main.objects.Reservation;
@@ -155,6 +157,82 @@ public class DatabaseManager {
             accounts.add(Account.ToAccount(doc));
 
         return accounts;
+    }
+
+    // Get all reservations of the account currently logged in. Returns null if no account is logged in.
+    public List<Reservation> FindCurrentUserReservations(){
+        if(App.currentUser == null){
+            System.err.println("ERROR: No Current User!\nPlease Log in first.");
+            return null;
+        }
+
+        List<Reservation> reservations = FindAllReservations();
+        List<Reservation> reservationsFound = new ArrayList<>();
+
+        for (Reservation reservation : reservations) {
+            if(reservation.getReservee().equals(App.currentUser))
+                reservationsFound.add(reservation);
+        }
+
+        return reservationsFound;
+    }
+
+    // Get all reservations of the account currently logged in that contains the given date.
+    public List<Reservation> FindCurrentUserReservationsByDate(Date date){
+        List<Reservation> reservations = FindCurrentUserReservations();
+
+        if(reservations == null){
+            System.err.println("ERROR: No Current User!\nPlease Log in first.");
+            return null;
+        }
+
+        List<Reservation> reservationsFound = new ArrayList<>();
+
+        for (Reservation reservation : reservations) {
+            if(reservation.isWithinRange(date)){
+                reservationsFound.add(reservation);
+            }
+        }
+        
+        return reservationsFound;
+    }
+
+    // Get all reservations of the account currently logged in that contains the given hotel.
+    public List<Reservation> FindCurrentUserReservationsByHotel(Hotel hotel){
+        List<Reservation> reservations = FindCurrentUserReservations();
+
+        if(reservations == null){
+            System.err.println("ERROR: No Current User!\nPlease Log in first.");
+            return null;
+        }
+
+        List<Reservation> reservationsFound = new ArrayList<>();
+
+        for (Reservation reservation : reservations) {
+            if(reservation.getHotel().equals(hotel))
+                reservationsFound.add(reservation);
+        }
+
+        return reservationsFound;
+    }
+
+    // Get all reservations of the account currently logged in that contains the given hotel name.
+    public List<Reservation> FindCurrentUserReservationsByHotel(String hotelName){
+        List<Reservation> reservations = FindCurrentUserReservations();
+
+        if(reservations == null){
+            System.err.println("ERROR: No Current User!\nPlease Log in first.");
+            return null;
+        }
+
+        List<Reservation> reservationsFound = new ArrayList<>();
+
+        for (Reservation reservation : reservations) {
+            if(reservation.getHotel().getName().equals(hotelName))
+                reservationsFound.add(reservation);
+        }
+
+        return reservationsFound;
     }
 
     // Inserts

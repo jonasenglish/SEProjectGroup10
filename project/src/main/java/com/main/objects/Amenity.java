@@ -4,16 +4,28 @@ import org.bson.Document;
 
 public class Amenity {
     
-    public Amenity(String name, String description){
+    public Amenity(String name, String description, AmenityType amenityType){
         this.name = name;
         this.description = description;
+        this.setAmenityType(amenityType);
     }
 
     public Amenity(){
     }
-
+    
+    public enum AmenityType {STANDARD, QUEEN, KING}
+    
     private String name;
     private String description;
+    private AmenityType amenityType;
+    
+    public AmenityType getAmenityType() {
+        return amenityType;
+    }
+
+    public void setAmenityType(AmenityType amenityType) {
+        this.amenityType = amenityType;
+    }
 
     public String getName() {
         return name;
@@ -39,7 +51,7 @@ public class Amenity {
     }
 
     public static Amenity FromDocument(Document document){
-        Amenity amenity = new Amenity((String)document.get("Name"), (String)document.get("Description"));
+        Amenity amenity = new Amenity((String)document.get("Name"), (String)document.get("Description"), (AmenityType)document.get("Amenity Type"));
         return amenity;
     }
 }
