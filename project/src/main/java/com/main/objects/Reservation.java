@@ -141,7 +141,7 @@ public class Reservation {
 
         Document document = new Document();
 
-        document.append("Reservee", this.reservee);
+        document.append("Reservee", this.reservee.ToDocument());
         document.append("Start Date", this.startDate);
         document.append("End Date", this.endDate);
         document.append("Hotel", this.hotel);
