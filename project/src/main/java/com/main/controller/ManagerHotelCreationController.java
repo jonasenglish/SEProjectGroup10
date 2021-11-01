@@ -177,7 +177,7 @@ public class ManagerHotelCreationController implements Initializable {
 
         ChoiceBox_AmenityType.setValue(AmenityType.STANDARD);
 
-        TableView_Amenities.setItems(FXCollections.observableArrayList());
+       // TableView_Amenities.setItems(FXCollections.observableArrayList());
     }
 
 }
