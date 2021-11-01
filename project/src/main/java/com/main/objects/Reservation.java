@@ -19,7 +19,7 @@ public class Reservation {
 
     // The Hotel and Room that has been reserved
     private Hotel hotel = null;
-    //private Room room = null; Unnecessary?
+    private String room = null;
 
     //Number of Items given in the Reservation Window
     private int nights = 0;
@@ -42,21 +42,20 @@ public class Reservation {
        this.reservee = reservee;
     }
 
+    public String getRoomType() {
+        return room;
+    }
+
+    public void setRoomType(String room) {
+        this.room = room;
+    }
+
     public ObjectId getID() {
         return ID;
     }
     public void setID(ObjectId ID) {
         this.ID = ID;
     }
-
-    /*
-    public Room getRoom() {
-        return room;
-    }
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-    */
 
     public Hotel getHotel() {
         return hotel;
@@ -149,10 +148,11 @@ public class Reservation {
         document.append("Number of Rooms", this.rooms);
         document.append("Number of Adults", this.adults);
         document.append("Number of Children", this.children);
+        document.append("Room Type",this.room);
         document.append("Customer Name", this.customerName);
         document.append("Customer Email", this.customerEmail);
         document.append("Customer Phone Number", this.customerPhoneNumber);
-    
+        
         return document;
     }
 
@@ -172,6 +172,7 @@ public class Reservation {
         reservation.rooms = (int) document.get("Number of Rooms");
         reservation.adults = (int) document.get("Number of Adults");
         reservation.children = (int) document.get("Number of Children");
+        reservation.room = (String) document.get("Room Type");
         reservation.customerName = (String) document.get("Customer Name");
         reservation.customerEmail = (String) document.get("Customer Email");
         reservation.customerPhoneNumber = (String) document.get("Customer Phone Number");
@@ -193,6 +194,7 @@ public class Reservation {
         "\nNumber of Rooms: " + getRooms() +
         "\nNumber of Adults: " + getAdults() +
         "\nNumber of Children: " + getChildren() +
+        "\nRoom Type " + getRoomType() +
         "\nCustomer Name: " + getCustomerName() +
         "\nCustomer Email: " + getCustomerEmail() +
         "\nCustomer Phone Number: " + getCustomerPhoneNumber();

@@ -14,6 +14,7 @@ import com.main.objects.Account;
 import com.main.objects.Amenity;
 import com.main.objects.Hotel;
 import com.main.objects.Reservation;
+import com.main.objects.Hotel.RoomType;
 import com.main.pages.PageManager;
 
 
@@ -76,7 +77,7 @@ public class CreateReservationController implements Initializable {
     @FXML
     private ChoiceBox<String> roomType;
 
-    private String[] roomTypeStrings = {"Standard", "King", "Queen"};
+    private String[] roomTypeArray = {"Standard", "King", "Queen"};
 
 
 	@FXML
@@ -114,8 +115,7 @@ public class CreateReservationController implements Initializable {
 
 		Reservation reservations = new Reservation();
        
-        reservations.setReservee(App.currentUser); //FOR SOME REASON THIS LINE OF CODE DOESN'T WORK AND I'VE BEEN WORKING ON THIS FOR 5 HOURS !! :( so 
-        // Reservee in the database is null. I would like some assistance when we meet up :)
+        reservations.setReservee(App.currentUser);
 
 		reservations.setStartDate(date);
         reservations.setEndDate(date2);
@@ -124,6 +124,8 @@ public class CreateReservationController implements Initializable {
         reservations.setRooms(Integer.parseInt(numRooms.getText()));
         reservations.setAdults(Integer.parseInt(numAdults.getText()));
         reservations.setChildren(Integer.parseInt(numChildren.getText()));
+        reservations.setRoomType(roomType.getValue());
+
 
         reservations.setCustomerName(customerName.getText());
         reservations.setCustomerEmail(customerEmail.getText());
@@ -141,7 +143,7 @@ public class CreateReservationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
-        roomType.getItems().addAll(roomTypeStrings);
+        roomType.getItems().addAll(roomTypeArray);
         
     }   
 }
