@@ -111,7 +111,7 @@ public class CreateReservationController {
 
 		Reservation reservations = new Reservation();
        
-        //reservations.setReservee(App.currentUser); FOR SOME REASON THIS LINE OF CODE DOESN'T WORK AND I'VE BEEN WORKING ON THIS FOR 5 HOURS !! :( so 
+        reservations.setReservee(App.currentUser); //FOR SOME REASON THIS LINE OF CODE DOESN'T WORK AND I'VE BEEN WORKING ON THIS FOR 5 HOURS !! :( so 
         // Reservee in the database is null. I would like some assistance when we meet up :)
 
 		reservations.setStartDate(date);
