@@ -7,7 +7,6 @@ import java.util.List;
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
 import com.main.objects.Hotel;
-import com.main.objects.Reservation;
 import com.main.pages.PageManager;
 
 import javafx.application.Application;
@@ -26,6 +25,7 @@ public class App extends Application
 
     // The account that is currently Logged in
     public static Account currentUser = null;
+    public static Hotel currentHotel = null;
 
     public static void main( String[] args )
     {
@@ -42,7 +42,7 @@ public class App extends Application
         DatabaseManager dManager = new DatabaseManager();
         DatabaseManager.SetInstance(dManager);
         DatabaseManager.instance.Connect();
-        TestDatabase();
+        //TestDatabase(); //Used to check if database is working
     }
 
     // Initializes the pages dictionary with the FXML files of the pages
@@ -58,6 +58,7 @@ public class App extends Application
             pages.put("CustomerView", (Parent)FXMLLoader.load(getClass().getResource("pages/customerView.fxml")));
             pages.put("HotelView", (Parent)FXMLLoader.load(getClass().getResource("pages/hotelView.fxml")));
             pages.put("ReservationView", (Parent)FXMLLoader.load(getClass().getResource("pages/reservationView.fxml")));
+            pages.put("ReservationView", (Parent)FXMLLoader.load(getClass().getResource("pages/hotelSearchView.fxml")));
 
             // Add new pages above.
         }catch(Exception e){

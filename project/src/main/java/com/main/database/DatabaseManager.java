@@ -280,4 +280,17 @@ public class DatabaseManager {
         reservationCollection.updateOne(filter, reservation.ToDocument());
     }
 
+    public List<Hotel> FindHotelsByName(String text) {
+        if(text.equals("")) return FindAllHotels();
+        
+        List<Hotel> results = new ArrayList<>();
+
+        for (Hotel hotel : FindAllHotels()) {
+            if(hotel.getName().toLowerCase().contains(text.toLowerCase()))
+                results.add(hotel);
+        }
+        
+        return results;
+    }
+
 }
