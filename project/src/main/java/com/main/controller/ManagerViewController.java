@@ -41,4 +41,9 @@ public class ManagerViewController {
 	  PageManager.SetPage("CreateReservation", "Create a Reservation!");
   }
 
+  @FXML
+  void OnClick_Search(ActionEvent event) {
+    PageManager.SetPage("HotelSearchView", "Search for a Hotel!");
+  }
+
 }

@@ -15,9 +15,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class HotelSearchViewController implements Initializable {
@@ -62,7 +65,20 @@ public class HotelSearchViewController implements Initializable {
 
     @FXML
     void OnClick_AvailableOnly(ActionEvent event) {
+        if(!CheckBox_AvailableOnly.selectedProperty().get()){
+            OnClick_Search(event);
+            return;
+        }
 
+        List<Hotel> results = new ArrayList<>();
+
+        results.addAll(list);
+        list.clear();
+
+        for (Hotel hotel : results) {
+            if(hotel.getTotalRooms() > 0)
+                list.add(hotel);
+        }
     }
 
     @FXML
@@ -71,6 +87,8 @@ public class HotelSearchViewController implements Initializable {
             dm = DatabaseManager.instance;
 
         list.clear();
+
+        if(TextField_Search.getText().equals("")){ SearchBy_HotelName(); return; } // No input returns all hotels
 
         switch(ChoiceBox_SearchBy.getValue()){
             case "Hotel Name":
@@ -81,23 +99,84 @@ public class HotelSearchViewController implements Initializable {
                 SearchBy_RoomsAvailable();
                 break;
 
-            case "Room Prices Less Than":
-                SearchBy_RoomPricesLT();
+            case "Standard Prices <":
+                SearchBy_RoomPricesLT(Hotel.RoomType.STANDARD);
                 break;
 
-            case "Room Prices Greater Than":
-                SearchBy_RoomPricesGT();
+            case "Standard Prices >":
+                SearchBy_RoomPricesGT(Hotel.RoomType.STANDARD);
+                break;
+
+            case "Queen Prices <":
+                SearchBy_RoomPricesLT(Hotel.RoomType.QUEEN);
+                break;
+
+            case "Queen Prices >":
+                SearchBy_RoomPricesGT(Hotel.RoomType.QUEEN);
+                break;
+
+            case "King Prices <":
+                SearchBy_RoomPricesLT(Hotel.RoomType.KING);
+                break;
+
+            case "King Prices >":
+                SearchBy_RoomPricesGT(Hotel.RoomType.KING);
                 break;
         }
     }
 
-    private void SearchBy_RoomPricesGT() {
+    private void SearchBy_RoomPricesGT(Hotel.RoomType roomType) {
+        double value = -1;
+
+        try{
+           value = Integer.parseInt(TextField_Search.getText());
+        }catch(Exception e){
+            System.err.println("Input was not a Double");
+            return;
+        }
+
+        List<Hotel> results = dm.FindHotelsByPriceGT(value, roomType);
+
+        if(CheckBox_AvailableOnly.selectedProperty().get())
+            results = RemoveNoAvailable(results);
+
+        list.addAll(results);
     }
 
-    private void SearchBy_RoomPricesLT() {
+    private void SearchBy_RoomPricesLT(Hotel.RoomType roomType) {
+        double value = -1;
+
+        try{
+           value = Integer.parseInt(TextField_Search.getText());
+        }catch(Exception e){
+            System.err.println("Input was not a Double");
+            return;
+        }
+
+        List<Hotel> results = dm.FindHotelsByPriceLT(value, roomType);
+
+        if(CheckBox_AvailableOnly.selectedProperty().get())
+            results = RemoveNoAvailable(results);
+
+        list.addAll(results);
     }
 
     private void SearchBy_RoomsAvailable() {
+        int value = -1;
+
+        try{
+           value = Integer.parseInt(TextField_Search.getText());
+        }catch(Exception e){
+            System.err.println("Input was not an Integer");
+            return;
+        }
+
+        List<Hotel> results = dm.FindHotelsByRooms(value);
+
+        if(CheckBox_AvailableOnly.selectedProperty().get())
+            results = RemoveNoAvailable(results);
+
+        list.addAll(results);
     }
 
     private void SearchBy_HotelName() {
@@ -123,13 +202,20 @@ public class HotelSearchViewController implements Initializable {
     @FXML
     void OnClick_ViewSelected(ActionEvent event) {
 
+        // Open Hotel Viewer or Reservation Creator
+
+        System.out.println("Not implemented yet. - HotelSearchViewController.java - OnClick_ViewSelected");
+        System.out.println("But I can tell you about the hotel you clicked.");
+
+        System.out.println(TableView_Hotels.getSelectionModel().getSelectedItem().toString());
+
     }
 
     ObservableList<Hotel> list = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ChoiceBox_SearchBy.getItems().addAll("Hotel Name", "Rooms Available", "Room Prices Less Than", "Room Prices Greater Than");
+        ChoiceBox_SearchBy.getItems().addAll("Hotel Name", "Rooms Available", "Standard Prices <", "Standard Prices >", "Queen Prices <", "Queen Prices >", "King Prices <", "King Prices >");
         ChoiceBox_SearchBy.setValue("Hotel Name");
 
         Column_Hotel.setCellValueFactory(new PropertyValueFactory<Hotel, String>("name"));
@@ -144,6 +230,8 @@ public class HotelSearchViewController implements Initializable {
         Column_KingPrices.setCellValueFactory(new PropertyValueFactory<Hotel, Double>("roomPriceKing"));
 
         TableView_Hotels.setItems(list);
+
+        TableView_Hotels.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
 }

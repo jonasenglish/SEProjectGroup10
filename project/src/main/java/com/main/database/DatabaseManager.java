@@ -293,4 +293,45 @@ public class DatabaseManager {
         return results;
     }
 
+    public List<Hotel> FindHotelsByRooms(int value) {
+        List<Hotel> results = new ArrayList<>();
+
+        for (Hotel hotel : FindAllHotels()) {
+            if(hotel.getTotalRooms() > value)
+                results.add(hotel);
+        }
+
+        return results;
+    }
+
+    public List<Hotel> FindHotelsByPriceLT(double value, Hotel.RoomType roomType) {
+        List<Hotel> results = new ArrayList<>();
+
+        for (Hotel hotel : FindAllHotels()) {
+            if(roomType == Hotel.RoomType.STANDARD)
+                if(hotel.getRoomPriceStandard() < value) results.add(hotel);
+            if(roomType == Hotel.RoomType.QUEEN)
+                if(hotel.getRoomPriceQueen() < value) results.add(hotel);
+            if(roomType == Hotel.RoomType.KING)
+                if(hotel.getRoomPriceKing() < value) results.add(hotel);
+        }
+
+        return results;
+    }
+
+    public List<Hotel> FindHotelsByPriceGT(double value, Hotel.RoomType roomType) {
+        List<Hotel> results = new ArrayList<>();
+
+        for (Hotel hotel : FindAllHotels()) {
+            if(roomType == Hotel.RoomType.STANDARD)
+                if(hotel.getRoomPriceStandard() > value) results.add(hotel);
+            if(roomType == Hotel.RoomType.QUEEN)
+                if(hotel.getRoomPriceQueen() > value) results.add(hotel);
+            if(roomType == Hotel.RoomType.KING)
+                if(hotel.getRoomPriceKing() > value) results.add(hotel);
+        }
+
+        return results;
+    }
+
 }
