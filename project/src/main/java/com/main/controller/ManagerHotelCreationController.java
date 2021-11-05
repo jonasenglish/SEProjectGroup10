@@ -75,6 +75,9 @@ public class ManagerHotelCreationController implements Initializable {
     private TextArea TextArea_HotelDescription;
 
     @FXML
+    private TextField TextField_HotelImage;
+
+    @FXML
     void OnClick_Submit(ActionEvent event) {
 
         Hotel hotel = new Hotel();
@@ -87,6 +90,7 @@ public class ManagerHotelCreationController implements Initializable {
         hotel.setStandardRooms(Integer.parseInt(TextField_NumberOfStandardRooms.getText()));
         hotel.setQueenRooms(Integer.parseInt(TextField_NumberOfQueenRooms.getText()));
         hotel.setKingRooms(Integer.parseInt(TextField_NumberOfKingRooms.getText()));
+        hotel.setHotelImageURL(TextField_HotelImage.getText());
         
         List<Amenity> amenities = TableView_Amenities.getItems();
         List<Amenity> standardAmenities = new ArrayList<>();

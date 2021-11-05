@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.main.database.DatabaseManager;
 import com.main.objects.Hotel;
+import com.main.pages.PageManager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -209,6 +210,11 @@ public class HotelSearchViewController implements Initializable {
 
         System.out.println(TableView_Hotels.getSelectionModel().getSelectedItem().toString());
 
+    }
+
+    @FXML
+    void OnClick_Back(ActionEvent event) {
+        PageManager.SetPage("ManagerView", "Manager View");
     }
 
     ObservableList<Hotel> list = FXCollections.observableArrayList();

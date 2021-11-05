@@ -248,7 +248,8 @@ public class Hotel {
                 "\nRoom Price Standard: " + roomPriceStandard +
                 "\nRoom Price Queen: " + roomPriceQueen +
                 "\nRoom Price King: " + roomPriceKing +
-                "\nWeekend Differential: " + weekendDifferential;
+                "\nWeekend Differential: " + weekendDifferential +
+                "\nHotel Image URL: " + hotelImageURL;
                 
         returnString += "\nStandard Amenities: ";
 

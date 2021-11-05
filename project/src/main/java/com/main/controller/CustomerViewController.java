@@ -1,6 +1,5 @@
 package com.main.controller;
 
-import com.main.App;
 import com.main.pages.PageManager;
 
 import javafx.event.ActionEvent;

@@ -81,12 +81,13 @@
             <Button layoutX="415.0" layoutY="30.0" mnemonicParsing="false" onAction="#OnClick_Search" text="Search" AnchorPane.rightAnchor="170.0" />
             <Label layoutX="537.0" layoutY="10.0" text="Search by:" AnchorPane.rightAnchor="110.0" />
             <CheckBox fx:id="CheckBox_AvailableOnly" layoutX="15.0" layoutY="34.0" mnemonicParsing="false" onAction="#OnClick_AvailableOnly" text="Available Rooms Only" AnchorPane.leftAnchor="15.0" />
-            <Button layoutX="517.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_ViewSelected" prefHeight="26.0" prefWidth="106.0" text="View Selected" />
+            <Button layoutX="517.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_ViewSelected" prefHeight="26.0" prefWidth="106.0" text="View Selected" AnchorPane.rightAnchor="60.0" />
             <Label layoutX="14.0" layoutY="5.0" text="Search for the Perfect Hotel" underline="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
+            <Button layoutX="615.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_Back" text="Back" AnchorPane.rightAnchor="10.0" />
       </children>
     </AnchorPane>
   </children>

@@ -50,8 +50,6 @@ public class CreateAccountPageController {
     @FXML
     private RadioButton RadioButton_Manager;
 
-    @FXML
-    private RadioButton RadioButton_Developer;
 
     @FXML
     private void OnClickButton_CreateAccount(ActionEvent event) {
@@ -64,13 +62,8 @@ public class CreateAccountPageController {
         String password = TextField_Password.getText();
         String retypePassword = TextField_RetypePassword.getText();
         String email = TextField_Email.getText();
-        boolean isDeveloper = RadioButton_Developer.isSelected();
         boolean isManager = RadioButton_Manager.isSelected();
 
-        if(isDeveloper && !isManager){
-            isManager = true;
-        }
-        
         // Checking user input against our policies.
         if(!password.equals(retypePassword))
             Error_RetypePasswordMismatch();
@@ -105,7 +98,7 @@ public class CreateAccountPageController {
         }
 
         // Creating account object
-        Account newAccount = new Account(username, securePassword, salt, email, isManager, isDeveloper);
+        Account newAccount = new Account(username, securePassword, salt, email, isManager);
 
         // Adding Account to database
         dm.InsertAccount(newAccount);

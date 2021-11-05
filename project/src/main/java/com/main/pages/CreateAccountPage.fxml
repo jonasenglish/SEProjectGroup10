@@ -32,64 +32,17 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateAccountPageController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateAccountPageController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #227c9d;" VBox.vgrow="ALWAYS">
       <children>
         <Label alignment="CENTER" layoutX="213.0" layoutY="29.0" style="&#10;" text="Create Your Account" textAlignment="CENTER" textFill="#ffcb77" wrapText="false">
@@ -129,8 +82,7 @@
             <Label fx:id="Label_UsernameError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="125.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
             <Label fx:id="Label_RetypePasswordError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="225.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
             <Label fx:id="Label_EmailError" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="275.0" text="ERROR HERE" textAlignment="CENTER" textFill="RED" visible="false" />
-            <RadioButton fx:id="RadioButton_Manager" layoutX="185.0" layoutY="284.0" mnemonicParsing="false" text="Manager" textFill="#fef9ef" AnchorPane.leftAnchor="195.0" />
-            <RadioButton fx:id="RadioButton_Developer" layoutX="360.0" layoutY="284.0" mnemonicParsing="false" text="Developer" textFill="#fef9ef" AnchorPane.rightAnchor="195.0" />
+            <RadioButton fx:id="RadioButton_Manager" layoutX="285.0" layoutY="284.0" mnemonicParsing="false" text="Manager" textFill="#fef9ef" AnchorPane.leftAnchor="285.0" />
             <Button fx:id="Button_Cancel" layoutX="38.0" layoutY="315.0" mnemonicParsing="false" onAction="#OnClick_Cancel" text="Cancel" textFill="#fe6d73">
                <font>
                   <Font name="NanumGothic" size="13.0" />
