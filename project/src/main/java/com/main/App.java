@@ -7,6 +7,7 @@ import java.util.List;
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
 import com.main.objects.Hotel;
+import com.main.objects.Reservation;
 import com.main.pages.PageManager;
 
 import javafx.application.Application;
@@ -82,14 +83,9 @@ public class App extends Application
         for(Hotel hotel : hotels)
             System.out.println(hotel.toString() + "\n");
 
-        /*List<Reservation> reservations = dm.FindAllReservations();
+        List<Reservation> reservations = dm.FindAllReservations();
         System.out.println("Printing All Reservations in Database:\n");
         for(Reservation reservation : reservations)
-            System.out.println(reservation.toString() + "\n");
-
-            Had to comment this out. This will work once I fix the Reservee bug.
-        */
-
-        
+            System.out.println(reservation.toString() + "\n");   
     }
 }

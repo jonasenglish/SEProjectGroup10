@@ -124,8 +124,8 @@ public class Account {
         account.setEmail((String)document.get("email"));
         account.setManager((boolean)document.get("isManager"));
         account.setDeveloper((boolean)document.get("isDeveloper"));
-        account.setEmployee((boolean)document.get("isEmployee"));
-        account.setHotel(Hotel.ToHotel((Document)document.get("hotel")));
+        //account.setEmployee((boolean)document.get("isEmployee"));
+        //account.setHotel(Hotel.ToHotel((Document)document.get("hotel")));
 
         account.setID((ObjectId)document.get("_id"));
 
