@@ -60,6 +60,7 @@ public class App extends Application
             pages.put("HotelView", (Parent)FXMLLoader.load(getClass().getResource("pages/hotelView.fxml")));
             pages.put("ReservationView", (Parent)FXMLLoader.load(getClass().getResource("pages/reservationView.fxml")));
             pages.put("HotelSearchView", (Parent)FXMLLoader.load(getClass().getResource("pages/hotelSearchView.fxml")));
+            pages.put("EmployeeView", (Parent)FXMLLoader.load(getClass().getResource("pages/EmployeeView.fxml")));
 
             // Add new pages above.
         }catch(Exception e){

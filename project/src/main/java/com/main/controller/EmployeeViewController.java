@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 //Controller for the manager View
-public class ManagerViewController {
+public class EmployeeViewController {
 
 	@FXML
   private Button Button_CreateHotel;

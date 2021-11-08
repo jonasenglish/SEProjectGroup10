@@ -1,5 +1,7 @@
 package com.main.controller;
 
+import javax.lang.model.util.ElementScanner14;
+
 import com.main.App;
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
@@ -64,20 +66,23 @@ public class LoginPageController {
         System.out.println("Welcome " + username + "!");
         
         App.currentUser = account;
-
-        //I added this page just to see how it would look, but checking to see if the user is a manager
-        //is still required 
         
-        //Don't know if this is sufficient, but this is just a simple check to see if it was a customer or not - Juan 
-        if(account.isManager() == false)
+        //Displays page based on account type
+        if(account.isManager())
         {
-        	PageManager.SetPage("CustomerView", "Welcome - " + username + "!");
+            PageManager.SetPage("ManagerView", "Welcome " + username +"!");
+        }
+        else if(account.isEmployee())
+        {
+            PageManager.SetPage("EmployeeView", "Welcome " + username + "!");
         }
         else
-        PageManager.SetPage("ManagerView", "Welcome! - " + username + "!"); 
+        {
+            PageManager.SetPage("CustomerView", "Welcome " + username + "!");
+        }   
     }
 
-    private void Error_AccountWithUsernameNotFound(){
+    private void Error_AccountWithUsernameNotFound() {
         err = true;
         System.err.println("Could not find account with given username!");
     }
@@ -86,5 +91,4 @@ public class LoginPageController {
         err = true;
         System.err.println("Password Incorrect!");
     }
-
 }
