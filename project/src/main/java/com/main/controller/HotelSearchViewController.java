@@ -17,11 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class HotelSearchViewController implements Initializable {
@@ -203,12 +201,11 @@ public class HotelSearchViewController implements Initializable {
     @FXML
     void OnClick_ViewSelected(ActionEvent event) {
 
-        // Open Hotel Viewer or Reservation Creator
+        Hotel viewedHotel = TableView_Hotels.getSelectionModel().getSelectedItem();
 
-        System.out.println("Not implemented yet. - HotelSearchViewController.java - OnClick_ViewSelected");
-        System.out.println("But I can tell you about the hotel you clicked.");
+        HotelViewController.Instance.ViewHotel(viewedHotel);
 
-        System.out.println(TableView_Hotels.getSelectionModel().getSelectedItem().toString());
+        PageManager.SetPage("HotelView", "You are Viewing - " + viewedHotel.getName());
 
     }
 

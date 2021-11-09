@@ -98,12 +98,18 @@ public class ManagerHotelCreationController implements Initializable {
         List<Amenity> kingAmenities = new ArrayList<>();
 
         for (Amenity amenity : amenities) {
-            if(amenity.getAmenityType() == Amenity.AmenityType.STANDARD)
+            if(amenity.getAmenityType() == Amenity.AmenityType.STANDARD){
+                amenity.setAmenityTypeString("Standard");
                 standardAmenities.add(amenity);
-            if(amenity.getAmenityType() == Amenity.AmenityType.QUEEN)
+            }
+            if(amenity.getAmenityType() == Amenity.AmenityType.QUEEN){
+                amenity.setAmenityTypeString("Queen");
                 queenAmenities.add(amenity);
-            if(amenity.getAmenityType() == Amenity.AmenityType.KING)
+            }
+            if(amenity.getAmenityType() == Amenity.AmenityType.KING){
+                amenity.setAmenityTypeString("King");
                 kingAmenities.add(amenity);
+            }
         }
 
         hotel.setStandardAmenities(standardAmenities);
