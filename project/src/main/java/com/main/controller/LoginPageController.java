@@ -78,6 +78,9 @@ public class LoginPageController {
         {
             PageManager.SetPage("CustomerView", "Welcome " + username + "!");
         }   
+
+        TextField_Username.clear();
+        TextField_Password.clear();
     }
 
     private void Error_AccountWithUsernameNotFound() {
