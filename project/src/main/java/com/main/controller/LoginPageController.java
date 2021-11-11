@@ -66,18 +66,7 @@ public class LoginPageController {
         App.currentUser = account;
         
         //Displays page based on account type
-        if(account.isManager())
-        {
-            PageManager.SetPage("ManagerView", "Welcome " + username +"!");
-        }
-        else if(account.isEmployee())
-        {
-            PageManager.SetPage("EmployeeView", "Welcome " + username + "!");
-        }
-        else
-        {
-            PageManager.SetPage("CustomerView", "Welcome " + username + "!");
-        }   
+        App.AccountTypeView();
 
         TextField_Username.clear();
         TextField_Password.clear();

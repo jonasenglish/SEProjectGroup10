@@ -61,6 +61,8 @@ public class App extends Application
             pages.put("ReservationView", (Parent)FXMLLoader.load(getClass().getResource("pages/reservationView.fxml")));
             pages.put("HotelSearchView", (Parent)FXMLLoader.load(getClass().getResource("pages/hotelSearchView.fxml")));
             pages.put("EmployeeView", (Parent)FXMLLoader.load(getClass().getResource("pages/EmployeeView.fxml")));
+            pages.put("AvailabilityView", (Parent)FXMLLoader.load(getClass().getResource("pages/AvailabilityView.fxml")));
+
 
             // Add new pages above.
         }catch(Exception e){
@@ -88,5 +90,21 @@ public class App extends Application
         System.out.println("Printing All Reservations in Database:\n");
         for(Reservation reservation : reservations)
             System.out.println(reservation.toString() + "\n");   
+    }
+
+    //This method can quickly state what account type you have and set specific view based on account type!
+    public static void AccountTypeView() {
+        if(App.currentUser.isManager())
+        {
+            PageManager.SetPage("ManagerView", "Welcome " + App.currentUser.getUsername() +"!");
+        }
+        else if(App.currentUser.isEmployee())
+        {
+            PageManager.SetPage("EmployeeView", "Welcome " + App.currentUser.getUsername() + "!");
+        }
+        else
+        {
+            PageManager.SetPage("CustomerView", "Welcome " + App.currentUser.getUsername() + "!");
+        }
     }
 }

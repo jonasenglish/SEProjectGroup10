@@ -41,11 +41,7 @@ public class ReservationViewController {
 
     @FXML
     void OnClick_Home(ActionEvent event) {
-      if(App.currentUser.isManager() == false) {
-        PageManager.SetPage("CustomerView", "Welcome - " + App.currentUser.getUsername());
-    } else {
-        PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
-    }
+      App.AccountTypeView();
     }
 
     @FXML

@@ -33,11 +33,7 @@ public class ProfileViewController{
 
     @FXML
     void OnClick_Cancel(ActionEvent event) {
-        if(App.currentUser.isManager() == false) {
-            PageManager.SetPage("CustomerView", "Welcome - " + App.currentUser.getUsername());
-        } else {
-            PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
-        }
+        App.AccountTypeView();
     }
 
     @FXML

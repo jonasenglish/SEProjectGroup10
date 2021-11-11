@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.main.App;
 import com.main.database.DatabaseManager;
 import com.main.objects.Hotel;
 import com.main.pages.PageManager;
@@ -211,7 +212,7 @@ public class HotelSearchViewController implements Initializable {
 
     @FXML
     void OnClick_Back(ActionEvent event) {
-        PageManager.SetPage("ManagerView", "Manager View");
+        App.AccountTypeView();
     }
 
     ObservableList<Hotel> list = FXCollections.observableArrayList();

@@ -16,7 +16,7 @@
    <top>
       <SplitPane dividerPositions="0.8425802139037432" prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="502.0" style="-fx-background-color: #227c9d;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="502.0" style="-fx-background-color: #227c9d;" SplitPane.resizableWithParent="false">
                <children>
                   <Label fx:id="WelcomeLabel" layoutX="51.0" layoutY="19.0" onContextMenuRequested="#Initialize" prefHeight="57.0" prefWidth="426.0" text="Welcome Employee!">
                      <font>
@@ -24,7 +24,7 @@
                      </font>
                   </Label>
                </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="82.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="82.0" SplitPane.resizableWithParent="false">
                <children>
                   <Button fx:id="Button_Profile" layoutY="-1.0" minHeight="89.0" minWidth="90.0" mnemonicParsing="false" onAction="#OnClick_Profile" prefHeight="90.0" prefWidth="92.0" style="-fx-background-color: #fe6d73;">
                      <font>
@@ -47,16 +47,20 @@
       </SplitPane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #ffcb77; -fx-background-color: fef9ef; -fx-border-width: 5;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #ffcb77; -fx-background-color: fef9ef; -fx-border-width: 5;" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane fx:id="display_BorderPane" layoutX="8.0" layoutY="8.0" onMouseEntered="#showscene" prefHeight="286.0" prefWidth="494.0" />
+         </children></AnchorPane>
    </center>
    <right>
-      <VBox prefHeight="309.0" prefWidth="95.0" spacing="20.0" style="-fx-background-color: #227c9d;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER_LEFT" prefHeight="309.0" prefWidth="95.0" spacing="20.0" style="-fx-background-color: #227c9d;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#OnClick_Reserve" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Reservation" />
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Edit" />
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Availability" />
-            <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_Search" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Search" />
-            <Button fx:id="Button_CreateHotel" layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_CreateHotel" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Create Hotel" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="Button_CreateReservations" mnemonicParsing="false" onAction="#OnClick_CreateReservations" prefHeight="70.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Create Reservations" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button fx:id="Button_ViewReservation" mnemonicParsing="false" onAction="#OnClick_ViewReservation" prefHeight="70.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="View Reservation" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="Button_HotelOverview" mnemonicParsing="false" onAction="#OnClick_HotelOverview" prefHeight="70.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Hotel Overview" textAlignment="CENTER" wrapText="true" />
          </children>
          <padding>
             <Insets bottom="5.0" left="8.0" top="10.0" />

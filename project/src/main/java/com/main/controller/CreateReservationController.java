@@ -87,11 +87,7 @@ public class CreateReservationController implements Initializable {
 
     @FXML
     void OnClick_Cancel(ActionEvent event) {
-		if(App.currentUser.isManager() == false) {
-            PageManager.SetPage("CustomerView", "Welcome - " + App.currentUser.getUsername());
-        } else {
-            PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
-        }
+		App.AccountTypeView();
     }
 
     @FXML
@@ -133,11 +129,7 @@ public class CreateReservationController implements Initializable {
 
         dm.InsertReservation(reservations);
 
-        if(App.currentUser.isManager() == false) {
-            PageManager.SetPage("CustomerView", "Welcome - " + App.currentUser.getUsername());
-        } else {
-            PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
-        }
+        App.AccountTypeView();
     }
 
     @Override
