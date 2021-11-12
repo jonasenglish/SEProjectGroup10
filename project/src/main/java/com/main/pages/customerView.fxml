@@ -88,7 +88,7 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="Button_idkwhat" layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_idkwhat" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="idk what">
+            <Button layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_HotelSearch" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="Hotel Search">
                <font>
                   <Font size="11.0" />
                </font>

@@ -46,6 +46,11 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #227c9d;" VBox.vgrow="ALWAYS">
       <children>
+            <ImageView fitHeight="416.0" fitWidth="416.0" layoutX="102.0" layoutY="-116.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/499ABADE-9868-439B-A468-B6D14B4DA751.png" />
+               </image>
+            </ImageView>
             <TextField fx:id="TextField_Username" layoutX="230.0" layoutY="152.0" promptText="Username..." AnchorPane.topAnchor="150.0" />
             <PasswordField fx:id="TextField_Password" layoutX="230.0" layoutY="204.0" promptText="Password..." AnchorPane.topAnchor="200.0" />
             <Button fx:id="Button_Login" layoutX="276.0" layoutY="255.0" mnemonicParsing="false" onAction="#OnClickButton_Login" style="-fx-background-color: #fef9ef;" text="Login" AnchorPane.topAnchor="250.0">
@@ -56,11 +61,6 @@
                   <Font size="15.0" />
                </font></Button>
             <Button fx:id="Button_CreateAccount" layoutX="256.0" layoutY="314.0" mnemonicParsing="false" onAction="#OnClickButton_CreateAccount" style="-fx-background-color: #fef9ef;" text="Create Account" textFill="#fe6d73" AnchorPane.topAnchor="300.0" />
-            <ImageView fitHeight="416.0" fitWidth="456.0" layoutX="102.0" layoutY="-116.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pictures/499ABADE-9868-439B-A468-B6D14B4DA751.png" />
-               </image>
-            </ImageView>
       </children>
     </AnchorPane>
   </children>

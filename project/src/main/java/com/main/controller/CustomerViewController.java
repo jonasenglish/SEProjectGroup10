@@ -116,8 +116,8 @@ public class CustomerViewController {
     }
 
     @FXML
-    void OnClick_idkwhat(ActionEvent event) {
-
+    void OnClick_HotelSearch(ActionEvent event) {
+        PageManager.SetPage("HotelSearchView", "Search for a Hotel!");
     }
 
     @FXML
