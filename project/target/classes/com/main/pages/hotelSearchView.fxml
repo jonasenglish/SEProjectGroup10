@@ -50,13 +50,13 @@
       <children>
             <ScrollPane layoutX="13.0" layoutY="70.0" prefHeight="306.0" prefWidth="680.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="675.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="675.0">
                      <children>
-                        <TableView fx:id="TableView_Hotels" prefHeight="298.0" prefWidth="680.0">
+                        <TableView fx:id="TableView_Hotels" prefHeight="298.0" prefWidth="680.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                           <columns>
-                            <TableColumn fx:id="Column_Hotel" editable="false" minWidth="0.0" prefWidth="125.0" text="Hotel" />
-                            <TableColumn fx:id="Column_Description" editable="false" minWidth="0.0" prefWidth="195.0" sortable="false" text="Description" />
-                              <TableColumn editable="false" maxWidth="376.00007247924805" minWidth="0.0" prefWidth="172.0" sortable="false" text="Available Rooms">
+                            <TableColumn fx:id="Column_Hotel" editable="false" minWidth="0.0" prefWidth="113.59997844696045" text="Hotel" />
+                            <TableColumn fx:id="Column_Description" editable="false" minWidth="0.0" prefWidth="180.00001525878906" sortable="false" text="Description" />
+                              <TableColumn editable="false" maxWidth="376.00007247924805" minWidth="0.0" prefWidth="207.99996948242188" sortable="false" text="Available Rooms">
                                  <columns>
                                     <TableColumn fx:id="Column_Standard" editable="false" prefWidth="60.0" text="Standard" />
                                     <TableColumn fx:id="Column_Queen" editable="false" prefWidth="60.0" text="Queen" />

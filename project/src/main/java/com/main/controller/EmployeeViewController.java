@@ -51,7 +51,7 @@ public class EmployeeViewController {
 
     @FXML
     void Initialize(ContextMenuEvent event) {
-
+      
     }
 
     @FXML

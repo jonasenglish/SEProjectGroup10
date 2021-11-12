@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateReservationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffcb77;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateReservationController">
    <children>
       <TextField fx:id="numAdults" layoutX="151.0" layoutY="219.0" prefHeight="25.0" prefWidth="150.0" />
       <Label layoutX="105.0" layoutY="51.0" text="Hotel: " />
@@ -36,8 +36,8 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="Button_Cancel" layoutX="62.0" layoutY="348.0" mnemonicParsing="false" onAction="#OnClick_Cancel" text="Cancel" />
-      <Button fx:id="Button_MakeReservation" layoutX="426.0" layoutY="348.0" mnemonicParsing="false" onAction="#OnClick_MakeReservation" text="Make Reservation" />
+      <Button fx:id="Button_Cancel" layoutX="62.0" layoutY="348.0" mnemonicParsing="false" onAction="#OnClick_Cancel" style="-fx-background-color: #fef9ef;" text="Cancel" textFill="#fe6d73" />
+      <Button fx:id="Button_MakeReservation" layoutX="426.0" layoutY="348.0" mnemonicParsing="false" onAction="#OnClick_MakeReservation" style="-fx-background-color: #fef9ef;" text="Make Reservation" />
       <DatePicker fx:id="departureDate" layoutX="151.0" layoutY="117.0" prefHeight="25.0" prefWidth="150.0" />
       <Label layoutX="49.0" layoutY="122.0" text="Departure Date:" />
    </children>

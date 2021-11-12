@@ -21,11 +21,16 @@
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="526.0" style="-fx-background-color: #227c9d;">
                <children>
-                  <Text fx:id="welcomeHeader" layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" wrappingWidth="488.43603515625">
+                  <ImageView fitHeight="182.0" fitWidth="235.0" layoutX="-31.0" layoutY="-35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../pictures/3387A194-8E82-4141-9336-2CE839887B52.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="welcomeLabel" layoutX="176.0" layoutY="22.0" prefHeight="45.0" prefWidth="207.0" text="Welcome">
                      <font>
-                        <Font name="Serif Regular" size="49.0" />
+                        <Font name="Serif Regular" size="40.0" />
                      </font>
-                  </Text>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="82.0">
@@ -88,7 +93,7 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="Button_idkwhat" layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_idkwhat" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="idk what">
+            <Button layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_HotelSearch" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="Hotel Search">
                <font>
                   <Font size="11.0" />
                </font>

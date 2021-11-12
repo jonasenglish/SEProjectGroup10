@@ -1,11 +1,13 @@
 package com.main.controller;
 
+import com.main.App;
 import com.main.pages.PageManager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -66,7 +68,12 @@ public class CustomerViewController {
     private Text numRooms;
 
     @FXML
-    private Text welcomeHeader;
+    private Label welcomeLabel;
+
+
+  public void Initialize() {
+    welcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
+  }
 
     @FXML
     void OnClick_Favorites(ActionEvent event) {
@@ -116,8 +123,8 @@ public class CustomerViewController {
     }
 
     @FXML
-    void OnClick_idkwhat(ActionEvent event) {
-
+    void OnClick_HotelSearch(ActionEvent event) {
+        PageManager.SetPage("HotelSearchView", "Search for a Hotel!");
     }
 
     @FXML
