@@ -28,5 +28,8 @@
       <PasswordField fx:id="PasswordField_Password" layoutX="219.0" layoutY="291.0" />
       <Button layoutX="43.0" layoutY="131.0" mnemonicParsing="false" onAction="#OnClick_Edit" text="Edit Info" />
       <Button layoutX="510.0" layoutY="35.0" mnemonicParsing="false" onAction="#OnClick_Logout" text="Logout" />
+      <Label fx:id="Label_UsernameError" layoutX="274.0" layoutY="173.0" text="ERROR" textFill="#ff7777" visible="false" />
+      <Label fx:id="Label_EmailError" layoutX="274.0" layoutY="233.0" text="ERROR" textFill="#ff7878" visible="false" />
+      <Label fx:id="Label_PasswordError" layoutX="274.0" layoutY="323.0" text="ERROR" textFill="#fc8282" visible="false" />
    </children>
 </AnchorPane>
