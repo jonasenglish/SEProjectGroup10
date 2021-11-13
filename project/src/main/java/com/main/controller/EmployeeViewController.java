@@ -72,7 +72,7 @@ public class EmployeeViewController {
     private Label WelcomeLabel;
 
     @FXML
-    private ChoiceBox<?> choice_RoomType;
+    private ChoiceBox<Hotel.RoomType> choice_RoomType;
 
     @FXML
     private DatePicker dp_CheckIn;
