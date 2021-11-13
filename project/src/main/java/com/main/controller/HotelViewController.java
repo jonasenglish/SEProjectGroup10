@@ -95,7 +95,7 @@ public class HotelViewController implements Initializable {
 		Instance = this;
     }
 
-	public void ViewHotel(Hotel viewedHotel){
+	public void ViewHotel(Hotel viewedHotel) {
 		list = getAmenities(viewedHotel);
 
 		Label_HotelName.setText(viewedHotel.getName());
