@@ -3,6 +3,7 @@ package com.main.controller;
 import com.main.App;
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
+import com.main.objects.Hotel;
 import com.main.pages.PageManager;
 import com.main.tools.PasswordUtils;
 
@@ -64,6 +65,11 @@ public class LoginPageController {
         System.out.println("Welcome " + username + "!");
         
         App.currentUser = account;
+
+        if(account.isManager()){
+            Hotel hotel = dm.FindHotelByID(account.getHotelID());
+            App.currentHotel = hotel;
+        }
         
         //Displays page based on account type
         App.AccountTypeView();

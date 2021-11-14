@@ -24,6 +24,8 @@ public class HotelViewController implements Initializable {
 
 	public static HotelViewController Instance = null;
 
+    private Hotel currentHotel = null;
+
     @FXML
     private Label Label_HotelName;
 
@@ -77,6 +79,7 @@ public class HotelViewController implements Initializable {
     @FXML
     void OnClick_BookRoom(ActionEvent event) {
 		// Switch to reservation view page
+        CreateReservationController.selectedHotel = currentHotel;
         PageManager.SetPage("CreateReservation", "Create Reservation");
 		return;
     }
@@ -119,6 +122,8 @@ public class HotelViewController implements Initializable {
 		}
 
 		TableView_Amenities.setItems(list);
+
+        currentHotel = viewedHotel;
 	}
 
 	private ObservableList<Amenity> getAmenities(Hotel hotel) {

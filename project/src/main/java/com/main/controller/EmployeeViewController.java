@@ -1,21 +1,8 @@
 package com.main.controller;
 
 import com.main.App;
-import com.main.database.DatabaseManager;
-import com.main.objects.Account;
-import com.main.objects.Amenity;
 import com.main.objects.Hotel;
-import com.main.objects.Reservation;
-import com.main.objects.Hotel.RoomType;
 import com.main.pages.PageManager;
-
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.Instant;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,24 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
-
-import org.bson.types.ObjectId;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Button;
 
 public class EmployeeViewController {
 
@@ -96,12 +65,12 @@ public class EmployeeViewController {
 
     @FXML
     void OnClick_HotelOverview(ActionEvent event) {
-      PageManager.SetPage("HotelOverview", "Welcome to " + App.currentUser.getHotel().getName() + "!");
+      PageManager.SetPage("HotelOverview", "Welcome to " + App.currentHotel.getName() + "!");
     }
 
     @FXML
     void OnClick_Profile(ActionEvent event) {
-      PageManager.SetPage("ProfileView", "Profile View for: " + App.currentUser.getUsername());
+      PageManager.SetPage("ProfileView", "Profile View for: " + App.currentHotel.getName());
     }
 
     @FXML

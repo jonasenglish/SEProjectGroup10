@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.main.App;
 import com.main.database.DatabaseManager;
+import com.main.objects.Account;
 import com.main.objects.Amenity;
 import com.main.objects.Hotel;
 import com.main.objects.Amenity.AmenityType;
@@ -25,7 +26,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 
 public class ManagerHotelCreationController implements Initializable {
-    
+
+    public static boolean isEdit = false;
+    public Account newManager = null;
+
+    public static ManagerHotelCreationController Instance = null;
+
     @FXML
     private TextField TextField_PriceStandard;
     
@@ -76,9 +82,15 @@ public class ManagerHotelCreationController implements Initializable {
 
     @FXML
     private TextField TextField_HotelImage;
-
+    
     @FXML
     void OnClick_Submit(ActionEvent event) {
+        DatabaseManager dm = DatabaseManager.instance;
+
+        if(!isEdit && dm.FindHotelByName(TextField_HotelName.getText()) != null){
+            System.err.println("Error: A hotel with that name already exists!");
+            return;
+        }
 
         Hotel hotel = new Hotel();
         hotel.setName(TextField_HotelName.getText());
@@ -116,14 +128,27 @@ public class ManagerHotelCreationController implements Initializable {
         hotel.setQueenAmenities(queenAmenities);
         hotel.setKingAmenities(kingAmenities);
 
-        DatabaseManager dm = DatabaseManager.instance;
 
-        dm.InsertHotel(hotel);
+        if(!isEdit){
+            dm.InsertHotel(hotel);
+            hotel = dm.FindHotelByName(hotel.getName());
+            newManager.setHotelID(hotel.getID());
+            dm.UpdateAccount(newManager);
+            System.out.println("Hotel Created!");
+
+            PageManager.SetPage("Login", "Login");
+            return;
+        }
+        else{
+            hotel.setID(App.currentHotel.getID());
+            dm.UpdateHotel(hotel);
+            System.out.println("Hotel Updated!");
+            App.currentHotel = hotel;
+        }
 
         ClearValues();
 
         PageManager.SetPage("ManagerView", "Welcome - " + App.currentUser.getUsername());
-
     }
 
     @FXML
@@ -158,16 +183,53 @@ public class ManagerHotelCreationController implements Initializable {
         TableView_Amenities.setItems(list);
         ChoiceBox_AmenityType.getItems().addAll(AmenityType.STANDARD, AmenityType.QUEEN, AmenityType.KING);
         ChoiceBox_AmenityType.setValue(AmenityType.STANDARD);
+
+        Instance = this;
     }
 
-    private ObservableList<Amenity> getAmenities(Hotel hotel) {
+    public void reinitialize(){
+        Hotel hotel = App.currentHotel;
+
+        if(hotel == null){
+            System.err.println("Critical Error: currentHotel is NULL!");
+            return;
+        }
+
+        list = getAmenities(hotel);
+
+        TextArea_HotelDescription.setText(hotel.getDescription());
+
+        TextField_HotelName.setText(hotel.getName());
+        TextField_NumberOfKingRooms.setText(hotel.getKingRooms() + "");
+        TextField_NumberOfQueenRooms.setText(hotel.getQueenRooms() + "");
+        TextField_NumberOfStandardRooms.setText(hotel.getStandardRooms() + "");
+        TextField_PriceStandard.setText(hotel.getRoomPriceStandard() + "");
+        TextField_PriceQueen.setText(hotel.getRoomPriceQueen() + "");
+        TextField_PriceKing.setText(hotel.getRoomPriceKing() + "");
+        TextField_WeekendDifferential.setText(hotel.getWeekendDifferential() + "");
+        TextField_HotelImage.setText(hotel.getHotelImageURL() + "");
+
+        TableView_Amenities.setItems(list);
+    }
+
+	private ObservableList<Amenity> getAmenities(Hotel hotel) {
         ObservableList<Amenity> amenities = FXCollections.observableArrayList();
-        for(Amenity amenity : hotel.getStandardAmenities())
+        for(Amenity amenity : hotel.getStandardAmenities()){
+			if(amenity.getAmenityTypeString() != null)
+				amenity = new Amenity(amenity.getName(), amenity.getDescription(), amenity.getAmenityType(), amenity.getAmenityTypeString());
             amenities.add(amenity);
-        for(Amenity amenity : hotel.getQueenAmenities())
+		}
+        for(Amenity amenity : hotel.getQueenAmenities()){
+			if(amenity.getAmenityTypeString() != null)	
+				amenity = new Amenity(amenity.getName(), amenity.getDescription(), amenity.getAmenityType(), amenity.getAmenityTypeString());
             amenities.add(amenity);
-        for(Amenity amenity : hotel.getKingAmenities())
+		}
+        for(Amenity amenity : hotel.getKingAmenities()){
+			if(amenity.getAmenityTypeString() != null)
+				amenity = new Amenity(amenity.getName(), amenity.getDescription(), amenity.getAmenityType(), amenity.getAmenityTypeString());
             amenities.add(amenity);
+		}
+
         return amenities;
     }
 
@@ -184,6 +246,7 @@ public class ManagerHotelCreationController implements Initializable {
         TextField_PriceKing.setText("");
         TextField_WeekendDifferential.setText("");
         TextField_AmenityName.setText("");
+        TextField_HotelImage.setText("");
 
         ChoiceBox_AmenityType.setValue(AmenityType.STANDARD);
 

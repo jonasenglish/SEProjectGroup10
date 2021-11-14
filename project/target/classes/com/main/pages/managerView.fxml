@@ -52,11 +52,13 @@
    <right>
       <VBox prefHeight="309.0" prefWidth="95.0" spacing="20.0" style="-fx-background-color: #227c9d;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#OnClick_Reserve" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Reservation" />
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Edit" />
+            <Button mnemonicParsing="false" onAction="#OnClick_Reserve" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Reservations">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#OnClick_EditHotel" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Edit Hotel" />
             <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Availability" />
-            <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_Search" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Search" />
-            <Button fx:id="Button_CreateHotel" layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_CreateHotel" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Create Hotel" textAlignment="CENTER" wrapText="true" />
+            <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_Employees" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Employees" />
          </children>
          <padding>
             <Insets bottom="5.0" left="8.0" top="10.0" />

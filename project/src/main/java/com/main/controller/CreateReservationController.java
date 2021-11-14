@@ -1,7 +1,6 @@
 package com.main.controller;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Date;
 import java.time.LocalDate;
@@ -10,33 +9,21 @@ import java.time.Instant;
 
 import com.main.App;
 import com.main.database.DatabaseManager;
-import com.main.objects.Account;
-import com.main.objects.Amenity;
 import com.main.objects.Hotel;
 import com.main.objects.Reservation;
-import com.main.objects.Hotel.RoomType;
-import com.main.pages.PageManager;
 
-
-import org.bson.types.ObjectId;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 
 public class CreateReservationController implements Initializable {
+
+    public static Hotel selectedHotel;
 
     @FXML
     private Button Button_Cancel;
@@ -111,7 +98,7 @@ public class CreateReservationController implements Initializable {
 
 		Reservation reservations = new Reservation();
        
-        reservations.setReservee(App.currentUser);
+        reservations.setReservee(App.currentUser.getID());
 
 		reservations.setStartDate(date);
         reservations.setEndDate(date2);
@@ -126,6 +113,8 @@ public class CreateReservationController implements Initializable {
         reservations.setCustomerName(customerName.getText());
         reservations.setCustomerEmail(customerEmail.getText());
         reservations.setCustomerPhoneNumber(customerPhone.getText());
+
+        reservations.setHotel(selectedHotel.getID());
 
         dm.InsertReservation(reservations);
 

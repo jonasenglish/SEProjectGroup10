@@ -18,6 +18,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 public class DatabaseManager {
 
@@ -76,6 +77,13 @@ public class DatabaseManager {
         return null;
     }
 
+    public Account FindAccountByID(ObjectId ID){
+        Document doc = accountCollection.find(eq("_id", ID)).first();
+        if(doc != null)
+            return Account.ToAccount(doc);
+        return null;
+    }
+
     public Account FindAccountByEmail(String email){
         Document doc = accountCollection.find(eq("email", email)).first();
         if(doc != null)
@@ -90,6 +98,13 @@ public class DatabaseManager {
         return null;
     }
 
+    public Hotel FindHotelByID(ObjectId hotelID) {
+        Document doc = hotelCollection.find(eq("_id", hotelID)).first();
+        if(doc != null)
+            return Hotel.ToHotel(doc);
+        return null;
+    }
+
     public List<Hotel> FindHotelsWithAvailableRooms() {
         List<Hotel> matchingHotels = new LinkedList<>();
 
@@ -99,6 +114,13 @@ public class DatabaseManager {
         }
 
         return matchingHotels;
+    }
+
+    public Reservation FindReservationByID(ObjectId ID){
+        Document doc = reservationCollection.find(eq("_id", ID)).first();
+        if(doc != null)
+            return Reservation.ToReservation(doc);
+        return null;
     }
 
     public List<Reservation> FindReservationsByAccount(Account account){
@@ -228,7 +250,8 @@ public class DatabaseManager {
         List<Reservation> reservationsFound = new ArrayList<>();
 
         for (Reservation reservation : reservations) {
-            if(reservation.getHotel().getName().equals(hotelName))
+            Hotel hotel = FindHotelByID(reservation.getHotel());
+            if(hotel.getName().equals(hotelName))
                 reservationsFound.add(reservation);
         }
 
@@ -267,17 +290,17 @@ public class DatabaseManager {
     // Update
     public void UpdateAccount(Account account){
         Bson filter = and(eq("_id", account.getID()));
-        accountCollection.updateOne(filter, account.ToDocument());
+        accountCollection.replaceOne(filter, account.ToDocument());
     }
 
     public void UpdateHotel(Hotel hotel){
         Bson filter = and(eq("_id", hotel.getID()));
-        hotelCollection.updateOne(filter, hotel.ToDocument());
+        hotelCollection.replaceOne(filter, hotel.ToDocument());
     }
 
     public void UpdateReservation(Reservation reservation){
         Bson filter = and(eq("_id", reservation.getID()));
-        reservationCollection.updateOne(filter, reservation.ToDocument());
+        reservationCollection.replaceOne(filter, reservation.ToDocument());
     }
 
     public List<Hotel> FindHotelsByName(String text) {
