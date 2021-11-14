@@ -1,14 +1,19 @@
 package com.main.controller;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import com.main.App;
 import com.main.database.DatabaseManager;
 import com.main.objects.Hotel;
+import com.main.objects.Reservation;
 import com.main.pages.PageManager;
+import com.main.tools.PopupHandler;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -64,6 +70,12 @@ public class HotelSearchViewController implements Initializable {
     private TableView<Hotel> TableView_Hotels;
 
     @FXML
+    private DatePicker DatePicker_From;
+
+    @FXML
+    private DatePicker DatePicker_To;
+
+    @FXML
     void OnClick_AvailableOnly(ActionEvent event) {
         if(!CheckBox_AvailableOnly.selectedProperty().get()){
             OnClick_Search(event);
@@ -83,56 +95,89 @@ public class HotelSearchViewController implements Initializable {
 
     @FXML
     void OnClick_Search(ActionEvent event) {
+        if(DatePicker_From.getValue() == null || DatePicker_To.getValue() == null){
+            PopupHandler.ShowError("Please Input Dates in the Date Ranges!");
+            return;
+        }
+
         if(dm == null)
             dm = DatabaseManager.instance;
 
         list.clear();
 
-        if(TextField_Search.getText().equals("")){ SearchBy_HotelName(); return; } // No input returns all hotels
+        List<Hotel> listResults = new ArrayList<>();
 
-        switch(ChoiceBox_SearchBy.getValue()){
-            case "Hotel Name":
-                SearchBy_HotelName();
-                break;
+        if(TextField_Search.getText().equals("")){ listResults = SearchBy_HotelName(); } // No input returns all hotels
+        else
+            switch(ChoiceBox_SearchBy.getValue()){
+                case "Hotel Name":
+                    listResults =SearchBy_HotelName();
+                    break;
 
-            case "Rooms Available":
-                SearchBy_RoomsAvailable();
-                break;
+                case "Rooms Available":
+                    listResults = SearchBy_RoomsAvailable();
+                    break;
 
-            case "Standard Prices <":
-                SearchBy_RoomPricesLT(Hotel.RoomType.STANDARD);
-                break;
+                case "Standard Prices <":
+                    listResults = SearchBy_RoomPricesLT(Hotel.RoomType.STANDARD);
+                    break;
 
-            case "Standard Prices >":
-                SearchBy_RoomPricesGT(Hotel.RoomType.STANDARD);
-                break;
+                case "Standard Prices >":
+                    listResults = SearchBy_RoomPricesGT(Hotel.RoomType.STANDARD);
+                    break;
 
-            case "Queen Prices <":
-                SearchBy_RoomPricesLT(Hotel.RoomType.QUEEN);
-                break;
+                case "Queen Prices <":
+                    listResults = SearchBy_RoomPricesLT(Hotel.RoomType.QUEEN);
+                    break;
 
-            case "Queen Prices >":
-                SearchBy_RoomPricesGT(Hotel.RoomType.QUEEN);
-                break;
+                case "Queen Prices >":
+                    listResults = SearchBy_RoomPricesGT(Hotel.RoomType.QUEEN);
+                    break;
 
-            case "King Prices <":
-                SearchBy_RoomPricesLT(Hotel.RoomType.KING);
-                break;
+                case "King Prices <":
+                    listResults = SearchBy_RoomPricesLT(Hotel.RoomType.KING);
+                    break;
 
-            case "King Prices >":
-                SearchBy_RoomPricesGT(Hotel.RoomType.KING);
-                break;
+                case "King Prices >":
+                    listResults = SearchBy_RoomPricesGT(Hotel.RoomType.KING);
+                    break;
+            }
+        
+        Date to = Date.from(DatePicker_To.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date from = Date.from(DatePicker_From.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        List<Reservation> reservationsInRange = dm.FindReservationsInDateRange(to, from);
+        
+        for (Hotel hotel : listResults) {
+            for (Reservation reservation : reservationsInRange) {
+                if(hotel.getID().equals(reservation.getHotel())){
+                    if(reservation.getRoomType().equals("Standard"))
+                        hotel.setStandardRooms(hotel.getStandardRooms() - reservation.getRooms());
+                    if(reservation.getRoomType().equals("Queen"))
+                        hotel.setQueenRooms(hotel.getQueenRooms() - reservation.getRooms());
+                    if(reservation.getRoomType().equals("King")){
+                        hotel.setKingRooms(hotel.getKingRooms() - reservation.getRooms());
+                        System.out.println("Pling");
+                    }
+                }
+            }
         }
+
+
+        if(!(listResults == null))
+            list.addAll(listResults);
+        else
+            PopupHandler.ShowInfo("No Results.");
     }
 
-    private void SearchBy_RoomPricesGT(Hotel.RoomType roomType) {
+    private List<Hotel> SearchBy_RoomPricesGT(Hotel.RoomType roomType) {
         double value = -1;
 
         try{
            value = Integer.parseInt(TextField_Search.getText());
         }catch(Exception e){
             System.err.println("Input was not a Double");
-            return;
+            return null;
         }
 
         List<Hotel> results = dm.FindHotelsByPriceGT(value, roomType);
@@ -140,17 +185,17 @@ public class HotelSearchViewController implements Initializable {
         if(CheckBox_AvailableOnly.selectedProperty().get())
             results = RemoveNoAvailable(results);
 
-        list.addAll(results);
+        return results;
     }
 
-    private void SearchBy_RoomPricesLT(Hotel.RoomType roomType) {
+    private List<Hotel> SearchBy_RoomPricesLT(Hotel.RoomType roomType) {
         double value = -1;
 
         try{
            value = Integer.parseInt(TextField_Search.getText());
         }catch(Exception e){
             System.err.println("Input was not a Double");
-            return;
+            return null;
         }
 
         List<Hotel> results = dm.FindHotelsByPriceLT(value, roomType);
@@ -158,17 +203,17 @@ public class HotelSearchViewController implements Initializable {
         if(CheckBox_AvailableOnly.selectedProperty().get())
             results = RemoveNoAvailable(results);
 
-        list.addAll(results);
+        return results;
     }
 
-    private void SearchBy_RoomsAvailable() {
+    private List<Hotel> SearchBy_RoomsAvailable() {
         int value = -1;
 
         try{
            value = Integer.parseInt(TextField_Search.getText());
         }catch(Exception e){
             System.err.println("Input was not an Integer");
-            return;
+            return null;
         }
 
         List<Hotel> results = dm.FindHotelsByRooms(value);
@@ -176,16 +221,16 @@ public class HotelSearchViewController implements Initializable {
         if(CheckBox_AvailableOnly.selectedProperty().get())
             results = RemoveNoAvailable(results);
 
-        list.addAll(results);
+        return results;
     }
 
-    private void SearchBy_HotelName() {
+    private List<Hotel> SearchBy_HotelName() {
         List<Hotel> results = dm.FindHotelsByName(TextField_Search.getText());
 
         if(CheckBox_AvailableOnly.selectedProperty().get())
             results = RemoveNoAvailable(results);
 
-        list.addAll(results);
+        return results;
     }
 
     private List<Hotel> RemoveNoAvailable(List<Hotel> hotels){
@@ -204,6 +249,13 @@ public class HotelSearchViewController implements Initializable {
 
         Hotel viewedHotel = TableView_Hotels.getSelectionModel().getSelectedItem();
 
+        if(viewedHotel == null){
+            PopupHandler.ShowError("Please select a Hotel!");
+            return;
+        }
+
+        HotelViewController.Instance.fromDate = Date.from(DatePicker_From.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        HotelViewController.Instance.toDate = Date.from(DatePicker_To.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         HotelViewController.Instance.ViewHotel(viewedHotel);
 
         PageManager.SetPage("HotelView", "You are Viewing - " + viewedHotel.getName());

@@ -138,8 +138,10 @@ public class DatabaseManager {
         List<Reservation> matchingReservations = new LinkedList<>();
 
         for(Reservation reservation : FindAllReservations()){
-            if(reservation.isWithinRange(startDate) || reservation.isWithinRange(endDate))
+            if(reservation.isWithinRange(startDate) || reservation.isWithinRange(endDate)){
                 matchingReservations.add(reservation);
+                //System.out.println(reservation.toString());
+            }
         }
         
         return matchingReservations;

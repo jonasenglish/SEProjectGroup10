@@ -1,6 +1,7 @@
 package com.main.controller;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.main.App;
@@ -23,6 +24,8 @@ import javafx.scene.image.ImageView;
 public class HotelViewController implements Initializable {
 
 	public static HotelViewController Instance = null;
+
+    public Date fromDate, toDate;
 
     private Hotel currentHotel = null;
 
@@ -55,6 +58,12 @@ public class HotelViewController implements Initializable {
 
     @FXML
     private Label Label_WeekendDifferential;
+
+    @FXML
+    private Label Label_FromDate;
+
+    @FXML
+    private Label Label_ToDate;
 
     @FXML
     private TableView<Amenity> TableView_Amenities;
@@ -122,6 +131,14 @@ public class HotelViewController implements Initializable {
 		}
 
 		TableView_Amenities.setItems(list);
+
+        if(fromDate == null || toDate == null){
+            Label_FromDate.setText("N/A");
+            Label_ToDate.setText("N/A");
+        }else{
+            Label_FromDate.setText(fromDate.toString());
+            Label_ToDate.setText(toDate.toString());
+        }
 
         currentHotel = viewedHotel;
 	}

@@ -35,8 +35,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -44,50 +44,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="420.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.HotelSearchViewController">
+<VBox prefHeight="420.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.HotelSearchViewController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="390.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <ScrollPane layoutX="13.0" layoutY="70.0" prefHeight="306.0" prefWidth="680.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="675.0">
-                     <children>
-                        <TableView fx:id="TableView_Hotels" prefHeight="298.0" prefWidth="680.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                          <columns>
-                            <TableColumn fx:id="Column_Hotel" editable="false" minWidth="0.0" prefWidth="113.59997844696045" text="Hotel" />
-                            <TableColumn fx:id="Column_Description" editable="false" minWidth="0.0" prefWidth="180.00001525878906" sortable="false" text="Description" />
-                              <TableColumn editable="false" maxWidth="376.00007247924805" minWidth="0.0" prefWidth="207.99996948242188" sortable="false" text="Available Rooms">
-                                 <columns>
-                                    <TableColumn fx:id="Column_Standard" editable="false" prefWidth="60.0" text="Standard" />
-                                    <TableColumn fx:id="Column_Queen" editable="false" prefWidth="60.0" text="Queen" />
-                                    <TableColumn fx:id="Column_King" editable="false" prefWidth="60.0" text="King" />
-                                 </columns>
-                              </TableColumn>
-                              <TableColumn editable="false" maxWidth="344.800048828125" minWidth="0.0" prefWidth="168.800048828125" sortable="false" text="Room Prices">
-                                 <columns>
-                                    <TableColumn fx:id="Column_StandardPrices" editable="false" prefWidth="60.0" text="Standard" />
-                                    <TableColumn fx:id="Column_QueenPrices" editable="false" prefWidth="60.0" text="Queen" />
-                                    <TableColumn fx:id="Column_KingPrices" editable="false" prefWidth="60.0" text="King" />
-                                 </columns>
-                              </TableColumn>
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
-            <ChoiceBox fx:id="ChoiceBox_SearchBy" layoutX="475.0" layoutY="30.0" prefWidth="148.0" AnchorPane.rightAnchor="15.0" />
-            <TextField fx:id="TextField_Search" layoutX="319.0" layoutY="30.0" AnchorPane.rightAnchor="230.0" />
-            <Button layoutX="415.0" layoutY="30.0" mnemonicParsing="false" onAction="#OnClick_Search" text="Search" AnchorPane.rightAnchor="170.0" />
-            <Label layoutX="537.0" layoutY="10.0" text="Search by:" AnchorPane.rightAnchor="110.0" />
-            <CheckBox fx:id="CheckBox_AvailableOnly" layoutX="15.0" layoutY="34.0" mnemonicParsing="false" onAction="#OnClick_AvailableOnly" text="Available Rooms Only" AnchorPane.leftAnchor="15.0" />
-            <Button layoutX="517.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_ViewSelected" prefHeight="26.0" prefWidth="106.0" text="View Selected" AnchorPane.rightAnchor="60.0" />
-            <Label layoutX="14.0" layoutY="5.0" text="Search for the Perfect Hotel" underline="true">
+            <TableView fx:id="TableView_Hotels" layoutX="-9.0" layoutY="91.0" prefHeight="298.0" prefWidth="665.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+              <columns>
+                <TableColumn fx:id="Column_Hotel" editable="false" minWidth="0.0" prefWidth="113.59997844696045" text="Hotel" />
+                <TableColumn fx:id="Column_Description" editable="false" minWidth="0.0" prefWidth="180.00001525878906" sortable="false" text="Description" />
+                  <TableColumn editable="false" maxWidth="376.00007247924805" minWidth="0.0" prefWidth="189.0" sortable="false" text="Available Rooms">
+                     <columns>
+                        <TableColumn fx:id="Column_Standard" editable="false" prefWidth="60.0" text="Standard" />
+                        <TableColumn fx:id="Column_Queen" editable="false" prefWidth="60.0" text="Queen" />
+                        <TableColumn fx:id="Column_King" editable="false" prefWidth="60.0" text="King" />
+                     </columns>
+                  </TableColumn>
+                  <TableColumn editable="false" maxWidth="344.800048828125" minWidth="0.0" prefWidth="185.0" sortable="false" text="Room Prices">
+                     <columns>
+                        <TableColumn fx:id="Column_StandardPrices" editable="false" prefWidth="60.0" text="Standard" />
+                        <TableColumn fx:id="Column_QueenPrices" editable="false" prefWidth="72.0" text="Queen" />
+                        <TableColumn fx:id="Column_KingPrices" editable="false" prefWidth="62.0" text="King" />
+                     </columns>
+                  </TableColumn>
+              </columns>
+            </TableView>
+            <DatePicker fx:id="DatePicker_From" layoutX="41.0" layoutY="49.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="50.0" />
+            <DatePicker fx:id="DatePicker_To" layoutX="149.0" layoutY="49.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="155.0" />
+            <TextField fx:id="TextField_Search" layoutX="276.0" layoutY="49.0" AnchorPane.rightAnchor="285.0" />
+            <ChoiceBox fx:id="ChoiceBox_SearchBy" layoutX="534.0" layoutY="16.0" prefWidth="145.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+            <Button layoutX="425.0" layoutY="49.0" mnemonicParsing="false" onAction="#OnClick_Search" text="Search" AnchorPane.rightAnchor="230.0" />
+            <Label layoutX="460.0" layoutY="22.0" text="Search by:" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="15.0" />
+            <CheckBox fx:id="CheckBox_AvailableOnly" layoutX="543.0" layoutY="49.0" mnemonicParsing="false" onAction="#OnClick_AvailableOnly" text="Available Rooms Only" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
+            <Button layoutX="517.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_ViewSelected" prefHeight="26.0" prefWidth="106.0" text="View Selected" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="60.0" />
+            <Label layoutX="14.0" layoutY="5.0" text="Search for the Perfect Hotel" underline="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="615.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_Back" text="Back" AnchorPane.rightAnchor="10.0" />
+            <Button layoutX="615.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_Back" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
+            <Label layoutX="480.0" layoutY="50.0" text="Filter By:" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="50.0" />
+            <Label layoutX="138.0" layoutY="53.0" text="To" AnchorPane.leftAnchor="135.0" />
+            <Label layoutX="14.0" layoutY="53.0" text="From" AnchorPane.leftAnchor="15.0" />
       </children>
     </AnchorPane>
   </children>
