@@ -105,6 +105,14 @@ public class CreateAccountPageController {
 
         System.out.println("Account Created!");
 
+        if(newAccount.isManager()){
+            ManagerHotelCreationController.isEdit = false;
+            ManagerHotelCreationController.Instance.newManager = dm.FindAccountByUsername(newAccount.getUsername());
+            ManagerHotelCreationController.Instance.reinitialize();
+            PageManager.SetPage("ManagerHotelCreation", "Create your Hotel!");
+            return;
+        }
+
         PageManager.SetPage("Login", "Welcome! - Login");
     }
 

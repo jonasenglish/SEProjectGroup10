@@ -26,8 +26,10 @@ public class ManagerViewController {
   }
 
 	@FXML
-  void OnClick_CreateHotel(ActionEvent event) {
-		PageManager.SetPage("ManagerHotelCreation", "Create Hotel");
+  void OnClick_EditHotel(ActionEvent event) {
+    ManagerHotelCreationController.isEdit = true;
+    ManagerHotelCreationController.Instance.reinitialize();
+		PageManager.SetPage("ManagerHotelCreation", "Edit Hotel");
   }
 
   // Added a profile action button to open the profile
@@ -38,12 +40,13 @@ public class ManagerViewController {
   
   @FXML
   void OnClick_Reserve(ActionEvent event) {
+    CreateReservationController.selectedHotel = App.currentHotel;
 	  PageManager.SetPage("CreateReservation", "Create a Reservation!");
   }
 
   @FXML
-  void OnClick_Search(ActionEvent event) {
-    PageManager.SetPage("HotelSearchView", "Search for a Hotel!");
+  void OnClick_Employees(ActionEvent event) {
+    //Employee edit view
   }
 
 }
