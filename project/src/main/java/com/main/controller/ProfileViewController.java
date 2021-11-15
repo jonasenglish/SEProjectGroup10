@@ -63,6 +63,8 @@ public class ProfileViewController{
 
     @FXML
     void OnClick_Edit(ActionEvent event) {
+        //DatabaseManager dm = DatabaseManager.instance;
+        //Account account = dm.FindAccountByUsername(App.currentUser.getUsername());
         resetErrorDisplay();
         TextField_Username.setVisible(true);
         TextField_Email.setVisible(true);
@@ -88,6 +90,8 @@ public class ProfileViewController{
                         if(new_username.equals(App.currentUser.getUsername())) { // check if username is taken but not theirs
                             // username stays the same or new username was entered
                             account.setUsername(new_username);
+                            account.setEmail(new_email);
+                            dm.UpdateAccount(account);
 
                             System.out.println("Account info updated!\n" + new_username);
                             System.out.println(new_email);
@@ -102,7 +106,9 @@ public class ProfileViewController{
                     if(dm.FindAccountByEmail(new_email) != null) { // check database if email is taken
                         if(new_email.equals(App.currentUser.getEmail())) { // check if email is taken but not theirs
                             // email stays the same or new email was entered
+                            account.setUsername(new_username);
                             account.setEmail(new_email);
+                            dm.UpdateAccount(account);
 
                             System.out.println("Account info updated!\n" + new_username);
                             System.out.println(new_email);
