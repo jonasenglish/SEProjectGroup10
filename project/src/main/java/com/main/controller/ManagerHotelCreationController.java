@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.event.ChangeListener;
+
 import com.main.App;
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
@@ -12,6 +14,7 @@ import com.main.objects.Amenity;
 import com.main.objects.Hotel;
 import com.main.objects.Amenity.AmenityType;
 import com.main.pages.PageManager;
+import com.main.tools.PopupHandler;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -89,6 +92,7 @@ public class ManagerHotelCreationController implements Initializable {
 
         if(!isEdit && dm.FindHotelByName(TextField_HotelName.getText()) != null){
             System.err.println("Error: A hotel with that name already exists!");
+            PopupHandler.ShowError("A Hotel with the name" + TextField_HotelName.getText() + "already exists!\nPlease use a different name.");
             return;
         }
 

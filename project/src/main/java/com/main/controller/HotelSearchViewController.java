@@ -157,7 +157,6 @@ public class HotelSearchViewController implements Initializable {
                         hotel.setQueenRooms(hotel.getQueenRooms() - reservation.getRooms());
                     if(reservation.getRoomType().equals("King")){
                         hotel.setKingRooms(hotel.getKingRooms() - reservation.getRooms());
-                        System.out.println("Pling");
                     }
                 }
             }

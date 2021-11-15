@@ -88,7 +88,8 @@ public class HotelViewController implements Initializable {
     @FXML
     void OnClick_BookRoom(ActionEvent event) {
 		// Switch to reservation view page
-        CreateReservationController.selectedHotel = currentHotel;
+        CreateReservationController.Instance.selectedHotel = currentHotel;
+        CreateReservationController.Instance.reinitialize();
         PageManager.SetPage("CreateReservation", "Create Reservation");
 		return;
     }

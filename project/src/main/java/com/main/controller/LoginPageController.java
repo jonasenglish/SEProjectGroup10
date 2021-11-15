@@ -6,6 +6,7 @@ import com.main.objects.Account;
 import com.main.objects.Hotel;
 import com.main.pages.PageManager;
 import com.main.tools.PasswordUtils;
+import com.main.tools.PopupHandler;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -80,11 +81,13 @@ public class LoginPageController {
 
     private void Error_AccountWithUsernameNotFound() {
         err = true;
+        PopupHandler.ShowError("Could not find account with given Username!");
         System.err.println("Could not find account with given username!");
     }
 
     private void Error_PasswordIncorrect(){
         err = true;
+        PopupHandler.ShowError("Password does not match given Username!");
         System.err.println("Password Incorrect!");
     }
 }

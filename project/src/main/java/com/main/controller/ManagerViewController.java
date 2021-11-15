@@ -40,7 +40,8 @@ public class ManagerViewController {
   
   @FXML
   void OnClick_Reserve(ActionEvent event) {
-    CreateReservationController.selectedHotel = App.currentHotel;
+    CreateReservationController.Instance.selectedHotel = App.currentHotel;
+    CreateReservationController.Instance.reinitialize();
 	  PageManager.SetPage("CreateReservation", "Create a Reservation!");
   }
 
