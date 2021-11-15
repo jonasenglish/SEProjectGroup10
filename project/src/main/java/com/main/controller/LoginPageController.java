@@ -67,7 +67,7 @@ public class LoginPageController {
         
         App.currentUser = account;
 
-        if(account.isManager()){
+        if(account.isManager() || account.isEmployee()){
             Hotel hotel = dm.FindHotelByID(account.getHotelID());
             App.currentHotel = hotel;
         }

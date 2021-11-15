@@ -65,7 +65,8 @@ public class EmployeeViewController {
 
     @FXML
     void OnClick_HotelOverview(ActionEvent event) {
-      PageManager.SetPage("HotelOverview", "Welcome to " + App.currentHotel.getName() + "!");
+      HotelViewController.Instance.ViewHotel(App.currentHotel);
+      PageManager.SetPage("HotelView", "Welcome to " + App.currentHotel.getName() + "!");
     }
 
     @FXML

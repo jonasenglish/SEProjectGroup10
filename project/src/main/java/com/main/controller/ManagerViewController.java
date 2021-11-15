@@ -47,7 +47,7 @@ public class ManagerViewController {
 
   @FXML
   void OnClick_Employees(ActionEvent event) {
-    //Employee edit view
+    PageManager.SetPage("CreateEmployeeAccount", "Create an Employee Account");
   }
 
 }
