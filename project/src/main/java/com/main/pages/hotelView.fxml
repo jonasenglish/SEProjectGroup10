@@ -8,39 +8,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.HotelViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="520.0" style="-fx-background-color: #227c9d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.HotelViewController">
    <children>
-      <Label fx:id="Label_HotelName" layoutX="207.0" layoutY="14.0" text="Hotel Name" AnchorPane.topAnchor="14.0">
+      <Label fx:id="Label_HotelName" layoutX="173.0" layoutY="14.0" text="Hotel Name" AnchorPane.topAnchor="14.0">
          <font>
-            <Font size="20.0" />
+            <Font name="Serif Regular" size="36.0" />
          </font>
       </Label>
       <Label layoutX="64.0" layoutY="129.0" text="No Image Available" />
       <ImageView fx:id="ImageView_HotelImage" fitHeight="165.0" fitWidth="215.0" layoutX="14.0" layoutY="55.0" pickOnBounds="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="55.0" />
       <Label fx:id="Label_Description" alignment="TOP_LEFT" layoutX="251.0" layoutY="55.0" prefHeight="165.0" prefWidth="265.0" text="dmnlksandklasndlkasn dlkasndkl nsakldn aslkdnl asndklsn lkdnklsan dlksandkl asndlkasn dlksandlk asndlkasnd  dawkdshjn alkdhnlkas ndklasnd klsandlk asnkdlaskl daslkdn kaslndlk dsmak;lDFMCl;asDM fv;ldsmj kgornealgmrwpof jml.e,wsn amfp;'oelwmf p:&quot;k&lt;f:LNM Efm:fME ;FMSLmfd;L KNMELmf :lfm ;Elfm :fLMEDSFP;'OLM f&quot;:JKEM &quot;fgmj :h?lemSFWEMfP'ELjmGP;' LEM:g MES:?G JM:lgMEP;OMGP;LEM;Lgm ;LMg: EM;SM;LGM;LEM;GLM :lEG;'m :gmg ;Emg:lEMSo(p)frjk3PWOEJNTREJUKWYT89E4WTU7-)#*utPO34j;L$wjmg? &gt;" wrapText="true" AnchorPane.rightAnchor="15.0" />
-      <Label layoutX="54.0" layoutY="220.0" text="Rooms Available" AnchorPane.topAnchor="230.0" />
-      <Label layoutX="15.0" layoutY="250.0" text="Standard" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="250.0" />
-      <Label layoutX="80.0" layoutY="250.0" text="Queen" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="250.0" />
-      <Label layoutX="156.0" layoutY="252.0" text="King" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="250.0" />
+      <Label layoutX="37.0" layoutY="229.0" text="Rooms Available" AnchorPane.topAnchor="229.0">
+         <font>
+            <Font name="Serif Regular" size="18.0" />
+         </font></Label>
+      <Label layoutX="14.0" layoutY="250.0" text="Standard" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="250.0" />
+      <Label layoutX="82.0" layoutY="250.0" text="Queen" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="250.0" />
+      <Label layoutX="156.0" layoutY="250.0" text="King" AnchorPane.leftAnchor="156.0" AnchorPane.topAnchor="250.0" />
       <Label fx:id="Label_StandardRoomNum" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="19.0" layoutY="267.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="265.0" />
-      <Label fx:id="Label_QueenRoomNum" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="72.0" layoutY="267.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.leftAnchor="135.0" AnchorPane.topAnchor="265.0" />
+      <Label fx:id="Label_QueenRoomNum" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="135.0" layoutY="265.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.leftAnchor="135.0" AnchorPane.topAnchor="265.0" />
       <Label fx:id="Label_KingRoomNum" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="74.0" layoutY="265.0" prefHeight="17.0" prefWidth="48.0" text="0" textAlignment="RIGHT" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="265.0" />
-      <Label layoutX="46.0" layoutY="282.0" text="Base Room Pricings" AnchorPane.topAnchor="285.0" />
+      <Label layoutX="27.0" layoutY="284.0" text="Base Room Pricings" AnchorPane.topAnchor="284.0">
+         <font>
+            <Font name="Serif Regular" size="18.0" />
+         </font></Label>
       <Label layoutX="11.0" layoutY="310.0" text="Standard" AnchorPane.topAnchor="305.0" />
       <Label layoutX="76.0" layoutY="310.0" text="Queen" AnchorPane.topAnchor="305.0" />
       <Label layoutX="155.0" layoutY="305.0" text="King" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="305.0" />
       <Label fx:id="Label_StandardRoomPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="15.0" layoutY="327.0" prefHeight="17.0" prefWidth="48.0" text="1.00$" textAlignment="RIGHT" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="320.0" />
       <Label fx:id="Label_QueenRoomPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="63.0" layoutY="320.0" prefHeight="17.0" prefWidth="48.0" text="1.00$" textAlignment="RIGHT" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="320.0" />
       <Label fx:id="Label_KingRoomPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="131.0" layoutY="320.0" prefHeight="17.0" prefWidth="48.0" text="1.00$" textAlignment="RIGHT" AnchorPane.leftAnchor="135.0" AnchorPane.topAnchor="320.0" />
-      <Label layoutX="240.0" layoutY="230.0" text="Weekend Differential: " AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="230.0" />
-      <Label fx:id="Label_WeekendDifferential" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="360.0" layoutY="230.0" prefHeight="17.0" prefWidth="48.0" text="1%" textAlignment="RIGHT" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="230.0" />
-      <TableView fx:id="TableView_Amenities" layoutX="15.0" layoutY="354.0" prefHeight="271.0" prefWidth="490.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+      <Label layoutX="239.0" layoutY="231.0" style="-fx-font-weight: 4;" text="Weekend Differential: " AnchorPane.rightAnchor="151.5" AnchorPane.topAnchor="231.0">
+         <font>
+            <Font name="Serif Regular" size="14.0" />
+         </font></Label>
+      <Label fx:id="Label_WeekendDifferential" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="360.0" layoutY="230.0" prefHeight="17.0" prefWidth="48.0" text="1%" textAlignment="RIGHT" textFill="#fe6d73" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="230.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <TableView fx:id="TableView_Amenities" layoutX="15.0" layoutY="354.0" prefHeight="271.0" prefWidth="490.0" style="-fx-border-color: #ffcb77; -fx-border-width: 4;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
         <columns>
-            <TableColumn prefWidth="111.0" text="Amenities">
+            <TableColumn prefWidth="477.0" style="-fx-background-color: #17c3b2; -fx-border-color: black; -fx-border-width: 0.5;" text="Amenities">
                <columns>
-                <TableColumn fx:id="name" prefWidth="111.0" text="Name" />
-                <TableColumn fx:id="amenityType" prefWidth="111.0" text="Type" />
-                  <TableColumn fx:id="description" prefWidth="255.0" sortable="false" text="Description" />
+                <TableColumn fx:id="name" prefWidth="111.0" style="-fx-background-color: #fe6d73; -fx-border-color: black; -fx-border-width: 0.5;" text="Name" />
+                <TableColumn fx:id="amenityType" prefWidth="111.0" style="-fx-background-color: #fe6d73; -fx-border-color: black; -fx-border-width: 0.5;" text="Type" />
+                  <TableColumn fx:id="description" prefWidth="255.0" sortable="false" style="-fx-background-color: #fe6d73; -fx-border-color: black; -fx-border-width: 0.5;" text="Description" />
                </columns>
             </TableColumn>
         </columns>
