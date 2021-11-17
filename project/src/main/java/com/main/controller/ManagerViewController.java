@@ -20,12 +20,13 @@ public class ManagerViewController {
   @FXML
   private Label WelcomeLabel;
 
+/*
   @FXML
   public void Initialize(ActionEvent onContextMenuRequested) {
     WelcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
     WelcomeLabel.setVisible(true);
     //WelcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
-  }
+  }*/
 
 	@FXML
   void OnClick_EditHotel(ActionEvent event) {

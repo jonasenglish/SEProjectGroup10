@@ -6,6 +6,8 @@ import com.main.App;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 // Manages switching pages(scenes) such as from Login Page to Account Creation Page, and so on.
@@ -41,10 +43,12 @@ public class PageManager {
         }
         
         Stage primaryStage = App.pStage; // Retrieving Primary Stage
-
+        
+        
         primaryStage.setTitle(title);
         primaryStage.setScene(scene);
         primaryStage.setResizable(resizable);
+        primaryStage.getIcons().add(new Image("/SEProjectGroup10/project/src/main/java/com/main/pictures/HH-yellow.png"));
 
         primaryStage.show();
     }
