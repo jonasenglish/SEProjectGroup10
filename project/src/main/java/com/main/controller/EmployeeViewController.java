@@ -46,6 +46,9 @@ public class EmployeeViewController implements Initializable{
     private Button Button_ViewReservation;
 
     @FXML
+    private Button Button_Logout;
+
+    @FXML
     private TextField TextField_NumberOfPeople;
 
     @FXML
@@ -156,6 +159,11 @@ public class EmployeeViewController implements Initializable{
     @FXML
     void OnInput_NumberOfRooms(ActionEvent event) {
 
+    }
+
+    @FXML
+    void OnClickButton_Logout(ActionEvent event){
+      PageManager.SetPage("Login", "Welcome!");
     }
 
     @Override

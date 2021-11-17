@@ -106,6 +106,7 @@
                   <Font size="11.0" />
                </font></Button>
             <Button fx:id="Button_HotelOverview" mnemonicParsing="false" onAction="#OnClick_HotelOverview" prefHeight="70.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Hotel Overview" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="Button_Logout" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#OnClickButton_Logout" style="-fx-background-color: #fef9ef;" text="Logout" textFill="#fe6d73" />
          </children>
          <padding>
             <Insets bottom="5.0" left="8.0" top="10.0" />
