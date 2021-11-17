@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,35 +17,27 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.EmployeeViewController">
    <top>
-      <SplitPane dividerPositions="0.8425802139037432" prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <SplitPane prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="502.0" style="-fx-background-color: #227c9d;" SplitPane.resizableWithParent="false">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="502.0" scaleShape="false" style="-fx-background-color: #227c9d;" SplitPane.resizableWithParent="false">
                <children>
                   <Label fx:id="WelcomeLabel" layoutX="51.0" layoutY="19.0" onContextMenuRequested="#Initialize" prefHeight="57.0" prefWidth="426.0" text="Welcome Employee!">
                      <font>
                         <Font name="Serif Regular" size="48.0" />
                      </font>
                   </Label>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="82.0" scaleShape="false" />
+                  <ImageView fitHeight="111.0" fitWidth="137.0" layoutX="500.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../pictures/blue.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="profileImage" fitHeight="223.0" fitWidth="243.0" layoutX="446.0" layoutY="-47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../pictures/3387A194-8E82-4141-9336-2CE839887B52.png" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="89.0" prefWidth="82.0" SplitPane.resizableWithParent="false">
-               <children>
-                  <Button fx:id="Button_Profile" layoutY="-1.0" minHeight="89.0" minWidth="90.0" mnemonicParsing="false" onAction="#OnClick_Profile" prefHeight="90.0" prefWidth="92.0" style="-fx-background-color: #fe6d73;">
-                     <font>
-                        <Font name="NanumGothic" size="17.0" />
-                     </font>
-                     <tooltip>
-                        <Tooltip text="Profile" />
-                     </tooltip>
-                     <graphic>
-                        <ImageView fx:id="profileImage" fitHeight="59.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../pictures/user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </AnchorPane>
         </items>
       </SplitPane>
    </top>
@@ -77,25 +68,30 @@
             <TextField fx:id="TextField_NumberOfRooms" layoutX="199.0" layoutY="65.0" onAction="#OnInput_NumberOfRooms" prefHeight="25.0" prefWidth="180.0" />
             <TextField fx:id="TextField_NumberOfPeople" layoutX="199.0" layoutY="135.0" onAction="#OnInput_NumberOfPeople" prefHeight="25.0" prefWidth="180.0" />
             <ChoiceBox fx:id="choice_RoomType" layoutX="199.0" layoutY="100.0" prefHeight="25.0" prefWidth="180.0" />
-            <Label layoutX="96.0" layoutY="184.0" text="Check-In:">
+            <Label layoutX="82.0" layoutY="178.0" text="Check-In:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="310.0" layoutY="184.0" text="Check-Out:">
+            <Label layoutX="300.0" layoutY="178.0" text="Check-Out:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <DatePicker fx:id="dp_CheckIn" layoutX="42.0" layoutY="210.0" onAction="#OnInput_CheckIn" />
             <DatePicker fx:id="dp_CheckOut" layoutX="263.0" layoutY="209.0" onAction="#OnInput_Checkout" />
-            <Label layoutX="123.0" layoutY="265.0" text="Total:">
+            <Label layoutX="96.0" layoutY="265.0" text="Total:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="TextField_Total" editable="false" layoutX="214.0" layoutY="265.0" />
+            <TextField fx:id="TextField_Total" editable="false" layoutX="151.0" layoutY="265.0" />
             <Line endX="510.0" endY="40.0" layoutX="-4.0" layoutY="210.0" startX="20.0" startY="40.0" stroke="#2078a1" strokeWidth="3.0" />
+            <Button fx:id="Button_Calculate" layoutX="375.0" layoutY="262.0" mnemonicParsing="false" onAction="#OnClick_Calculate" prefHeight="32.0" prefWidth="90.0" text="Calculate">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
    </center>
    <right>

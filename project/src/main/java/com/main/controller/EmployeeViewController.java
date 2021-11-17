@@ -1,11 +1,22 @@
 package com.main.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
+import java.util.Date;
+
 import com.main.App;
-import com.main.objects.Hotel;
 import com.main.pages.PageManager;
+import com.main.objects.Account;
+import com.main.database.DatabaseManager;
+import com.main.objects.Hotel;
+import com.main.objects.Reservation;
+import com.main.tools.PopupHandler;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -14,16 +25,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
 
-public class EmployeeViewController {
+public class EmployeeViewController implements Initializable{
+
+    @FXML
+    private Button Button_Calculate;
 
     @FXML
     private Button Button_CreateReservations;
 
     @FXML
     private Button Button_HotelOverview;
-
-    @FXML
-    private Button Button_Profile;
 
     @FXML
     private Button Button_ViewReservation;
@@ -41,7 +52,7 @@ public class EmployeeViewController {
     private Label WelcomeLabel;
 
     @FXML
-    private ChoiceBox<Hotel.RoomType> choice_RoomType;
+    private ChoiceBox<String> choice_RoomType;
 
     @FXML
     private DatePicker dp_CheckIn;
@@ -52,15 +63,62 @@ public class EmployeeViewController {
     @FXML
     private ImageView profileImage;
 
+    /////////////////////////////////////////
+    
+    ////////////////////////////////////////
+
     @FXML
     void Initialize(ContextMenuEvent event) {
+    }
+
+    @FXML
+    public long numberOfNights() {
+	  LocalDate dateBefore = dp_CheckIn.getValue();
+    LocalDate dateAfter = dp_CheckOut.getValue();
+    long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore, dateAfter);
+    return noOfDaysBetween;
+    }
+
+
+    @FXML
+    void OnClick_Calculate(ActionEvent event) {
+
+      DatabaseManager dm = DatabaseManager.instance;
+      Account account = App.currentUser;
+      Hotel hotel = dm.FindHotelByID(account.getHotelID());
+      App.currentHotel = hotel;
+
+      int numRooms = Integer.parseInt(TextField_NumberOfRooms.getText());
+
+      String roomType = choice_RoomType.getValue();
+      double roomTypePrice = 0.00;
+
+      if(roomType.equals("King"))
+        roomTypePrice = hotel.getRoomPriceKing();
+      else if(roomType.equals("Queen"))
+        roomTypePrice = hotel.getRoomPriceQueen();
+      else if(roomType.equals("Standard"))
+        roomTypePrice = hotel.getRoomPriceStandard();
+      
+      int numPeople = Integer.parseInt(TextField_NumberOfPeople.getText());
+      
+      long numOfNights = numberOfNights(); 
+      //Math
+      double total = (((numRooms*roomTypePrice)*numOfNights)*numPeople);
+      
+      String formatTotal;
+
+      formatTotal = String.format("$%.2f", total);
+
+      TextField_Total.setText(formatTotal);
 
     }
 
     @FXML
     void OnClick_CreateReservations(ActionEvent event) {
-      PageManager.SetPage("CreateReservation", "Create a reservation!");
-
+      Hotel currentHotels = DatabaseManager.instance.FindHotelByID(App.currentUser.getHotelID());
+      App.currentHotel = currentHotels;
+      PageManager.SetPage("CreateReservation", "Create your reservation!");
     }
 
     @FXML
@@ -70,13 +128,8 @@ public class EmployeeViewController {
     }
 
     @FXML
-    void OnClick_Profile(ActionEvent event) {
-      PageManager.SetPage("ProfileView", "Profile View for: " + App.currentHotel.getName());
-    }
-
-    @FXML
     void OnClick_ViewReservation(ActionEvent event) {
-      PageManager.SetPage("ReservationView", "Reservations!");
+      PageManager.SetPage("ReservationView", "Current Reservation");
     }
 
     @FXML
@@ -99,8 +152,9 @@ public class EmployeeViewController {
 
     }
 
-    @FXML
-    void getQuote() {
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+      // TODO Auto-generated method stub
+      choice_RoomType.getItems().addAll("King", "Queen", "Standard");
     }
 }
