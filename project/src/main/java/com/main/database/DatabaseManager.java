@@ -11,9 +11,11 @@ import com.main.App;
 import com.main.objects.Account;
 import com.main.objects.Hotel;
 import com.main.objects.Reservation;
+import com.main.tools.PopupHandler;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
@@ -126,7 +128,7 @@ public class DatabaseManager {
     public List<Reservation> FindReservationsByAccount(Account account){
         List<Reservation> reservations = new LinkedList<>();
 
-        Bson filter = eq("_id", account.getID());
+        Bson filter = eq("Reservee", account.getID());
         FindIterable<Document> documentResults = reservationCollection.find(filter);
         for(Document doc : documentResults){
             reservations.add(Reservation.ToReservation(doc));
@@ -260,6 +262,24 @@ public class DatabaseManager {
         return reservationsFound;
     }
 
+    public List<Reservation> FindReservationsByEmployeeHotel(){
+        if(!(App.currentUser.isEmployee() || App.currentUser.isManager())){
+            PopupHandler.ShowError("FindReservationsByEmployeeHotel Called by a Customer account!");
+            return null;
+        }
+
+        List<Reservation> reservations = FindAllReservations();
+
+        List<Reservation> reservationsFound = new ArrayList<>();
+
+        for (Reservation reservation : reservations) {
+            if(reservation.getHotel().equals(App.currentHotel.getID()))
+                reservationsFound.add(reservation);
+        }
+
+        return reservationsFound;
+    }
+
     // Inserts
     public void InsertAccount(Account account){
         accountCollection.insertOne(account.ToDocument());
@@ -281,12 +301,14 @@ public class DatabaseManager {
 
     public void DeleteHotel(Hotel hotel){
         Bson filter = and(eq("_id", hotel.getID()));
-        accountCollection.deleteOne(filter);
+        hotelCollection.deleteOne(filter);
     }
 
     public void DeleteReservation(Reservation reservation){
+        System.out.println(reservation.getID());
         Bson filter = and(eq("_id", reservation.getID()));
-        accountCollection.deleteOne(filter);
+        DeleteResult result = reservationCollection.deleteOne(filter);
+        System.out.println(result.getDeletedCount());
     }
 
     // Update

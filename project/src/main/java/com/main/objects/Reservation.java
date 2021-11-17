@@ -18,7 +18,7 @@ public class Reservation {
 
     // The ID of the Hotel and the Room that has been reserved
     private ObjectId hotel = null;
-    private String room = null;
+    private String roomType = "";
 
     //Number of Items given in the Reservation Window
     private int nights = 0;
@@ -42,11 +42,11 @@ public class Reservation {
     }
 
     public String getRoomType() {
-        return room;
+        return roomType;
     }
 
     public void setRoomType(String room) {
-        this.room = room;
+        this.roomType = room;
     }
 
     public ObjectId getID() {
@@ -147,7 +147,7 @@ public class Reservation {
         document.append("Number of Rooms", this.rooms);
         document.append("Number of Adults", this.adults);
         document.append("Number of Children", this.children);
-        document.append("Room Type",this.room);
+        document.append("Room Type",this.roomType);
         document.append("Customer Name", this.customerName);
         document.append("Customer Email", this.customerEmail);
         document.append("Customer Phone Number", this.customerPhoneNumber);
@@ -171,7 +171,7 @@ public class Reservation {
         reservation.rooms = (int) document.get("Number of Rooms");
         reservation.adults = (int) document.get("Number of Adults");
         reservation.children = (int) document.get("Number of Children");
-        reservation.room = (String) document.get("Room Type");
+        reservation.roomType = (String) document.get("Room Type");
         reservation.customerName = (String) document.get("Customer Name");
         reservation.customerEmail = (String) document.get("Customer Email");
         reservation.customerPhoneNumber = (String) document.get("Customer Phone Number");

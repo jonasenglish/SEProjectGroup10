@@ -10,9 +10,13 @@ import java.time.Instant;
 
 import com.main.App;
 import com.main.database.DatabaseManager;
+import com.main.objects.Account;
 import com.main.objects.Hotel;
 import com.main.objects.Reservation;
+import com.main.pages.PageManager;
 import com.main.tools.PopupHandler;
+
+import org.bson.types.ObjectId;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +31,10 @@ public class CreateReservationController implements Initializable {
 
     public static CreateReservationController Instance;
     public Hotel selectedHotel;
+
+    private boolean isEdit = false;
+    private ObjectId reservationID = null;
+    private ObjectId reservee = null;
 
     @FXML
     private Button Button_Cancel;
@@ -78,9 +86,30 @@ public class CreateReservationController implements Initializable {
 
     private String[] roomTypeArray = {"Standard", "King", "Queen"};
 
+    private void ClearValues(){
+        hotelName.setText("");
+
+        arrivalDate.setValue(null);
+        departureDate.setValue(null);
+
+        numNights.setText("");
+        numRooms.setText("");
+        numAdults.setText("");
+        numChildren.setText("");
+
+        roomType.setValue("Standard");
+
+        customerName.setText("");
+        customerEmail.setText("");
+        customerPhone.setText("");
+    }
+
     public void reinitialize(){
+        ClearValues();
         selectedHotel = DatabaseManager.instance.FindHotelByID(selectedHotel.getID()); // To get correct room values;
         hotelName.setText(selectedHotel.getName());
+
+        isEdit = false;
     }
 
     private void AvailableRooms(){
@@ -121,7 +150,7 @@ public class CreateReservationController implements Initializable {
 
     @FXML
     void OnChange_ArrivalDate(ActionEvent event) {
-        if(departureDate.getValue() != null){
+        if(departureDate.getValue() != null && arrivalDate.getValue() != null){
             if(departureDate.getValue().isBefore(arrivalDate.getValue())){
                 PopupHandler.ShowError("Departure Date cannot be before Arrival Date!");
                 return;
@@ -133,7 +162,7 @@ public class CreateReservationController implements Initializable {
 
     @FXML
     void OnChange_DepartureDate(ActionEvent event) {
-        if(arrivalDate.getValue() != null){
+        if(arrivalDate.getValue() != null && departureDate.getValue() != null){
             if(departureDate.getValue().isBefore(arrivalDate.getValue())){
                 PopupHandler.ShowError("Departure Date cannot be before Arrival Date!");
                 return;
@@ -145,7 +174,10 @@ public class CreateReservationController implements Initializable {
 
     @FXML
     void OnClick_Cancel(ActionEvent event) {
-		App.AccountTypeView();
+        if(!isEdit)
+		    App.AccountTypeView();
+        else
+            PageManager.SetPage("ReservationView", "Reservations");
     }
 
     @FXML
@@ -169,7 +201,10 @@ public class CreateReservationController implements Initializable {
 
 		Reservation reservations = new Reservation();
        
-        reservations.setReservee(App.currentUser.getID());
+        if(!isEdit)
+            reservations.setReservee(App.currentUser.getID());
+        else
+            reservations.setReservee(reservee);
 
 		reservations.setStartDate(date);
         reservations.setEndDate(date2);
@@ -179,7 +214,6 @@ public class CreateReservationController implements Initializable {
         reservations.setAdults(Integer.parseInt(numAdults.getText()));
         reservations.setChildren(Integer.parseInt(numChildren.getText()));
         reservations.setRoomType(roomType.getValue());
-
 
         reservations.setCustomerName(customerName.getText());
         reservations.setCustomerEmail(customerEmail.getText());
@@ -208,7 +242,12 @@ public class CreateReservationController implements Initializable {
                 break;
         }
 
-        dm.InsertReservation(reservations);
+        if(!isEdit)
+            dm.InsertReservation(reservations);
+        else{
+            reservations.setID(reservationID);
+            dm.UpdateReservation(reservations);
+        }
 
         App.AccountTypeView();
     }
@@ -220,5 +259,31 @@ public class CreateReservationController implements Initializable {
 
         roomType.getItems().addAll(roomTypeArray);
         
-    }   
+    }
+
+    public void edit(Reservation selected){
+        isEdit = true;
+
+        reservationID = selected.getID();
+        reservee = selected.getID();
+        selectedHotel = DatabaseManager.instance.FindHotelByID(selected.getHotel());
+
+        hotelName.setText(selectedHotel.getName());
+
+        arrivalDate.setValue(selected.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        departureDate.setValue(selected.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+        numNights.setText(selected.getNights() + "");
+        numRooms.setText("" + selected.getRooms());
+        numAdults.setText("" + selected.getAdults());
+        numChildren.setText("" + selected.getChildren());
+
+        roomType.setValue(selected.getRoomType());
+
+        customerName.setText(selected.getCustomerName());
+        customerEmail.setText(selected.getCustomerEmail());
+        customerPhone.setText(selected.getCustomerPhoneNumber());
+
+        AvailableRooms();
+    }
 }

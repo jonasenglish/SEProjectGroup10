@@ -129,7 +129,8 @@ public class EmployeeViewController implements Initializable{
 
     @FXML
     void OnClick_ViewReservation(ActionEvent event) {
-      PageManager.SetPage("ReservationView", "Current Reservation");
+      ReservationViewController.Instance.init_employee();
+      PageManager.SetPage("ReservationView", "Reservations!");
     }
 
     @FXML
