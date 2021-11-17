@@ -37,8 +37,6 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -47,9 +45,9 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #227c9d;" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="195.0" layoutY="24.0" style="&#10;" text="Create Your Account" textAlignment="CENTER" textFill="#ffcb77" wrapText="false">
+        <Label alignment="CENTER" layoutX="213.0" layoutY="29.0" style="&#10;" text="Create Your Account" textAlignment="CENTER" textFill="#ffcb77" wrapText="false">
           <font>
-            <Font name="Serif Regular" size="30.0" />
+            <Font name="Serif Regular" size="25.0" />
           </font>
         </Label>
             <Label layoutX="136.0" layoutY="100.0" text="Username:">
@@ -76,7 +74,7 @@
             <PasswordField fx:id="TextField_RetypePassword" layoutX="228.0" layoutY="198.0" prefHeight="25.0" prefWidth="185.0" />
             <TextField fx:id="TextField_Email" layoutX="228.0" layoutY="248.0" prefHeight="25.0" prefWidth="185.0" />
             <TextField fx:id="TextField_Username" layoutX="228.0" layoutY="98.0" prefHeight="25.0" prefWidth="185.0" />
-            <Button fx:id="Button_CreateAccount" layoutX="486.0" layoutY="315.0" mnemonicParsing="false" onAction="#OnClickButton_CreateAccount" text="Create Account">
+            <Button fx:id="Button_CreateAccount" layoutX="272.0" layoutY="315.0" mnemonicParsing="false" onAction="#OnClickButton_CreateAccount" text="Create Account">
                <font>
                   <Font name="NanumGothic" size="13.0" />
                </font></Button>
@@ -89,11 +87,6 @@
                <font>
                   <Font name="NanumGothic" size="13.0" />
                </font></Button>
-            <ImageView fitHeight="170.0" fitWidth="192.0" layoutX="-18.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pictures/3387A194-8E82-4141-9336-2CE839887B52.png" />
-               </image>
-            </ImageView>
       </children>
     </AnchorPane>
   </children>

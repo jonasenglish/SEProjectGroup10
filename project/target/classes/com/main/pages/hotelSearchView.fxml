@@ -40,61 +40,51 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="420.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.HotelSearchViewController">
+<VBox prefHeight="420.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.HotelSearchViewController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="390.0" prefWidth="640.0" style="-fx-background-color: #227c9d;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="390.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <TableView fx:id="TableView_Hotels" layoutX="12.0" layoutY="91.0" prefHeight="263.0" prefWidth="673.0" style="-fx-border-color: #ffcb77; -fx-border-width: 4; -fx-background-color: #fef9ef;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="15.0">
+            <TableView fx:id="TableView_Hotels" layoutX="-9.0" layoutY="91.0" prefHeight="298.0" prefWidth="665.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
               <columns>
-                <TableColumn fx:id="Column_Hotel" editable="false" minWidth="0.0" prefWidth="113.59997844696045" style="-fx-background-color: #17c3b2; -fx-border-color: black;" text="Hotel" />
-                <TableColumn fx:id="Column_Description" editable="false" minWidth="0.0" prefWidth="180.00001525878906" sortable="false" style="-fx-background-color: #17c3b2; -fx-border-color: black;" text="Description" />
-                  <TableColumn editable="false" maxWidth="376.00007247924805" minWidth="0.0" prefWidth="189.0" sortable="false" style="-fx-background-color: #17c3b2; -fx-border-color: black; -fx-border-width: 0.5;" text="Available Rooms">
+                <TableColumn fx:id="Column_Hotel" editable="false" minWidth="0.0" prefWidth="113.59997844696045" text="Hotel" />
+                <TableColumn fx:id="Column_Description" editable="false" minWidth="0.0" prefWidth="180.00001525878906" sortable="false" text="Description" />
+                  <TableColumn editable="false" maxWidth="376.00007247924805" minWidth="0.0" prefWidth="189.0" sortable="false" text="Available Rooms">
                      <columns>
-                        <TableColumn fx:id="Column_Standard" editable="false" prefWidth="60.0" style="-fx-background-color: #fe6d73; -fx-border-color: black; -fx-border-width: 0.5;" text="Standard" />
-                        <TableColumn fx:id="Column_Queen" editable="false" prefWidth="60.0" style="-fx-background-color: #ffcb77; -fx-border-color: black; -fx-border-width: 0.5;" text="Queen" />
-                        <TableColumn fx:id="Column_King" editable="false" prefWidth="60.0" style="-fx-background-color: #227c9d; -fx-border-color: black; -fx-border-width: 0.5;" text="King" />
+                        <TableColumn fx:id="Column_Standard" editable="false" prefWidth="60.0" text="Standard" />
+                        <TableColumn fx:id="Column_Queen" editable="false" prefWidth="60.0" text="Queen" />
+                        <TableColumn fx:id="Column_King" editable="false" prefWidth="60.0" text="King" />
                      </columns>
                   </TableColumn>
-                  <TableColumn editable="false" maxWidth="344.800048828125" minWidth="0.0" prefWidth="185.0" sortable="false" style="-fx-background-color: #17c3b2; -fx-border-color: black; -fx-border-width: 0.5;" text="Room Prices">
+                  <TableColumn editable="false" maxWidth="344.800048828125" minWidth="0.0" prefWidth="185.0" sortable="false" text="Room Prices">
                      <columns>
-                        <TableColumn fx:id="Column_StandardPrices" editable="false" prefWidth="60.0" style="-fx-background-color: #fe6d73; -fx-border-color: black; -fx-border-width: 0.5;" text="Standard" />
-                        <TableColumn fx:id="Column_QueenPrices" editable="false" prefWidth="72.0" style="-fx-background-color: #ffcb77; -fx-border-color: black; -fx-border-width: 0.5;" text="Queen" />
-                        <TableColumn fx:id="Column_KingPrices" editable="false" prefWidth="62.0" style="-fx-background-color: #227c9d; -fx-border-color: black; -fx-border-width: 0.5;" text="King" />
+                        <TableColumn fx:id="Column_StandardPrices" editable="false" prefWidth="60.0" text="Standard" />
+                        <TableColumn fx:id="Column_QueenPrices" editable="false" prefWidth="72.0" text="Queen" />
+                        <TableColumn fx:id="Column_KingPrices" editable="false" prefWidth="62.0" text="King" />
                      </columns>
                   </TableColumn>
               </columns>
             </TableView>
-            <DatePicker fx:id="DatePicker_From" layoutX="52.0" layoutY="86.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="86.0" />
-            <DatePicker fx:id="DatePicker_To" layoutX="155.0" layoutY="86.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="155.0" />
-            <TextField fx:id="TextField_Search" layoutX="255.0" layoutY="86.0" AnchorPane.rightAnchor="285.5" />
-            <ChoiceBox fx:id="ChoiceBox_SearchBy" layoutX="540.0" layoutY="52.0" prefWidth="145.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="52.0" />
-            <Button layoutX="415.0" layoutY="86.0" mnemonicParsing="false" onAction="#OnClick_Search" text="Search" AnchorPane.rightAnchor="229.5" />
-            <Label layoutX="477.0" layoutY="57.0" text="Search by:" AnchorPane.rightAnchor="165.5" AnchorPane.topAnchor="57.0" />
-            <CheckBox fx:id="CheckBox_AvailableOnly" layoutX="542.0" layoutY="90.0" mnemonicParsing="false" onAction="#OnClick_AvailableOnly" text="Available Rooms Only" AnchorPane.rightAnchor="16.5" AnchorPane.topAnchor="90.0" />
-            <Button layoutX="535.0" layoutY="389.0" mnemonicParsing="false" onAction="#OnClick_ViewSelected" prefHeight="26.0" prefWidth="106.0" text="View Selected" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="59.0" />
-            <Label layoutX="210.0" layoutY="14.0" text="Hotel Search" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="14.0">
+            <DatePicker fx:id="DatePicker_From" layoutX="41.0" layoutY="49.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="50.0" />
+            <DatePicker fx:id="DatePicker_To" layoutX="149.0" layoutY="49.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="155.0" />
+            <TextField fx:id="TextField_Search" layoutX="276.0" layoutY="49.0" AnchorPane.rightAnchor="285.0" />
+            <ChoiceBox fx:id="ChoiceBox_SearchBy" layoutX="534.0" layoutY="16.0" prefWidth="145.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+            <Button layoutX="425.0" layoutY="49.0" mnemonicParsing="false" onAction="#OnClick_Search" text="Search" AnchorPane.rightAnchor="230.0" />
+            <Label layoutX="460.0" layoutY="22.0" text="Search by:" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="15.0" />
+            <CheckBox fx:id="CheckBox_AvailableOnly" layoutX="543.0" layoutY="49.0" mnemonicParsing="false" onAction="#OnClick_AvailableOnly" text="Available Rooms Only" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
+            <Button layoutX="517.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_ViewSelected" prefHeight="26.0" prefWidth="106.0" text="View Selected" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="60.0" />
+            <Label layoutX="14.0" layoutY="5.0" text="Search for the Perfect Hotel" underline="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
                <font>
-                  <Font name="Serif Regular" size="48.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="615.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_Back" text="Back" textFill="#fe6d73" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font></Button>
-            <Label layoutX="483.0" layoutY="91.0" text="Filter By:" AnchorPane.rightAnchor="170.5" AnchorPane.topAnchor="91.0" />
-            <Label layoutX="140.0" layoutY="91.0" text="To" AnchorPane.leftAnchor="135.0" />
-            <Label layoutX="14.0" layoutY="91.0" text="From" AnchorPane.leftAnchor="14.0" />
-            <ImageView fitHeight="196.0" fitWidth="281.0" layoutX="-30.0" layoutY="-33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pictures/3387A194-8E82-4141-9336-2CE839887B52.png" />
-               </image>
-            </ImageView>
+            <Button layoutX="615.0" layoutY="381.0" mnemonicParsing="false" onAction="#OnClick_Back" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
+            <Label layoutX="480.0" layoutY="50.0" text="Filter By:" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="50.0" />
+            <Label layoutX="138.0" layoutY="53.0" text="To" AnchorPane.leftAnchor="135.0" />
+            <Label layoutX="14.0" layoutY="53.0" text="From" AnchorPane.leftAnchor="15.0" />
       </children>
     </AnchorPane>
   </children>

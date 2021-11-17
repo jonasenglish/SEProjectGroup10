@@ -23,8 +23,6 @@ public class ManagerViewController {
   @FXML
   public void Initialize(ActionEvent onContextMenuRequested) {
     WelcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
-    WelcomeLabel.setVisible(true);
-    //WelcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
   }
 
 	@FXML
