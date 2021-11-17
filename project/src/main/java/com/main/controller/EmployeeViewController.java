@@ -59,8 +59,9 @@ public class EmployeeViewController {
 
     @FXML
     void OnClick_CreateReservations(ActionEvent event) {
+      CreateReservationController.Instance.selectedHotel = App.currentHotel;
+      CreateReservationController.Instance.reinitialize();
       PageManager.SetPage("CreateReservation", "Create a reservation!");
-
     }
 
     @FXML
@@ -76,6 +77,7 @@ public class EmployeeViewController {
 
     @FXML
     void OnClick_ViewReservation(ActionEvent event) {
+      ReservationViewController.Instance.init_employee();
       PageManager.SetPage("ReservationView", "Reservations!");
     }
 

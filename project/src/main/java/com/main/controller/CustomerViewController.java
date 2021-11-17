@@ -75,10 +75,10 @@ public class CustomerViewController {
     welcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
   }
 
-    @FXML
-    void OnClick_Favorites(ActionEvent event) {
+  @FXML
+  void OnClick_Favorites(ActionEvent event) {
 
-    }
+  }
 
     //Go to the profile view (should have the same options as the manager)
 	@FXML
@@ -89,6 +89,7 @@ public class CustomerViewController {
     //Supposed to take you to see the reservations you made
 	@FXML
 	void OnClick_Reserve(ActionEvent event) {
+    ReservationViewController.Instance.init_customer();
 		PageManager.SetPage("ReservationView", "View reservations");
 	}
 
