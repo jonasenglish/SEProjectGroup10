@@ -48,7 +48,7 @@ public class PageManager {
         primaryStage.setTitle(title);
         primaryStage.setScene(scene);
         primaryStage.setResizable(resizable);
-        //primaryStage.getIcons().add(new Image("/SEProjectGroup10/project/src/main/java/com/main/pictures/HH-yellow.png"));
+        //primaryStage.getIcons().add(new Image(".../pictures/HH-yellow.png"));
 
         primaryStage.show();
     }

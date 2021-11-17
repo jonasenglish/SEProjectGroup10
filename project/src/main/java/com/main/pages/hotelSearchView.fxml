@@ -70,8 +70,12 @@
                   </TableColumn>
               </columns>
             </TableView>
+            <ImageView fitHeight="196.0" fitWidth="281.0" layoutX="-30.0" layoutY="-33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/HH-yellow.png" />
+               </image>
+            </ImageView>
             <DatePicker fx:id="DatePicker_From" layoutX="52.0" layoutY="86.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="86.0" />
-            <DatePicker fx:id="DatePicker_To" layoutX="155.0" layoutY="86.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="155.0" />
             <TextField fx:id="TextField_Search" layoutX="255.0" layoutY="86.0" AnchorPane.rightAnchor="285.5" />
             <ChoiceBox fx:id="ChoiceBox_SearchBy" layoutX="540.0" layoutY="52.0" prefWidth="145.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="52.0" />
             <Button layoutX="415.0" layoutY="86.0" mnemonicParsing="false" onAction="#OnClick_Search" text="Search" AnchorPane.rightAnchor="229.5" />
@@ -90,11 +94,7 @@
             <Label layoutX="483.0" layoutY="91.0" text="Filter By:" AnchorPane.rightAnchor="170.5" AnchorPane.topAnchor="91.0" />
             <Label layoutX="140.0" layoutY="91.0" text="To" AnchorPane.leftAnchor="135.0" />
             <Label layoutX="14.0" layoutY="91.0" text="From" AnchorPane.leftAnchor="14.0" />
-            <ImageView fitHeight="196.0" fitWidth="281.0" layoutX="-30.0" layoutY="-33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../pictures/3387A194-8E82-4141-9336-2CE839887B52.png" />
-               </image>
-            </ImageView>
+            <DatePicker fx:id="DatePicker_To" layoutX="155.0" layoutY="86.0" prefHeight="25.0" prefWidth="83.0" AnchorPane.leftAnchor="155.0" />
       </children>
     </AnchorPane>
   </children>
