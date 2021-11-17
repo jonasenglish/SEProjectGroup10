@@ -106,7 +106,8 @@ public class CreateReservationController implements Initializable {
 
     public void reinitialize(){
         ClearValues();
-        selectedHotel = DatabaseManager.instance.FindHotelByID(App.currentHotel.getID()); // To get correct room values;
+        if(App.currentUser.isEmployee() || App.currentUser.isManager())
+            selectedHotel = DatabaseManager.instance.FindHotelByID(App.currentHotel.getID()); // To get correct room values;
         hotelName.setText(selectedHotel.getName());
 
         isEdit = false;

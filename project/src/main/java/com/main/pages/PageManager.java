@@ -48,7 +48,6 @@ public class PageManager {
         primaryStage.setTitle(title);
         primaryStage.setScene(scene);
         primaryStage.setResizable(resizable);
-        //primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/pictures/HH-teal.png")));
 
         primaryStage.show();
     }

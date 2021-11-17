@@ -53,7 +53,6 @@ public class CreateAccountPageController {
 
     @FXML
     private void OnClickButton_CreateAccount(ActionEvent event) {
-        
         DatabaseManager dm = DatabaseManager.instance;
 
         err = false;

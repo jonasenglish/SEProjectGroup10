@@ -13,6 +13,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffcb77;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CreateReservationController">
    <children>
+      <ImageView fitHeight="206.0" fitWidth="203.0" layoutX="-42.0" layoutY="-36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/HH-teal.png" />
+         </image>
+      </ImageView>
       <DatePicker fx:id="arrivalDate" layoutX="151.0" layoutY="116.0" onAction="#OnChange_ArrivalDate" prefHeight="25.0" prefWidth="150.0" />
       <DatePicker fx:id="departureDate" layoutX="151.0" layoutY="150.0" onAction="#OnChange_DepartureDate" prefHeight="25.0" prefWidth="150.0" />
       <TextField fx:id="numRooms" layoutX="151.0" layoutY="207.0" prefHeight="25.0" prefWidth="150.0" />
@@ -52,10 +57,5 @@
       <Label layoutX="425.0" layoutY="289.0" text="King:" />
       <Label fx:id="queenRoomsAvailable" layoutX="461.0" layoutY="267.0" text="0" />
       <Label fx:id="kingRoomsAvailable" layoutX="461.0" layoutY="289.0" text="0" />
-      <ImageView fitHeight="206.0" fitWidth="203.0" layoutX="-42.0" layoutY="-36.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../pictures/HH-teal.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

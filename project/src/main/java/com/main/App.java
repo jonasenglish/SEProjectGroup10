@@ -13,6 +13,7 @@ import com.main.pages.PageManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class App extends Application
@@ -43,6 +44,7 @@ public class App extends Application
         DatabaseManager dManager = new DatabaseManager();
         DatabaseManager.SetInstance(dManager);
         DatabaseManager.instance.Connect();
+        //primaryStage.getIcons().add(new Image("file:icon.png"));
         //TestDatabase(); //Used to check if database is working
     }
 
