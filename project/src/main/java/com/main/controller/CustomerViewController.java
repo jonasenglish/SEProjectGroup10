@@ -26,6 +26,9 @@ public class CustomerViewController {
     private Button Button_RoomsMinus;
 
     @FXML
+    private Button Button_roomsPlus;
+
+    @FXML
     private Button Button_Search;
 
     @FXML
@@ -43,8 +46,6 @@ public class CustomerViewController {
     @FXML
     private Button Button_idkwhat;
 
-    @FXML
-    private Button Button_roomsPlus;
 
     @FXML
     private TextField Location;
@@ -70,6 +71,10 @@ public class CustomerViewController {
     @FXML
     private Label welcomeLabel;
 
+    private int numR = 0;
+    private int numA = 0;
+    private int numC = 0;
+
 
   public void Initialize() {
     welcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
@@ -94,8 +99,19 @@ public class CustomerViewController {
 	}
 
     @FXML
-    void OnClick_RoomsMinus(ActionEvent event) {
+    void OnClick_RoomsPlus(ActionEvent event){
+        numR += 1;
+        String s = String.valueOf(numR);
+        numRooms.setText(s);
+    }
 
+    @FXML
+    void OnClick_RoomsMinus(ActionEvent event) {
+        if(numR > 0){
+            numR -= 1;
+            String s = String.valueOf(numR);
+            numRooms.setText(s);
+        }
     }
 
     @FXML
@@ -105,22 +121,34 @@ public class CustomerViewController {
 
     @FXML
     void OnClick_adultMinus(ActionEvent event) {
-
+        if(numA > 0){
+            numA -= 1;
+            String s = String.valueOf(numA);
+            numAdults.setText(s);
+        }
     }
 
     @FXML
     void OnClick_adultPlus(ActionEvent event) {
-
+        numA += 1;
+        String s = String.valueOf(numA);
+        numAdults.setText(s);
     }
 
     @FXML
     void OnClick_childMinus(ActionEvent event) {
-
+        if(numC > 0){
+            numC -= 1;
+            String s = String.valueOf(numC);
+            numChildren.setText(s);
+        }
     }
 
     @FXML
     void OnClick_childPlus(ActionEvent event) {
-
+        numC += 1;
+        String s = String.valueOf(numC);
+        numChildren.setText(s);
     }
 
     @FXML
