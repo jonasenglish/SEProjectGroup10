@@ -32,7 +32,7 @@
                         <Image url="@../pictures/blue.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="profileImage" fitHeight="158.0" fitWidth="169.0" layoutX="468.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profileImage" fitHeight="214.0" fitWidth="227.0" layoutX="449.0" layoutY="-42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../pictures/HH-yellow.png" />
                      </image>
@@ -106,7 +106,7 @@
                   <Font size="11.0" />
                </font></Button>
             <Button fx:id="Button_HotelOverview" mnemonicParsing="false" onAction="#OnClick_HotelOverview" prefHeight="70.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Hotel Overview" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="Button_Logout" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#OnClickButton_Logout" style="-fx-background-color: #fef9ef;" text="Logout" textFill="#fe6d73" />
+            <Button fx:id="Button_Logout" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#OnClickButton_Logout" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="Logout" textAlignment="RIGHT" textFill="#fe6d73" />
          </children>
          <padding>
             <Insets bottom="5.0" left="8.0" top="10.0" />
