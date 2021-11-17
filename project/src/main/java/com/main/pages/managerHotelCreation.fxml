@@ -15,6 +15,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="721.0" style="-fx-background-color: #ffcb77;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerHotelCreationController">
    <children>
+      <ImageView fitHeight="252.0" fitWidth="363.0" layoutX="-37.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/HH-teal.png" />
+         </image>
+      </ImageView>
       <Text layoutX="25.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Rooms " wrappingWidth="60.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="178.0" />
       <TextField fx:id="TextField_NumberOfStandardRooms" layoutX="97.0" layoutY="182.0" prefHeight="25.0" prefWidth="62.0" promptText="#" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="182.0" />
       <TextField fx:id="TextField_PriceStandard" layoutX="97.0" layoutY="226.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00$" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="226.0" />
@@ -64,10 +69,5 @@
       <Text layoutX="313.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Description" AnchorPane.rightAnchor="313.90234375" AnchorPane.topAnchor="76.0" />
       <Text layoutX="19.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Image URL" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="309.0" />
       <TextField fx:id="TextField_HotelImage" layoutX="15.0" layoutY="326.0" promptText="https://www.image.com..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="326.0" />
-      <ImageView fitHeight="252.0" fitWidth="363.0" layoutX="-37.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../pictures/HH-teal.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
