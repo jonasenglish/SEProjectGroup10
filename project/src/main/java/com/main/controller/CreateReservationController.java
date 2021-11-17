@@ -106,7 +106,7 @@ public class CreateReservationController implements Initializable {
 
     public void reinitialize(){
         ClearValues();
-        selectedHotel = DatabaseManager.instance.FindHotelByID(selectedHotel.getID()); // To get correct room values;
+        selectedHotel = DatabaseManager.instance.FindHotelByID(App.currentHotel.getID()); // To get correct room values;
         hotelName.setText(selectedHotel.getName());
 
         isEdit = false;
@@ -256,7 +256,6 @@ public class CreateReservationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
         Instance = this;
-
         roomType.getItems().addAll(roomTypeArray);
         
     }
