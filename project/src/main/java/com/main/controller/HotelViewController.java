@@ -129,7 +129,9 @@ public class HotelViewController implements Initializable {
 			Image image = new Image(url);
 
 			ImageView_HotelImage.setImage(image);
-		}
+		}else{
+            ImageView_HotelImage.setImage(null);
+        }
 
 		TableView_Amenities.setItems(list);
 

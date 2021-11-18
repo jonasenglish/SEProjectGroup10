@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import com.main.App;
 import com.main.database.DatabaseManager;
+import com.main.objects.Amenity;
 import com.main.objects.Hotel;
 import com.main.objects.Reservation;
 import com.main.pages.PageManager;
@@ -110,6 +111,10 @@ public class HotelSearchViewController implements Initializable {
         if(TextField_Search.getText().equals("")){ listResults = SearchBy_HotelName(); } // No input returns all hotels
         else
             switch(ChoiceBox_SearchBy.getValue()){
+                case "Amenity":
+                    listResults = SearchBy_Amenity();
+                    break;
+
                 case "Hotel Name":
                     listResults =SearchBy_HotelName();
                     break;
@@ -232,6 +237,26 @@ public class HotelSearchViewController implements Initializable {
         return results;
     }
 
+    private List<Hotel> SearchBy_Amenity() {
+        List<Hotel> results = dm.FindAllHotels();
+
+        if(CheckBox_AvailableOnly.selectedProperty().get())
+            results = RemoveNoAvailable(results);
+
+        List<Hotel> finalResults = new ArrayList<>();
+
+        for (Hotel hotel : results) {
+            for (Amenity amenity : hotel.getAllAmenities()) {
+                if(amenity.getName().toLowerCase().contains(TextField_Search.getText().toLowerCase())){
+                    finalResults.add(hotel);
+                    break;
+                }
+            }
+        }
+
+        return finalResults;
+    }
+
     private List<Hotel> RemoveNoAvailable(List<Hotel> hotels){
         List<Hotel> results = new ArrayList<>();
 
@@ -270,8 +295,8 @@ public class HotelSearchViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ChoiceBox_SearchBy.getItems().addAll("Hotel Name", "Rooms Available", "Standard Prices <", "Standard Prices >", "Queen Prices <", "Queen Prices >", "King Prices <", "King Prices >");
-        ChoiceBox_SearchBy.setValue("Hotel Name");
+        ChoiceBox_SearchBy.getItems().addAll("Amenity", "Hotel Name", "Rooms Available", "Standard Prices <", "Standard Prices >", "Queen Prices <", "Queen Prices >", "King Prices <", "King Prices >");
+        ChoiceBox_SearchBy.setValue("Amenity");
 
         Column_Hotel.setCellValueFactory(new PropertyValueFactory<Hotel, String>("name"));
         Column_Description.setCellValueFactory(new PropertyValueFactory<Hotel, String>("description"));

@@ -60,6 +60,14 @@ public class Hotel {
     public List<Amenity> getQueenAmenities() {
         return queenAmenities;
     }
+
+    public List<Amenity> getAllAmenities(){
+        List<Amenity> allAmenities = new ArrayList<>();
+        allAmenities.addAll(standardAmenities);
+        allAmenities.addAll(kingAmenities);
+        allAmenities.addAll(queenAmenities);
+        return allAmenities;
+    }
     
     public int getKingRooms() {
         return kingRooms;
