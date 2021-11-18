@@ -13,8 +13,8 @@
       <TableView fx:id="ReservationTable" layoutY="95.0" prefHeight="336.0" prefWidth="662.0" style="-fx-background-color: #fef9ef;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <columns>
           <TableColumn fx:id="Col_ReservationNum" prefWidth="85.0" text="Reservation #" />
+            <TableColumn fx:id="Col_HotelName" minWidth="0.0" prefWidth="150.0" text="Hotel Name" />
           <TableColumn fx:id="Col_CustName" prefWidth="135.0" text="Customer Name" />
-            <TableColumn fx:id="Col_CheckIn" minWidth="0.0" prefWidth="150.0" text="Check In Date" />
             <TableColumn fx:id="Col_Nights" minWidth="4.44439697265625" prefWidth="75.0" text="Nights" />
             <TableColumn fx:id="Col_RoomType" prefWidth="78.0" text="RoomType" />
             <TableColumn fx:id="Col_Rooms" prefWidth="75.0" text="Rooms" />

@@ -2,10 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,9 +13,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CustomerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.CustomerViewController">
    <top>
       <SplitPane dividerPositions="0.8419732441471572" prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <items>
@@ -57,28 +56,20 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #ffcb77; -fx-border-width: 5; -fx-background-color: #fef9ef;" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="dp_CheckInDate" layoutX="30.0" layoutY="79.0" />
-            <Label layoutX="84.0" layoutY="49.0" text="Check In Date" />
-            <DatePicker fx:id="dp_CheckOutDate" layoutX="253.0" layoutY="79.0" />
-            <Label layoutX="296.0" layoutY="51.0" text="Check out Date" />
-            <Button fx:id="Button_roomsPlus" layoutX="97.0" layoutY="161.0" mnemonicParsing="false" onAction="#OnClick_RoomsPlus" text="+" />
-            <Button fx:id="Button_RoomsMinus" layoutX="46.0" layoutY="161.0" mnemonicParsing="false" onAction="#OnClick_RoomsMinus" text="-" />
-            <Text fx:id="numRooms" layoutX="80.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Label layoutX="65.0" layoutY="138.0" text="Rooms" />
-            <Button fx:id="Button_adultPlus" layoutX="199.0" layoutY="160.0" mnemonicParsing="false" onAction="#OnClick_adultPlus" text="+" />
-            <Button fx:id="Button_adultMinus" layoutX="148.0" layoutY="160.0" mnemonicParsing="false" onAction="#OnClick_adultMinus" text="-" />
-            <Text fx:id="numAdults" layoutX="182.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Label layoutX="167.0" layoutY="137.0" text="Adults" />
-            <Button fx:id="Button_childPlus" layoutX="304.0" layoutY="160.0" mnemonicParsing="false" onAction="#OnClick_childPlus" text="+" />
-            <Button fx:id="Button_childMinus" layoutX="253.0" layoutY="160.0" mnemonicParsing="false" onAction="#OnClick_childMinus" text="-" />
-            <Text fx:id="numChildren" layoutX="287.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-            <Label layoutX="267.0" layoutY="137.0" text="Children" />
-            <TextField fx:id="PropertyName" layoutX="210.0" layoutY="225.0" />
-            <Label layoutX="236.0" layoutY="199.0" text="Property Name" />
-            <Label layoutX="325.0" layoutY="199.0" text="(Optional)" />
-            <TextField fx:id="Location" layoutX="25.0" layoutY="225.0" />
-            <Label layoutX="51.0" layoutY="199.0" text="Location" />
-            <Button fx:id="Button_Search" layoutX="413.0" layoutY="238.0" mnemonicParsing="false" onAction="#OnClick_Search" prefHeight="56.0" prefWidth="65.0" text="Search" />
+            <TableView fx:id="TableView_Reservations" layoutX="15.0" layoutY="15.0" prefHeight="285.0" prefWidth="485.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+              <columns>
+                <TableColumn prefWidth="484.0" text="Current Reservations">
+                     <columns>
+                      <TableColumn fx:id="Col_ReservationNum" prefWidth="86.0" text="Reservation #" />
+                        <TableColumn fx:id="Col_HotelName" prefWidth="100.0" text="Hotel Name" />
+                        <TableColumn fx:id="Col_CustName" prefWidth="100.0" text="Cust. Name" />
+                        <TableColumn fx:id="Col_Nights" prefWidth="65.0" text="Nights" />
+                        <TableColumn fx:id="Col_RoomType" prefWidth="65.0" text="RoomType" />
+                        <TableColumn fx:id="Col_Rooms" prefWidth="65.0" text="Rooms" />
+                     </columns>
+                  </TableColumn>
+              </columns>
+            </TableView>
          </children></AnchorPane>
    </center>
    <right>
@@ -88,12 +79,12 @@
                <font>
                   <Font size="11.0" />
                </font></Button>
-            <Button fx:id="Button_Favorites" layoutX="18.0" layoutY="20.0" mnemonicParsing="false" onAction="#OnClick_Favorites" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="Favorites">
+            <Button layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_HotelSearch" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="Hotel Search">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button layoutX="18.0" layoutY="100.0" mnemonicParsing="false" onAction="#OnClick_HotelSearch" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="Hotel Search">
+            <Button layoutX="18.0" layoutY="20.0" mnemonicParsing="false" onAction="#OnClick_ViewSelected" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: #fef9ef;" text="View Selected Hotel" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="11.0" />
                </font>

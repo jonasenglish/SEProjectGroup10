@@ -1,20 +1,33 @@
 package com.main.controller;
 
-import com.main.App;
-import com.main.pages.PageManager;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import com.main.App;
+import com.main.database.DatabaseManager;
+import com.main.objects.Hotel;
+import com.main.objects.Reservation;
+import com.main.pages.PageManager;
+import com.main.tools.PopupHandler;
+
+import org.bson.types.ObjectId;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class CustomerViewController {
+public class CustomerViewController implements Initializable {
 
-    @FXML
-    private Button Button_Favorites;
+    public static CustomerViewController Instance;
 
     @FXML
     private Button Button_Profile;
@@ -23,29 +36,25 @@ public class CustomerViewController {
     private Button Button_Reservation;
 
     @FXML
-    private Button Button_RoomsMinus;
+    private TableView<Reservation> TableView_Reservations;
 
     @FXML
-    private Button Button_roomsPlus;
+    private TableColumn<Reservation, ObjectId> Col_ReservationNum;
 
     @FXML
-    private Button Button_Search;
+    private TableColumn<Reservation, String> Col_HotelName;
 
     @FXML
-    private Button Button_adultMinus;
+    private TableColumn<Reservation, String> Col_CustName;
 
     @FXML
-    private Button Button_adultPlus;
+    private TableColumn<Reservation, Integer> Col_Nights;
 
     @FXML
-    private Button Button_childMinus;
+    private TableColumn<Reservation, String> Col_RoomType;
 
     @FXML
-    private Button Button_childPlus;
-
-    @FXML
-    private Button Button_idkwhat;
-
+    private TableColumn<Reservation, Integer> Col_Rooms;
 
     @FXML
     private TextField Location;
@@ -54,36 +63,7 @@ public class CustomerViewController {
     private TextField PropertyName;
 
     @FXML
-    private DatePicker dp_CheckInDate;
-
-    @FXML
-    private DatePicker dp_CheckOutDate;
-
-    @FXML
-    private Text numAdults;
-
-    @FXML
-    private Text numChildren;
-
-    @FXML
-    private Text numRooms;
-
-    @FXML
     private Label welcomeLabel;
-
-    private int numR = 0;
-    private int numA = 0;
-    private int numC = 0;
-
-
-  public void Initialize() {
-    welcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
-  }
-
-  @FXML
-  void OnClick_Favorites(ActionEvent event) {
-
-  }
 
     //Go to the profile view (should have the same options as the manager)
 	@FXML
@@ -99,67 +79,51 @@ public class CustomerViewController {
 	}
 
     @FXML
-    void OnClick_RoomsPlus(ActionEvent event){
-        numR += 1;
-        String s = String.valueOf(numR);
-        numRooms.setText(s);
-    }
-
-    @FXML
-    void OnClick_RoomsMinus(ActionEvent event) {
-        if(numR > 0){
-            numR -= 1;
-            String s = String.valueOf(numR);
-            numRooms.setText(s);
-        }
-    }
-
-    @FXML
-    void OnClick_Search(ActionEvent event) {
-
-    }
-
-    @FXML
-    void OnClick_adultMinus(ActionEvent event) {
-        if(numA > 0){
-            numA -= 1;
-            String s = String.valueOf(numA);
-            numAdults.setText(s);
-        }
-    }
-
-    @FXML
-    void OnClick_adultPlus(ActionEvent event) {
-        numA += 1;
-        String s = String.valueOf(numA);
-        numAdults.setText(s);
-    }
-
-    @FXML
-    void OnClick_childMinus(ActionEvent event) {
-        if(numC > 0){
-            numC -= 1;
-            String s = String.valueOf(numC);
-            numChildren.setText(s);
-        }
-    }
-
-    @FXML
-    void OnClick_childPlus(ActionEvent event) {
-        numC += 1;
-        String s = String.valueOf(numC);
-        numChildren.setText(s);
-    }
-
-    @FXML
     void OnClick_HotelSearch(ActionEvent event) {
         PageManager.SetPage("HotelSearchView", "Search for a Hotel!");
     }
 
     @FXML
-    void OnClick_plus(ActionEvent event) {
+    void OnClick_ViewSelected(ActionEvent event) {
+        Reservation selected = TableView_Reservations.getSelectionModel().getSelectedItem();
 
+        if(selected == null){
+            PopupHandler.ShowError("Please select a Reservation!");
+            return;
+        }
+
+        Hotel viewedHotel = DatabaseManager.instance.FindHotelByID(selected.getHotel());
+
+        HotelViewController.Instance.fromDate = selected.getStartDate();
+        HotelViewController.Instance.toDate = selected.getEndDate();
+        HotelViewController.Instance.ViewHotel(viewedHotel);
+
+        PageManager.SetPage("HotelView", "You are Viewing - " + viewedHotel.getName());
     }
 
+    ObservableList<Reservation> list = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Instance = this;
+
+        Col_ReservationNum.setCellValueFactory(new PropertyValueFactory<Reservation, ObjectId>("ID"));
+
+        Col_HotelName.setCellValueFactory(new PropertyValueFactory<Reservation, String>("hotelName"));
+        Col_CustName.setCellValueFactory(new PropertyValueFactory<Reservation, String>("customerName"));
+        
+        Col_Nights.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("nights"));
+        Col_Rooms.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("rooms"));
+        Col_RoomType.setCellValueFactory(new PropertyValueFactory<Reservation, String>("roomType"));
+  
+        TableView_Reservations.setItems(list);
+  
+        TableView_Reservations.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+    public void reinitialize(){
+        list.clear();
+        list.addAll(DatabaseManager.instance.FindReservationsByAccount(App.currentUser));
+    }
 }
 

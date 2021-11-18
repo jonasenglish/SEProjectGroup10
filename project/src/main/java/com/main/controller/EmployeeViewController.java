@@ -4,23 +4,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.time.temporal.ChronoUnit;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.EventListener;
 
 import com.main.App;
 import com.main.pages.PageManager;
 import com.main.objects.Account;
 import com.main.database.DatabaseManager;
 import com.main.objects.Hotel;
-import com.main.objects.Reservation;
-import com.main.tools.PopupHandler;
-import com.main.controller.CreateReservationController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;

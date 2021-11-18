@@ -3,11 +3,11 @@ package com.main.pages;
 import java.util.Hashtable;
 
 import com.main.App;
+import com.main.controller.CustomerViewController;
+import com.main.controller.ManagerViewController;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 // Manages switching pages(scenes) such as from Login Page to Account Creation Page, and so on.
@@ -48,6 +48,16 @@ public class PageManager {
         primaryStage.setTitle(title);
         primaryStage.setScene(scene);
         primaryStage.setResizable(resizable);
+
+        switch(pageName){
+            case "CustomerView":
+            CustomerViewController.Instance.reinitialize();
+            break;
+
+            case "ManagerView":
+            ManagerViewController.Instance.reinitialize();
+            break;
+        }
 
         primaryStage.show();
     }

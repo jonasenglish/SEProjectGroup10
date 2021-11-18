@@ -1,15 +1,21 @@
 package com.main.controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.main.App;
 import com.main.pages.PageManager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 //Controller for the manager View
-public class ManagerViewController {
+public class ManagerViewController implements Initializable{
+
+  public static ManagerViewController Instance;
 
 	@FXML
   private Button Button_CreateHotel;
@@ -52,6 +58,16 @@ public class ManagerViewController {
   @FXML
   void OnClick_Employees(ActionEvent event) {
     PageManager.SetPage("CreateEmployeeAccount", "Create an Employee Account");
+  }
+
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    Instance = this;
+  }
+
+  public void reinitialize(){
+    
   }
 
 }

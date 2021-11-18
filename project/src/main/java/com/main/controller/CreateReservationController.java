@@ -10,7 +10,6 @@ import java.time.Instant;
 
 import com.main.App;
 import com.main.database.DatabaseManager;
-import com.main.objects.Account;
 import com.main.objects.Hotel;
 import com.main.objects.Reservation;
 import com.main.pages.PageManager;

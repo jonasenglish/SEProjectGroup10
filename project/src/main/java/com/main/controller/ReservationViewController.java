@@ -39,7 +39,7 @@ public class ReservationViewController implements Initializable {
     private TableColumn<Reservation, String> Col_CustName;
 
     @FXML
-    private TableColumn<Reservation, Date> Col_CheckIn;
+    private TableColumn<Reservation, String> Col_HotelName;
 
     @FXML
     private TableColumn<Reservation, Integer> Col_Nights;
@@ -76,7 +76,20 @@ public class ReservationViewController implements Initializable {
 
     @FXML
     void OnClick_CheckOut(ActionEvent event) {
+      Reservation selected = ReservationTable.getSelectionModel().getSelectedItem();
 
+      if(selected == null){
+        PopupHandler.ShowError("Please select a reservation first.");
+        return;
+      }
+
+      if(PopupHandler.ShowConfirmation("Are you sure you want to Check Out the selected reservation?")){
+        DatabaseManager.instance.DeleteReservation(selected);
+        list.remove(selected);
+        if(newList.contains(selected))
+          newList.remove(selected);
+        PopupHandler.ShowInfo("Reservation Checked Out.");
+      }
     }
 
     @FXML
@@ -134,7 +147,7 @@ public class ReservationViewController implements Initializable {
       
       Col_ReservationNum.setCellValueFactory(new PropertyValueFactory<Reservation, ObjectId>("ID"));
 
-      Col_CheckIn.setCellValueFactory(new PropertyValueFactory<Reservation, Date>("startDate"));
+      Col_HotelName.setCellValueFactory(new PropertyValueFactory<Reservation, String>("hotelName"));
       Col_CustName.setCellValueFactory(new PropertyValueFactory<Reservation, String>("customerName"));
       
       Col_Adults.setCellValueFactory(new PropertyValueFactory<Reservation, Integer>("adults"));
@@ -159,6 +172,8 @@ public class ReservationViewController implements Initializable {
 
       Button_Modify.setDisable(true);
       Button_Modify.setVisible(false);
+      Button_Checkout.setDisable(true);
+      Button_Checkout.setVisible(false);
 
       Label_ReservationNum.setVisible(false);
       TextField_input.setVisible(false);
@@ -175,6 +190,8 @@ public class ReservationViewController implements Initializable {
 
       Button_Modify.setDisable(false);
       Button_Modify.setVisible(true);
+      Button_Checkout.setDisable(false);
+      Button_Checkout.setVisible(true);
 
       Label_ReservationNum.setVisible(true);
       TextField_input.setVisible(true);
