@@ -280,6 +280,17 @@ public class DatabaseManager {
         return reservationsFound;
     }
 
+    public List<Account> FindEmployeeAccountsByHotelID(ObjectId hotelID){
+        List<Account> accounts = FindAllAccounts();
+
+        for (Account account : accounts) {
+            if(!(account.isEmployee() && account.getHotelID().equals(hotelID)))
+                accounts.remove(account);
+        }
+
+        return accounts;
+    }
+
     // Inserts
     public void InsertAccount(Account account){
         accountCollection.insertOne(account.ToDocument());
