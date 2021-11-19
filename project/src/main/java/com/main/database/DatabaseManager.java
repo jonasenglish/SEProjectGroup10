@@ -175,7 +175,7 @@ public class DatabaseManager {
     // Returns all the Accounts in the Collection
     public List<Account> FindAllAccounts(){
         FindIterable<Document> documentResults = accountCollection.find();
-        List<Account> accounts = new LinkedList<>();
+        List<Account> accounts = new ArrayList<Account>();
         if(documentResults == null)
             return accounts;
 
@@ -282,10 +282,11 @@ public class DatabaseManager {
 
     public List<Account> FindEmployeeAccountsByHotelID(ObjectId hotelID){
         List<Account> accounts = FindAllAccounts();
+        List<Account> finalAccounts = new ArrayList<Account>();
 
         for (Account account : accounts) {
-            if(!(account.isEmployee() && account.getHotelID().equals(hotelID)))
-                accounts.remove(account);
+            if(account.isEmployee() && account.getHotelID() != null && account.getHotelID().equals(hotelID))
+                finalAccounts.add(account);
         }
 
         return accounts;
