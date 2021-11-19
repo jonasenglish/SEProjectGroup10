@@ -102,7 +102,11 @@ public class CreateEmployeeAccountPageController {
         dm.InsertAccount(newAccount);
 
         System.out.println("Account Created!");
-
+        TextField_Email.clear();
+        TextField_Password.clear();
+        TextField_RetypePassword.clear();
+        TextField_Username.clear();
+        ManagerViewController.Instance.viewEmployees(); 
         PageManager.SetPage("ManagerView", "Welcome! - " + App.currentUser.getUsername());
     }
 

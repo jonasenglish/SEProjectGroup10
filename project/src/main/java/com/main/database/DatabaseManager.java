@@ -289,7 +289,7 @@ public class DatabaseManager {
                 finalAccounts.add(account);
         }
 
-        return accounts;
+        return finalAccounts;
     }
 
     // Inserts

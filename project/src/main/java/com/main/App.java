@@ -1,9 +1,12 @@
 package com.main;
 
+import java.net.URL;
 //import java.io.IOException;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.ResourceBundle;
 
+import com.main.controller.ManagerViewController;
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
 import com.main.objects.Hotel;
@@ -95,10 +98,11 @@ public class App extends Application
 
     //This method can quickly state what account type you have and set specific view based on account type!
     public static void AccountTypeView() {
-        if(App.currentUser.isManager())
-        {
+        if(App.currentUser.isManager()){
+            ManagerViewController.Instance.viewEmployees();           
             PageManager.SetPage("ManagerView", "Welcome " + App.currentUser.getUsername() +"!");
         }
+
         else if(App.currentUser.isEmployee())
         {
             PageManager.SetPage("EmployeeView", "Welcome " + App.currentUser.getUsername() + "!");

@@ -1,9 +1,13 @@
 package com.main.controller;
 
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.main.App;
+import com.main.database.DatabaseManager;
+import com.main.objects.Account;
 import com.main.pages.PageManager;
 
 import javafx.event.ActionEvent;
@@ -11,6 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 //Controller for the manager View
 public class ManagerViewController implements Initializable{
@@ -26,13 +32,14 @@ public class ManagerViewController implements Initializable{
   @FXML
   private Label WelcomeLabel;
 
+  @FXML 
+  private TextArea Text_employees;
 
-  @FXML
-  public void Initialize(ActionEvent onContextMenuRequested) {
-    //WelcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
-    //WelcomeLabel.setVisible(true);
-    //WelcomeLabel.setText("Welcome " + App.currentUser.getUsername() + "!");
+
+  
+  public void Initialize() {
   }
+
   
 
 	@FXML
@@ -63,11 +70,26 @@ public class ManagerViewController implements Initializable{
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+      
+
     Instance = this;
   }
 
+  public void viewEmployees(){
+    DatabaseManager dm = DatabaseManager.instance; 
+    List<Account> employees = dm.FindEmployeeAccountsByHotelID(App.currentUser.getHotelID()); 
+    String emp = "";
+    for(Account account : employees){
+      String currEmp = account.getUsername();
+      emp += ("- " + currEmp + "\n");
+    }
+
+    Text_employees.setText(emp);
+  }
+  
   public void reinitialize(){
     
   }
+
 
 }
