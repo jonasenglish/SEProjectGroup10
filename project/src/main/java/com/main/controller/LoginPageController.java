@@ -1,5 +1,7 @@
 package com.main.controller;
 
+import java.util.List;
+
 import com.main.App;
 import com.main.database.DatabaseManager;
 import com.main.objects.Account;
@@ -71,6 +73,14 @@ public class LoginPageController {
 
        if(account.isManager() || account.isEmployee()) {
             Hotel hotel = dm.FindHotelByID(account.getHotelID());
+            if(hotel == null && account.isManager()){
+                ManagerHotelCreationController.isEdit = false;
+                ManagerHotelCreationController.Instance.newManager = account;
+                ManagerHotelCreationController.Instance.reinitialize();
+                PageManager.SetPage("ManagerHotelCreation", "Create your Hotel!");
+                return;
+            }
+
             App.currentHotel = hotel;
         }
         
