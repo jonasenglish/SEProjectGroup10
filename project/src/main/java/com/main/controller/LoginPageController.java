@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 
 // The Controller for the Login Page
@@ -77,6 +79,13 @@ public class LoginPageController {
 
         TextField_Username.clear();
         TextField_Password.clear();
+    }
+
+    
+    @FXML
+    void OnEnter_Login(KeyEvent event) {
+        if(event.getCode().equals(KeyCode.ENTER))
+            OnClickButton_Login(null);
     }
 
     private void Error_AccountWithUsernameNotFound() {

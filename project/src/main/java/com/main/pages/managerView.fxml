@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerViewController">
    <top>
       <SplitPane dividerPositions="0.8425802139037432" prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <items>
@@ -66,8 +66,7 @@
                   <Font size="11.0" />
                </font></Button>
             <Button mnemonicParsing="false" onAction="#OnClick_EditHotel" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Edit Hotel" />
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Availability" />
-            <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_Employees" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Employees" />
+            <Button layoutX="18.0" layoutY="180.0" mnemonicParsing="false" onAction="#OnClick_Employees" prefHeight="60.0" prefWidth="80.0" style="-fx-background-color: fef9ef;" text="Create Employee Account" textAlignment="CENTER" wrapText="true" />
          </children>
          <padding>
             <Insets bottom="5.0" left="8.0" top="10.0" />

@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.LoginPageController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.LoginPageController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #227c9d;" VBox.vgrow="ALWAYS">
       <children>
@@ -52,7 +52,7 @@
                </image>
             </ImageView>
             <TextField fx:id="TextField_Username" layoutX="230.0" layoutY="152.0" promptText="Username..." AnchorPane.topAnchor="150.0" />
-            <PasswordField fx:id="TextField_Password" layoutX="230.0" layoutY="204.0" promptText="Password..." AnchorPane.topAnchor="200.0" />
+            <PasswordField fx:id="TextField_Password" layoutX="230.0" layoutY="204.0" onKeyPressed="#OnEnter_Login" promptText="Password..." AnchorPane.topAnchor="200.0" />
             <Button fx:id="Button_Login" layoutX="276.0" layoutY="255.0" mnemonicParsing="false" onAction="#OnClickButton_Login" style="-fx-background-color: #fef9ef;" text="Login" AnchorPane.topAnchor="250.0">
                <padding>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />

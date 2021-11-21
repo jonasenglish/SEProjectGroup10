@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="721.0" style="-fx-background-color: #ffcb77;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerHotelCreationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="721.0" style="-fx-background-color: #ffcb77;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.main.controller.ManagerHotelCreationController">
    <children>
       <ImageView fitHeight="252.0" fitWidth="363.0" layoutX="-37.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,22 +21,29 @@
          </image>
       </ImageView>
       <Text layoutX="25.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Rooms " wrappingWidth="60.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="178.0" />
+      <TextField fx:id="TextField_HotelName" layoutX="23.0" layoutY="140.0" prefHeight="26.0" prefWidth="270.0" promptText="Name..." AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="140.0" />
+      <TextArea fx:id="TextArea_HotelDescription" layoutX="313.0" layoutY="96.0" prefHeight="65.0" prefWidth="395.0" promptText="Description..." AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="96.0" />
       <TextField fx:id="TextField_NumberOfStandardRooms" layoutX="97.0" layoutY="182.0" prefHeight="25.0" prefWidth="62.0" promptText="#" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="182.0" />
+      <TextField fx:id="TextField_NumberOfQueenRooms" layoutX="168.0" layoutY="182.0" prefHeight="25.0" prefWidth="62.0" promptText="#" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="182.0" />
+      <TextField fx:id="TextField_NumberOfKingRooms" layoutX="239.0" layoutY="182.0" prefHeight="25.0" prefWidth="62.0" promptText="#" AnchorPane.leftAnchor="239.0" AnchorPane.topAnchor="182.0" />
       <TextField fx:id="TextField_PriceStandard" layoutX="97.0" layoutY="226.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00$" AnchorPane.leftAnchor="97.0" AnchorPane.topAnchor="226.0" />
       <TextField fx:id="TextField_PriceQueen" layoutX="168.0" layoutY="226.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00$" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="226.0" />
       <TextField fx:id="TextField_PriceKing" layoutX="239.0" layoutY="226.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00$" AnchorPane.leftAnchor="239.0" AnchorPane.topAnchor="226.0" />
+      <TextField fx:id="TextField_WeekendDifferential" layoutX="16.0" layoutY="277.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="277.0" />
+      <TextField fx:id="TextField_HotelImage" layoutX="15.0" layoutY="326.0" promptText="https://www.image.com..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="326.0" />
+      <TextField fx:id="TextField_AmenityName" layoutX="15.0" layoutY="376.0" promptText="Name..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="376.0" />
+      <ChoiceBox fx:id="ChoiceBox_AmenityType" layoutX="172.0" layoutY="376.0" prefHeight="25.0" prefWidth="115.0" AnchorPane.leftAnchor="172.0" AnchorPane.topAnchor="376.0" />
+      <TextArea fx:id="TextArea_AmenityDescription" layoutX="16.0" layoutY="426.0" prefHeight="200.0" prefWidth="270.0" promptText="Description..." AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="426.0" />
       <Text layoutX="103.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standard" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="207.431640625" />
       <Text layoutX="181.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Queen" AnchorPane.leftAnchor="181.0" AnchorPane.topAnchor="208.0" />
       <Text layoutX="258.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="King" AnchorPane.leftAnchor="258.0" AnchorPane.topAnchor="208.431640625" />
       <Text layoutX="17.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekend Differnetial " AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="260.0" />
-      <TextField fx:id="TextField_WeekendDifferential" layoutX="16.0" layoutY="277.0" prefHeight="26.0" prefWidth="62.0" promptText="0.00" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="277.0" />
       <Text layoutX="244.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Creation" textAlignment="CENTER" wrappingWidth="232.33642578125" AnchorPane.topAnchor="13.919921875">
          <font>
             <Font name="Serif Regular" size="36.0" />
          </font>
       </Text>
       <Text layoutX="23.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Name" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="120.431640625" />
-      <TextField fx:id="TextField_HotelName" layoutX="23.0" layoutY="140.0" prefHeight="26.0" prefWidth="270.0" promptText="Name..." AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="140.0" />
       <Button layoutX="360.0" layoutY="670.0" mnemonicParsing="false" onAction="#OnClick_Cancel" text="Cancel" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="305.5" />
       <Text layoutX="21.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Prices" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="231.431640625" />
       <ScrollPane layoutX="316.0" layoutY="65.0" prefHeight="420.0" prefWidth="390.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="185.0">
@@ -56,18 +63,11 @@
       <Text layoutX="480.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenities" textAlignment="CENTER" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="165.0" />
       <Text layoutX="15.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenity Name" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="359.431640625" />
       <Text layoutX="18.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenity Description" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="410.431640625" />
-      <TextField fx:id="TextField_AmenityName" layoutX="15.0" layoutY="376.0" promptText="Name..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="376.0" />
-      <TextArea fx:id="TextArea_AmenityDescription" layoutX="16.0" layoutY="426.0" prefHeight="200.0" prefWidth="270.0" promptText="Description..." AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="426.0" />
-      <ChoiceBox fx:id="ChoiceBox_AmenityType" layoutX="172.0" layoutY="376.0" prefHeight="25.0" prefWidth="115.0" AnchorPane.leftAnchor="172.0" AnchorPane.topAnchor="376.0" />
       <Text layoutX="172.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenity Type" AnchorPane.leftAnchor="172.0" AnchorPane.topAnchor="359.0" />
       <Text layoutX="103.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standard" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="165.431640625" />
-      <TextField fx:id="TextField_NumberOfQueenRooms" layoutX="168.0" layoutY="182.0" prefHeight="25.0" prefWidth="62.0" promptText="#" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="182.0" />
       <Text layoutX="181.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Queen" AnchorPane.leftAnchor="181.0" AnchorPane.topAnchor="165.431640625" />
-      <TextField fx:id="TextField_NumberOfKingRooms" layoutX="239.0" layoutY="182.0" prefHeight="25.0" prefWidth="62.0" promptText="#" AnchorPane.leftAnchor="239.0" AnchorPane.topAnchor="182.0" />
       <Text layoutX="258.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="King" AnchorPane.leftAnchor="258.0" AnchorPane.topAnchor="165.0" />
-      <TextArea fx:id="TextArea_HotelDescription" layoutX="313.0" layoutY="96.0" prefHeight="65.0" prefWidth="395.0" promptText="Description..." AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="96.0" />
       <Text layoutX="313.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Description" AnchorPane.rightAnchor="313.90234375" AnchorPane.topAnchor="76.0" />
       <Text layoutX="19.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Image URL" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="309.0" />
-      <TextField fx:id="TextField_HotelImage" layoutX="15.0" layoutY="326.0" promptText="https://www.image.com..." AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="326.0" />
    </children>
 </AnchorPane>
